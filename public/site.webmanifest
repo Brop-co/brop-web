@@ -1,0 +1,20 @@
+{
+    "name": "Brop - Your Trusted Creative Partner",
+    "short_name": "Brop",
+    "description": "We deliver creative branding, web design, and UI/UX solutions to make the most impact.",
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/favicon.ico",
+            "sizes": "32x32",
+            "type": "image/x-icon"
+        }
+    ],
+    "theme_color": "#3827C7",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
