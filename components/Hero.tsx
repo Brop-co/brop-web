@@ -111,14 +111,11 @@ const Hero = () => {
           }}
         >
           <motion.div
-            className="w-14 h-14 bg-gray-900 rounded-full flex items-center justify-center mx-auto cursor-pointer hover:bg-gray-300 transition-colors duration-200"
+            className="w-14 h-14 bg-gray-900 rounded-full flex items-center justify-center mx-auto cursor-pointer hover:bg-gray-300 transition-colors duration-200 text-gray-200 hover:text-gray-900"
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
-            <ChevronDown
-              size={26}
-              className="text-gray-200 hover:text-gray-900"
-            />
+            <ChevronDown size={26} className="text-inherit" />
           </motion.div>
         </motion.div>
 

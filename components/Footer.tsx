@@ -155,32 +155,32 @@ const Footer = () => {
             <div className="flex justify-center md:justify-start space-x-4">
               <motion.a
                 href="#behance"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-all duration-200"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 transition-all duration-200"
                 style={{ aspectRatio: "1 / 1" }}
               >
-                <span className="text-base sm:text-lg font-bold">Bē</span>
+                <span className="text-sm sm:text-base font-bold">Bē</span>
               </motion.a>
 
               <motion.a
                 href="#instagram"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-all  duration-200"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 transition-all duration-200"
                 style={{ aspectRatio: "1 / 1" }}
               >
-                <Instagram size={24} />
+                <Instagram size={20} />
               </motion.a>
 
               <motion.a
                 href="#linkedin"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-all duration-200"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 transition-all duration-200"
                 style={{ aspectRatio: "1 / 1" }}
               >
-                <Linkedin size={24} />
+                <Linkedin size={20} />
               </motion.a>
             </div>
           </motion.div>
@@ -226,9 +226,9 @@ const Footer = () => {
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-900 rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-colors duration-200"
+              className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-900 rounded-full flex items-center justify-center text-white hover:bg-gray-200 transition-colors duration-200  hover:text-gray-900"
             >
-              <ArrowUp size={24} />
+              <ArrowUp size={24} className="text-inherit" />
             </motion.button>
           </div>
         </div>
