@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Mazzard:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mazzard:wght@300;400;500;600;700&display=swap");
 
 /* Base styles */
 html {
@@ -13,28 +13,33 @@ html {
 }
 
 body {
-  font-family: 'Mazzard', sans-serif;
+  font-family: "Mazzard", sans-serif;
   /* Add subtle momentum scrolling for better feel */
   -webkit-overflow-scrolling: touch;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Mazzard', system-ui, sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Mazzard", system-ui, sans-serif;
 }
 
 @layer components {
   .btn-primary {
     @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105;
   }
-  
+
   .btn-secondary {
     @apply bg-secondary-100 hover:bg-secondary-200 text-secondary-800 font-semibold py-3 px-6 rounded-lg transition-all duration-200;
   }
-  
+
   .card {
-    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1;
   }
-  
+
   .gradient-text {
     @apply bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent;
   }
