@@ -1,11 +1,42 @@
 "use client";
-
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, LucideIcon, Menu } from "lucide-react";
+import {
+  Monitor,
+  PenTool,
+  Tablet,
+  RotateCcw,
+  Lightbulb,
+  FolderOpen,
+  Search,
+  FileText,
+  Shield,
+  Users,
+  Package,
+  BarChart3,
+  Pencil,
+  Palette,
+  Smartphone,
+  Video,
+  Globe,
+  Building,
+  Zap,
+  Heart,
+  Building2,
+  Briefcase,
+  Award,
+} from "lucide-react";
 import AboutDropdown from "./AboutDropdown";
 import ProjectsDropdown from "./ProjectsDropdown";
 import ServicesDropdown from "./ServicesDropdown";
+
+type DropdownKey = "about" | "projects" | "services";
+
+interface DropdownItem {
+  name: string;
+  icon: LucideIcon;
+}
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,6 +54,42 @@ const Header = () => {
     { name: "For Startups", href: "#startups", hasDropdown: false },
   ];
 
+  // Mobile dropdown data
+  const mobileDropdownData: Record<DropdownKey, DropdownItem[]> = {
+    about: [
+      { name: "Company", icon: Building2 },
+      { name: "Our Team", icon: Users },
+      { name: "Careers", icon: Briefcase },
+      { name: "Excellence", icon: Award },
+      { name: "Innovation", icon: Globe },
+      { name: "Passion", icon: Heart },
+      { name: "Impact", icon: Zap },
+    ],
+    projects: [
+      { name: "Multicard", icon: Globe },
+      { name: "ContinuOS", icon: Zap },
+      { name: "Brandformance", icon: Video },
+      { name: "Foothills", icon: Heart },
+      { name: "Branding", icon: Palette },
+      { name: "Web Design", icon: Monitor },
+      { name: "UX/UI Design", icon: Smartphone },
+    ],
+    services: [
+      { name: "Web Design", icon: Monitor },
+      { name: "Branding", icon: PenTool },
+      { name: "UX/UI Design", icon: Tablet },
+      { name: "Motion Design", icon: RotateCcw },
+      { name: "Content Creation", icon: Lightbulb },
+      { name: "Webflow Development", icon: FolderOpen },
+      { name: "SEO", icon: Search },
+      { name: "Landing Page", icon: FileText },
+      { name: "Creative Design Subscription", icon: RotateCcw },
+      { name: "Content Design & Socials", icon: Users },
+      { name: "Website as a Service", icon: Shield },
+      { name: "Marketing Content", icon: Package },
+    ],
+  };
+
   // Clear timeout helper function
   const clearDropdownTimeout = () => {
     if (timeoutRef.current) {
@@ -34,20 +101,17 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       // Close dropdown on scroll
       if (activeDropdown) {
         setActiveDropdown(null);
         clearDropdownTimeout();
       }
-
       // Header visibility logic
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsHeaderVisible(false);
       } else if (currentScrollY < lastScrollY) {
         setIsHeaderVisible(true);
       }
-
       setLastScrollY(currentScrollY);
     };
 
@@ -96,7 +160,6 @@ const Header = () => {
   const renderDropdown = () => {
     // Explicitly handle each case and ensure we return null for invalid states
     if (!activeDropdown) return null;
-
     switch (activeDropdown) {
       case "about":
         return (
@@ -158,8 +221,6 @@ const Header = () => {
               brop
             </span>
           </motion.div>
-
-          {/* Desktop Navigation */}
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-12">
             {menuItems.map((item) => {
@@ -180,8 +241,8 @@ const Header = () => {
                     className={`relative font-medium text-lg sm:text-xl transition-colors duration-200 flex items-center space-x-2 py-3 group ${
                       item.hasDropdown
                         ? isActive
-                          ? "text-gray-200" // 👈 stays highlighted when dropdown is open
-                          : "text-gray-900 hover:text-gray-200"
+                          ? "text-gray-600" // 👈 stays highlighted when dropdown is open
+                          : "text-gray-900 hover:text-gray-600"
                         : "text-gray-900"
                     }`}
                   >
@@ -209,7 +270,6 @@ const Header = () => {
               );
             })}
           </nav>
-
           {/* Right Side */}
           <div className="flex items-center space-x-5">
             <motion.div
@@ -231,7 +291,6 @@ const Header = () => {
                 </span>
               </motion.button>
             </motion.div>
-
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:text-gray-900"
@@ -240,7 +299,6 @@ const Header = () => {
             </button>
           </div>
         </div>
-
         {/* Mobile Menu */}
         {isMenuOpen && (
           <motion.div
@@ -249,33 +307,98 @@ const Header = () => {
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden py-6 border-t border-gray-200"
           >
-            <div className="flex flex-col space-y-6">
-              {menuItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-700 hover:text-gray-900 font-medium text-lg sm:text-xl py-3 flex items-center justify-between"
-                >
-                  <span>{item.name}</span>
-                  {item.hasDropdown && <ChevronDown size={20} />}
-                </a>
-              ))}
-              <button className="bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium py-3 px-6 rounded-lg transition-colors duration-200 w-full text-left text-lg sm:text-xl">
+            <div className="flex flex-col">
+              {menuItems.map((item, index) => {
+                const isActive = activeDropdown === item.dropdown;
+                const dropdownItems: DropdownItem[] = item.dropdown
+                  ? mobileDropdownData[item.dropdown as DropdownKey] || []
+                  : [];
+
+                return (
+                  <div key={item.name} className="flex flex-col">
+                    {/* Menu Button */}
+                    <button
+                      onClick={() => {
+                        if (item.hasDropdown && item.dropdown) {
+                          setActiveDropdown(isActive ? null : item.dropdown);
+                        } else {
+                          setIsMenuOpen(false);
+                        }
+                      }}
+                      className={`flex justify-between items-center font-medium text-lg py-4 px-4 transition-colors duration-200 ${
+                        isActive
+                          ? "text-gray-600 bg-gray-50"
+                          : "text-gray-900 hover:text-gray-600 hover:bg-gray-50"
+                      }`}
+                    >
+                      {item.name}
+                      {item.hasDropdown && (
+                        <motion.span
+                          animate={{ rotate: isActive ? 180 : 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          <ChevronDown size={20} />
+                        </motion.span>
+                      )}
+                    </button>
+
+                    {/* Mobile Dropdown Content */}
+                    <AnimatePresence>
+                      {item.hasDropdown && isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden bg-gray-50 border-t border-gray-200"
+                        >
+                          <div className="px-6 py-4">
+                            <div className="grid grid-cols-2 gap-3">
+                              {dropdownItems.map((dropdownItem, idx) => {
+                                const IconComponent = dropdownItem.icon;
+                                return (
+                                  <motion.button
+                                    key={idx}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="flex items-center space-x-3 p-3 rounded-lg bg-white hover:bg-blue-50 transition-colors duration-200 text-left group"
+                                  >
+                                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 transition-colors duration-200">
+                                      <IconComponent
+                                        size={16}
+                                        className="text-blue-600 group-hover:text-white transition-colors duration-200"
+                                      />
+                                    </div>
+                                    <span className="font-medium text-gray-900 text-sm group-hover:text-blue-600 transition-colors duration-200">
+                                      {dropdownItem.name}
+                                    </span>
+                                  </motion.button>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+
+              {/* Chat button */}
+              <button className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-4 px-6 rounded-lg transition-colors duration-200 w-full text-center text-lg mt-4 mx-4">
                 Let's chat 👋
               </button>
             </div>
           </motion.div>
         )}
       </div>
-
-      {/* Dropdown Menus */}
+      {/* Desktop Dropdown Menus */}
       <AnimatePresence mode="wait">
         {activeDropdown && (
           <motion.div
             key={activeDropdown}
             ref={dropdownRef}
-            className="absolute top-full left-0 right-0 max-w-7xl m-auto"
+            className="hidden md:block absolute top-full left-0 right-0 max-w-7xl m-auto"
             onMouseEnter={handleDropdownMouseEnter}
             onMouseLeave={handleDropdownMouseLeave}
             initial={{ opacity: 0 }}
@@ -290,5 +413,4 @@ const Header = () => {
     </motion.header>
   );
 };
-
 export default Header;
