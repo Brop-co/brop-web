@@ -1,26 +1,63 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { ArrowRight, Building2, Users, Briefcase, Award, Globe, Heart, Zap } from 'lucide-react'
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Building2,
+  Users,
+  Briefcase,
+  Award,
+  Globe,
+  Heart,
+  Zap,
+} from "lucide-react";
 
 interface AboutDropdownProps {
-  onMouseEnter?: () => void
-  onMouseLeave?: () => void
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 const AboutDropdown = ({ onMouseEnter, onMouseLeave }: AboutDropdownProps) => {
   const companyInfo = [
-    { icon: Building2, title: 'Company', description: 'Learn more about who we are' },
-    { icon: Users, title: 'Our Team', description: 'Meet the people behind' },
-    { icon: Briefcase, title: 'Careers', description: 'Join and grow with us' },
-  ]
+    {
+      icon: Building2,
+      title: "Company",
+      description: "Learn more about who we are",
+    },
+    {
+      icon: Users,
+      title: "Our Team",
+      description: "Meet the people behind the magic",
+    },
+    {
+      icon: Briefcase,
+      title: "Careers",
+      description: "Join and grow with our talented team",
+    },
+  ];
 
   const values = [
-    { icon: Award, title: 'Excellence', description: 'Delivering quality in everything we do' },
-    { icon: Globe, title: 'Innovation', description: 'Pushing creative boundaries' },
-    { icon: Heart, title: 'Passion', description: 'Love for design and creativity' },
-    { icon: Zap, title: 'Impact', description: 'Creating meaningful change' },
-  ]
+    {
+      icon: Award,
+      title: "Excellence",
+      description: "Delivering quality in everything we do",
+    },
+    {
+      icon: Globe,
+      title: "Innovation",
+      description: "Pushing creative boundaries forward",
+    },
+    {
+      icon: Heart,
+      title: "Passion",
+      description: "Love for design and creativity drives us",
+    },
+    {
+      icon: Zap,
+      title: "Impact",
+      description: "Creating meaningful change for brands",
+    },
+  ];
 
   return (
     <motion.div
@@ -28,61 +65,89 @@ const AboutDropdown = ({ onMouseEnter, onMouseLeave }: AboutDropdownProps) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg rounded-b-lg py-8 z-40"
+      className="absolute top-full left-0 right-0 z-40"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-blue-50 py-10 lg:py-12 rounded-3xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
           {/* Column 1: Company Info */}
           <div>
-            <div className="bg-[#F5F5F7] px-4 py-2 rounded-lg mb-6">
+            <div className="bg-[#F5F5F7] px-6 py-4 rounded-lg mb-8">
               <div className="flex items-center justify-between">
-                <span className="text-[#02021E] font-semibold">Company</span>
-                <ArrowRight size={16} className="text-[#3827C7]" />
+                <span className="text-[#02021E] font-semibold text-lg sm:text-xl">
+                  Company
+                </span>
+                <ArrowRight size={20} className="text-[#3827C7]" />
               </div>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {companyInfo.map((item, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-[#F5F5F7] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <item.icon size={16} className="text-[#3827C7]" />
+                <motion.div
+                  key={index}
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="flex items-start space-x-4 group cursor-pointer"
+                >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#F5F5F7] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#3827C7] transition-colors duration-200">
+                    <item.icon
+                      size={20}
+                      className="text-[#3827C7] group-hover:text-white transition-colors duration-200"
+                    />
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-[#02021E] text-sm">{item.title}</h4>
-                    <p className="text-[#D7D7DF] text-xs">{item.description}</p>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-[#02021E] text-base sm:text-lg mb-1 group-hover:text-[#3827C7] transition-colors duration-200">
+                      {item.title}
+                    </h4>
+                    <p className="text-[#8B8B94] text-sm sm:text-base leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
           {/* Column 2: Values */}
           <div>
-            <div className="bg-[#FDC448] px-4 py-2 rounded-lg mb-6">
+            <div className="bg-[#FDC448] px-6 py-4 rounded-lg mb-8">
               <div className="flex items-center justify-between">
-                <span className="text-[#02021E] font-semibold">Our Values</span>
-                <ArrowRight size={16} className="text-[#02021E]" />
+                <span className="text-[#02021E] font-semibold text-lg sm:text-xl">
+                  Our Values
+                </span>
+                <ArrowRight size={20} className="text-[#02021E]" />
               </div>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {values.map((value, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-[#F5F5F7] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <value.icon size={16} className="text-[#3827C7]" />
+                <motion.div
+                  key={index}
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="flex items-start space-x-4 group cursor-pointer"
+                >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#F5F5F7] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#FDC448] transition-colors duration-200">
+                    <value.icon
+                      size={20}
+                      className="text-[#3827C7] group-hover:text-[#02021E] transition-colors duration-200"
+                    />
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-[#02021E] text-sm">{value.title}</h4>
-                    <p className="text-[#D7D7DF] text-xs">{value.description}</p>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-[#02021E] text-base sm:text-lg mb-1 group-hover:text-[#3827C7] transition-colors duration-200">
+                      {value.title}
+                    </h4>
+                    <p className="text-[#8B8B94] text-sm sm:text-base leading-relaxed">
+                      {value.description}
+                    </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default AboutDropdown
+export default AboutDropdown;

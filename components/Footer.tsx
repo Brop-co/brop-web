@@ -17,7 +17,7 @@ const Footer = () => {
       >
         <span className="relative">
           {link}
-          <span className="absolute left-0 -bottom-1 h-[2px] bg-gray-900 w-full scale-x-0 origin-right transition-transform duration-300 ease-in-out group-hover:scale-x-100 group-hover:origin-left"></span>
+          <span className="absolute left-0 bottom-0 h-[1px] bg-gray-900 w-full scale-x-0 origin-right transition-transform duration-300 ease-in-out group-hover:scale-x-100 group-hover:origin-left"></span>
         </span>
       </a>
     ));

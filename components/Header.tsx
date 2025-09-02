@@ -23,61 +23,80 @@ const Header = () => {
     { name: "For Startups", href: "#startups", hasDropdown: false },
   ];
 
+  // Clear timeout helper function
+  const clearDropdownTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+
+      // Close dropdown on scroll
       if (activeDropdown) {
         setActiveDropdown(null);
-        if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        timeoutRef.current = null;
+        clearDropdownTimeout();
       }
-      if (currentScrollY > lastScrollY && currentScrollY > 100)
+
+      // Header visibility logic
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsHeaderVisible(false);
-      else if (currentScrollY < lastScrollY) setIsHeaderVisible(true);
+      } else if (currentScrollY < lastScrollY) {
+        setIsHeaderVisible(true);
+      }
+
       setLastScrollY(currentScrollY);
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY, activeDropdown]);
 
   const handleMouseEnter = (dropdown: string) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
+    clearDropdownTimeout();
     setActiveDropdown(dropdown);
   };
 
   const handleMouseLeave = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => setActiveDropdown(null), 100);
+    clearDropdownTimeout();
+    timeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150); // Slightly longer delay for better UX
   };
 
   const handleDropdownMouseEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = null;
+    clearDropdownTimeout();
   };
 
   const handleDropdownMouseLeave = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => setActiveDropdown(null), 100);
+    clearDropdownTimeout();
+    timeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
   };
 
-  useEffect(
-    () => () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    },
-    []
-  );
-  useEffect(() => () => setActiveDropdown(null), []);
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      clearDropdownTimeout();
+    };
+  }, []);
+
+  // Close dropdown when header becomes invisible
   useEffect(() => {
     if (!isHeaderVisible && activeDropdown) {
       setActiveDropdown(null);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      clearDropdownTimeout();
     }
   }, [isHeaderVisible, activeDropdown]);
 
   const renderDropdown = () => {
+    // Explicitly handle each case and ensure we return null for invalid states
+    if (!activeDropdown) return null;
+
     switch (activeDropdown) {
       case "about":
         return (
@@ -101,6 +120,8 @@ const Header = () => {
           />
         );
       default:
+        // Explicitly set to null if we get an invalid dropdown value
+        setActiveDropdown(null);
         return null;
     }
   };
@@ -119,7 +140,7 @@ const Header = () => {
         stiffness: 100,
         damping: 20,
       }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
@@ -139,37 +160,77 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-12">
-            {menuItems.map((item) => (
-              <div
-                key={item.name}
-                className="relative"
-                onMouseEnter={() =>
-                  item.hasDropdown ? handleMouseEnter(item.dropdown!) : null
-                }
-                onMouseLeave={handleMouseLeave}
-              >
-                <motion.a
-                  href={item.href}
-                  whileHover={{ y: -2 }}
-                  className="text-gray-900 hover:text-gray-600 font-medium text-lg sm:text-xl transition-colors duration-200 flex items-center space-x-2 py-3"
+            {menuItems.map((item) => {
+              const isActive = activeDropdown === item.dropdown; // 👈 new helper
+              return (
+                <div
+                  key={item.name}
+                  className="relative"
+                  onMouseEnter={() => {
+                    if (item.hasDropdown && item.dropdown) {
+                      handleMouseEnter(item.dropdown);
+                    }
+                  }}
+                  onMouseLeave={handleMouseLeave}
                 >
-                  <span>{item.name}</span>
-                  {item.hasDropdown && <ChevronDown size={20} />}
-                </motion.a>
-              </div>
-            ))}
+                  <motion.a
+                    href={item.href}
+                    className={`relative font-medium text-lg sm:text-xl transition-colors duration-200 flex items-center space-x-2 py-3 group ${
+                      item.hasDropdown
+                        ? isActive
+                          ? "text-gray-200" // 👈 stays highlighted when dropdown is open
+                          : "text-gray-900 hover:text-gray-200"
+                        : "text-gray-900"
+                    }`}
+                  >
+                    <span className="relative">
+                      {item.name}
+                      {!item.hasDropdown && (
+                        <span className="absolute left-0 bottom-0 h-[1px] bg-gray-900 w-full scale-x-0 origin-right transition-transform duration-300 ease-in-out group-hover:scale-x-100 group-hover:origin-left"></span>
+                      )}
+                    </span>
+                    {item.hasDropdown && (
+                      <motion.span
+                        animate={{
+                          rotate: isActive ? 180 : 0, // 👈 rotate when dropdown is active
+                        }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                      >
+                        <ChevronDown
+                          size={20}
+                          className="transition-transform duration-300"
+                        />
+                      </motion.span>
+                    )}
+                  </motion.a>
+                </div>
+              );
+            })}
           </nav>
 
           {/* Right Side */}
           <div className="flex items-center space-x-5">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="hidden md:block bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium py-3 px-6 rounded-lg transition-colors duration-200 text-base sm:text-lg"
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="hidden md:block"
             >
-              Let's chat 👋
-            </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                className="relative overflow-hidden group font-medium py-3 px-8 rounded-full text-lg sm:text-xl cursor-pointer bg-gray-200"
+              >
+                <span className="absolute inset-0 bg-gray-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                <span className="relative z-10 flex items-center gap-2 font-[550] text-gray-900 group-hover:text-white transition-colors duration-500">
+                  Let's chat
+                  <span className="inline-block group-hover:-rotate-45 transition-transform duration-500">
+                    👋
+                  </span>
+                </span>
+              </motion.button>
+            </motion.div>
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -209,16 +270,21 @@ const Header = () => {
       </div>
 
       {/* Dropdown Menus */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {activeDropdown && (
-          <div
+          <motion.div
+            key={activeDropdown}
             ref={dropdownRef}
-            className="absolute top-full left-0 right-0"
+            className="absolute top-full left-0 right-0 max-w-7xl m-auto"
             onMouseEnter={handleDropdownMouseEnter}
             onMouseLeave={handleDropdownMouseLeave}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
             {renderDropdown()}
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </motion.header>
