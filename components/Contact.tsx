@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
-import { ChevronDown, ArrowUpRight } from "lucide-react";
+import { useState, useRef } from "react";
+import { ChevronDown, ArrowUpRight, ArrowRight } from "lucide-react";
 
 const Contact = () => {
   const [selectedServices, setSelectedServices] = useState(["Website Design"]);
@@ -65,15 +65,12 @@ const Contact = () => {
       const distanceX = e.clientX - centerX;
       const distanceY = e.clientY - centerY;
 
-      // Only move if mouse is close enough (within 100px)
       if (Math.abs(distanceX) < 100 && Math.abs(distanceY) < 100) {
         if (!isFreeChipMoved) {
-          // Move away when first approached
           mouseX.set(-distanceX * 3);
           mouseY.set(-distanceY * 3);
           setIsFreeChipMoved(true);
         } else {
-          // Come back when approached in new position
           mouseX.set(0);
           mouseY.set(0);
           setIsFreeChipMoved(false);
@@ -83,7 +80,6 @@ const Contact = () => {
   };
 
   const handleFreeChipClick = () => {
-    // Reset position when Free chip is clicked
     mouseX.set(0);
     mouseY.set(0);
     setIsFreeChipMoved(false);
@@ -95,141 +91,150 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-200">
+    <section id="contact" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 shadow-lg"
+          className="bg-white rounded-3xl p-10 sm:p-16 lg:p-20 shadow-lg"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left Section - Branding & Info */}
-            <div className="space-y-8">
-              {/* Contact us button */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
+            <div className="space-y-10">
               <motion.button
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                className="bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+                className="bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium py-3 px-5 rounded-full text-base sm:text-lg transition-colors duration-200"
               >
                 Contact us
               </motion.button>
 
-              {/* Main heading */}
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
+                className="text-5xl sm:text-6xl lg:text-8xl font-medium text-gray-900 leading-tight pr-12"
               >
                 Let's make an impact
               </motion.h2>
             </div>
 
-            {/* Right Section - Contact Form */}
             <motion.form
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               onSubmit={handleSubmit}
-              className="space-y-8"
+              className="space-y-10"
             >
-              {/* Personal and Company Information */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-base sm:text-lg font-medium text-gray-700 mb-2">
                     Name
                   </label>
                   <input
                     type="text"
                     value={formData.name}
+                    placeholder="John"
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200"
+                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px]"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-base sm:text-lg font-medium text-gray-700 mb-2">
                     Company
                   </label>
                   <input
                     type="text"
                     value={formData.company}
+                    placeholder="Google"
                     onChange={(e) =>
                       setFormData({ ...formData, company: e.target.value })
                     }
-                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200"
+                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px]"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-base sm:text-lg font-medium text-gray-700 mb-2">
                     Your Email
                   </label>
                   <input
                     type="email"
                     value={formData.email}
+                    placeholder="john@google.com"
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200"
+                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px]"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-base sm:text-lg font-medium text-gray-700 mb-2">
                     Your Phone
                   </label>
                   <input
                     type="tel"
-                    placeholder="Your number phone"
+                    placeholder="Your phone number"
                     value={formData.phone}
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200"
+                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px]"
                   />
                 </div>
               </div>
 
-              {/* Services Selection */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-4">
+                <label className="block text-base sm:text-lg font-medium text-gray-700 mb-4">
                   I'm interested in...
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="flex flex-wrap gap-2">
                   {services.map((service) => (
                     <motion.button
                       key={service}
                       type="button"
-                      whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      whileHover={{ borderColor: "#111827" }} // Tailwind gray-900
                       onClick={() => handleServiceToggle(service)}
-                      className={`py-2 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                        selectedServices.includes(service)
-                          ? "bg-gray-200 border-2 border-gray-900 relative"
-                          : "text-gray-900 hover:bg-gray-100"
-                      }`}
+                      className={`relative overflow-hidden inline-flex whitespace-nowrap items-center justify-center py-3 px-3 rounded-full text-base sm:text-lg font-medium cursor-pointer transition-all duration-500 border border-gray-100`}
                     >
-                      {service}
-                      {selectedServices.includes(service) && (
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-gray-600 rounded-full"></div>
-                      )}
+                      {/* Animated background for selected state */}
+                      <span
+                        className={`absolute inset-0 bg-gray-900 transition-transform duration-500 ${
+                          selectedServices.includes(service)
+                            ? "translate-y-0"
+                            : "translate-y-full"
+                        }`}
+                      ></span>
+
+                      {/* Text on top */}
+                      <span
+                        className={`relative z-10 flex items-center justify-center w-full h-full transition-colors duration-500 ${
+                          selectedServices.includes(service)
+                            ? "text-white"
+                            : "text-gray-900"
+                        }`}
+                      >
+                        {service}
+                      </span>
                     </motion.button>
                   ))}
                 </div>
               </div>
 
-              {/* Budget Selection */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-4">
+                <label className="block text-base sm:text-lg font-medium text-gray-700 mb-4">
                   Project Budget (USD)
                 </label>
-                <div className="flex space-x-3">
+                <div className="flex gap-2">
+                  {" "}
+                  {/* small gap between buttons */}
                   {budgets.map((budgetOption) => (
                     <motion.div
                       key={budgetOption}
@@ -243,34 +248,43 @@ const Contact = () => {
                           ? handleFreeChipClick
                           : undefined
                       }
-                      className={`relative ${
-                        budgetOption === "Free" && "border z-[9999]"
-                      }`}
+                      className="flex-1" // make each div take equal width
                     >
-                      <button
+                      <motion.button
                         type="button"
                         disabled={budgetOption === "Free"}
                         onClick={() => handleBudgetSelect(budgetOption)}
-                        className={`py-2 px-4 rounded-lg text-sm font-medium transition-all duration-200 ${
-                          budget === budgetOption
-                            ? "bg-gray-200 border-2 border-gray-900"
-                            : "text-gray-900 hover:bg-gray-100"
-                        } ${
-                          budgetOption === "Free"
-                            ? "cursor-not-allowed opacity-60"
-                            : ""
-                        }`}
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ borderColor: "#111827" }} // gray-900 on hover
+                        className="relative overflow-hidden group font-medium py-3 px-6 rounded-full text-base sm:text-lg cursor-pointer transition-all duration-500 border border-gray-100 w-full"
                       >
-                        {budgetOption}
-                      </button>
+                        {/* Animated background for selected state */}
+                        <span
+                          className={`absolute inset-0 bg-gray-900 transition-transform duration-500 ${
+                            budget === budgetOption
+                              ? "translate-y-0"
+                              : "translate-y-full"
+                          }`}
+                        ></span>
+
+                        {/* Text on top */}
+                        <span
+                          className={`relative z-10 flex items-center justify-center w-full h-full transition-colors duration-500 ${
+                            budget === budgetOption
+                              ? "text-white"
+                              : "text-gray-900"
+                          }`}
+                        >
+                          {budgetOption}
+                        </span>
+                      </motion.button>
                     </motion.div>
                   ))}
                 </div>
               </div>
 
-              {/* Project Description */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-4">
+                <label className="block text-base sm:text-lg font-medium text-gray-700 mb-4">
                   Tell us about your project.
                 </label>
                 <div className="relative">
@@ -281,23 +295,25 @@ const Contact = () => {
                     }
                     placeholder="Write something concise...."
                     rows={4}
-                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 resize-none"
+                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-xl sm:text-2xl resize-none"
                   />
-                  <div className="absolute bottom-2 right-2">
-                    <ArrowUpRight size={16} className="text-gray-400" />
-                  </div>
                 </div>
               </div>
 
-              {/* ReCAPTCHA and Submit */}
-              <div className="space-y-6">
+              <div className="text-left">
                 <motion.button
                   type="submit"
                   whileTap={{ scale: 0.9 }}
-                  className="w-full bg-gray-900 text-white font-medium py-4 px-8 rounded-full transition-all duration-500
-             hover:bg-transparent hover:text-gray-900 hover:border hover:border-gray-900"
+                  className="relative overflow-hidden group font-medium py-4 px-16 rounded-full text-lg sm:text-xl cursor-pointer bg-gray-900 flex items-center space-x-3 group-hover:bg-gray-100 transition-colors duration-500"
                 >
-                  Submit
+                  <span className="absolute inset-0 bg-gray-100 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                  <span className="relative z-10 flex items-center gap-3 text-white group-hover:text-gray-900 transition-colors duration-500">
+                    <span>Submit</span>
+                    <ArrowRight
+                      size={20}
+                      className="inline-block group-hover:translate-x-1 transition-transform duration-500"
+                    />
+                  </span>
                 </motion.button>
               </div>
             </motion.form>

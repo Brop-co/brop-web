@@ -2,19 +2,162 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Mazzard:wght@300;400;500;600;700&display=swap");
+/* Load local Mazzard fonts */
+/* -----------------------------
+   Mazzard Font - Local @font-face
+-------------------------------*/
+
+/* Thin */
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-ThinItalic.otf") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* ExtraLight */
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-ExtraLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-ExtraLightItalic.otf")
+    format("opentype");
+  font-weight: 200;
+  font-style: italic;
+}
+
+/* Light */
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Regular */
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Medium */
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* SemiBold */
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-SemiBoldItalic.otf") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Bold */
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* ExtraBold */
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-ExtraBoldItalic.otf")
+    format("opentype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* Black */
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardL-BlackItalic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* Heavy / H variants (optional, if you want extra weights) */
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardH-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/Mazzard Font/MazzardH-ThinItalic.otf") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* Add more weights/styles if needed, e.g., Light, Medium, Black */
 
 /* Base styles */
 html {
-  scroll-behavior: smooth;
-  /* Very gentle smooth scroll */
   scroll-behavior: smooth;
 }
 
 body {
   font-family: "Mazzard", sans-serif;
-  /* Add subtle momentum scrolling for better feel */
   -webkit-overflow-scrolling: touch;
 }
 

@@ -13,29 +13,31 @@ const Footer = () => {
       <a
         key={link}
         href={`#${link.toLowerCase().replace(" ", "-")}`}
-        className="relative inline-block text-gray-700 transition-colors duration-200 group"
+        className="relative inline-block text-gray-700 text-lg sm:text-xl transition-colors duration-200 group"
       >
         <span className="relative">
           {link}
-          <span className="absolute left-0 -bottom-1 h-[1px] bg-gray-900 w-full scale-x-0 origin-right transition-transform duration-300 ease-in-out group-hover:scale-x-100 group-hover:origin-left"></span>
+          <span className="absolute left-0 -bottom-1 h-[2px] bg-gray-900 w-full scale-x-0 origin-right transition-transform duration-300 ease-in-out group-hover:scale-x-100 group-hover:origin-left"></span>
         </span>
       </a>
     ));
 
   return (
     <footer className="bg-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-16">
           {/* Column 1: Company */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="space-y-4 text-center md:text-left"
+            className="space-y-5 text-center md:text-left"
           >
-            <h3 className="text-lg font-bold text-gray-900">Company:</h3>
-            <nav className="flex flex-col space-y-2">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+              Company:
+            </h3>
+            <nav className="flex flex-col space-y-3">
               {renderLinks([
                 "Home",
                 "About",
@@ -56,10 +58,12 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="space-y-4 text-center md:text-left"
+            className="space-y-5 text-center md:text-left"
           >
-            <h3 className="text-lg font-bold text-gray-900">Services:</h3>
-            <nav className="flex flex-col space-y-2">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+              Services:
+            </h3>
+            <nav className="flex flex-col space-y-3">
               {renderLinks([
                 "Web Design",
                 "Branding",
@@ -79,10 +83,12 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-            className="space-y-4 text-center md:text-left"
+            className="space-y-5 text-center md:text-left"
           >
-            <h3 className="text-lg font-bold text-gray-900">Industries:</h3>
-            <nav className="flex flex-col space-y-2">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+              Industries:
+            </h3>
+            <nav className="flex flex-col space-y-3">
               {renderLinks([
                 "Healthcare",
                 "Fintech",
@@ -104,21 +110,23 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-            className="space-y-4 text-center md:text-left"
+            className="space-y-5 text-center md:text-left"
           >
-            <h3 className="text-lg font-bold text-gray-900">Subscribe:</h3>
-            <div className="space-y-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+              Subscribe:
+            </h3>
+            <div className="space-y-5">
               <div className="relative">
                 <input
                   type="email"
                   placeholder="Your email here"
-                  className="w-full border-b border-gray-400 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-center md:text-left"
+                  className="w-full border-b border-gray-400 py-3 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-lg sm:text-xl text-center md:text-left"
                 />
                 <button className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-900 hover:text-gray-700 transition-colors duration-200">
-                  <ArrowRight size={20} />
+                  <ArrowRight size={24} />
                 </button>
               </div>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-500 leading-relaxed">
                 By signing up, you agree to our{" "}
                 <a
                   href="#privacy-policy"
@@ -137,37 +145,42 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-            className="space-y-4 text-center md:text-left"
+            className="space-y-5 text-center md:text-left"
           >
             <div className="flex items-center justify-center md:justify-start space-x-3">
-              <h3 className="text-lg font-bold text-gray-900">Follow us on:</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                Follow us on:
+              </h3>
             </div>
-            <div className="flex justify-center md:justify-start space-x-3">
+            <div className="flex justify-center md:justify-start space-x-4">
               <motion.a
                 href="#behance"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-colors duration-200"
+                className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-all duration-200"
+                style={{ aspectRatio: "1 / 1" }}
               >
-                <span className="text-xs font-bold">Bē</span>
+                <span className="text-base sm:text-lg font-bold">Bē</span>
               </motion.a>
 
               <motion.a
                 href="#instagram"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-colors duration-200"
+                className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-all  duration-200"
+                style={{ aspectRatio: "1 / 1" }}
               >
-                <Instagram size={16} />
+                <Instagram size={24} />
               </motion.a>
 
               <motion.a
                 href="#linkedin"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-colors duration-200"
+                className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-all duration-200"
+                style={{ aspectRatio: "1 / 1" }}
               >
-                <Linkedin size={16} />
+                <Linkedin size={24} />
               </motion.a>
             </div>
           </motion.div>
@@ -180,16 +193,18 @@ const Footer = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-        className="border-t border-gray-200 py-6"
+        className="border-t border-gray-200 py-8"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
-            <div className="flex items-center space-x-2">
-              <img src="/logo.svg" alt="Brop Logo" className="w-8 h-8" />
-              <span className="text-xl font-bold text-gray-600">brop</span>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="flex flex-col sm:flex-row items-center justify-between space-y-5 sm:space-y-0">
+            <div className="flex items-center space-x-3">
+              <img src="/logo.svg" alt="Brop Logo" className="w-10 h-10" />
+              <span className="text-2xl sm:text-3xl font-bold text-gray-600">
+                brop
+              </span>
             </div>
 
-            <div className="flex items-center space-x-3 text-sm text-gray-500">
+            <div className="flex items-center space-x-4 text-base sm:text-lg text-gray-500">
               <span>© 2025 Brop. All rights reserved</span>
               <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
               <a
@@ -211,9 +226,9 @@ const Footer = () => {
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-colors duration-200"
+              className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-900 rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-colors duration-200"
             >
-              <ArrowUp size={20} />
+              <ArrowUp size={24} />
             </motion.button>
           </div>
         </div>

@@ -82,7 +82,6 @@ const Testimonials = () => {
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll by page, but clamp to max scroll
   const scrollByPage = (direction: "left" | "right") => {
     if (!scrollContainerRef.current) return;
     const container = scrollContainerRef.current;
@@ -92,14 +91,12 @@ const Testimonials = () => {
         ? container.scrollLeft - scrollAmount
         : container.scrollLeft + scrollAmount;
 
-    // Clamp scroll so it never goes beyond the max scroll
     const maxScroll = container.scrollWidth - container.clientWidth;
     newScroll = Math.max(0, Math.min(newScroll, maxScroll));
 
     container.scrollTo({ left: newScroll, behavior: "smooth" });
   };
 
-  // Calculate progress bar width (visible portion)
   const progressBarWidth = scrollContainerRef.current
     ? (scrollContainerRef.current.clientWidth /
         scrollContainerRef.current.scrollWidth) *
@@ -107,7 +104,7 @@ const Testimonials = () => {
     : 100;
 
   return (
-    <section id="testimonials" className="py-20 bg-gray-200">
+    <section id="testimonials" className="py-28 bg-gray-200">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -116,8 +113,10 @@ const Testimonials = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex items-center space-x-3 mb-12 px-4 sm:px-6 lg:px-8"
         >
-          <div className="w-2 h-2 bg-black rounded-full"></div>
-          <h2 className="text-2xl font-medium text-gray-900">Testimonials</h2>
+          <div className="w-3 h-3 bg-black rounded-full"></div>
+          <h2 className="text-3xl sm:text-4xl font-medium text-gray-900">
+            Testimonials
+          </h2>
         </motion.div>
       </div>
 
@@ -144,28 +143,28 @@ const Testimonials = () => {
                 delay: 0.3 + index * 0.1,
                 ease: "easeOut",
               }}
-              className="flex-shrink-0 w-80 lg:w-96"
+              className="flex-shrink-0 w-80 sm:w-96 md:w-1/3 lg:w-1/4"
             >
-              <div className="bg-white rounded-2xl p-6 shadow-lg h-full flex flex-col">
-                <p className="text-gray-700 leading-relaxed text-sm flex-1 mb-6">
+              <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-lg h-full flex flex-col">
+                <p className="text-gray-700 leading-relaxed text-lg sm:text-xl flex-1 mb-6">
                   {testimonial.text}
                 </p>
-                <div className="flex items-center space-x-3 mt-auto">
+                <div className="flex items-center space-x-4 mt-auto">
                   <div
-                    className={`w-12 h-12 rounded-full bg-gradient-to-br ${testimonial.client.avatarColors} flex items-center justify-center text-white font-semibold text-lg`}
+                    className={`w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-gradient-to-br ${testimonial.client.avatarColors} flex items-center justify-center text-white font-semibold text-xl lg:text-2xl`}
                   >
                     {testimonial.client.avatar}
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-gray-900 text-sm">
+                    <h4 className="font-bold text-gray-900 text-lg sm:text-xl">
                       {testimonial.client.name}
                     </h4>
-                    <p className="text-gray-600 text-xs">
+                    <p className="text-gray-600 text-sm sm:text-base">
                       {testimonial.client.role}
                     </p>
                   </div>
-                  <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-                    <Linkedin size={16} className="text-gray-600" />
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                    <Linkedin size={20} className="text-gray-600" />
                   </div>
                 </div>
               </div>
@@ -195,17 +194,17 @@ const Testimonials = () => {
                 onClick={() => scrollByPage("left")}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-900 transition-all duration-200"
+                className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-900 transition-all duration-200"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={24} />
               </motion.button>
               <motion.button
                 onClick={() => scrollByPage("right")}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-900 transition-all duration-300"
+                className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-900 transition-all duration-300"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={24} />
               </motion.button>
             </div>
           </div>
