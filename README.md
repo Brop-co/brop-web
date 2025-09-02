@@ -2,7 +2,7 @@
 
 A modern, responsive website built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. 
 
-## 📞 Support
+##  Support
 
 For questions or support, please contact:
 - Email: hello@brop.co.rw
