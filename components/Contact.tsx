@@ -232,7 +232,7 @@ const Contact = () => {
                 <label className="block text-base sm:text-lg font-medium text-gray-700 mb-4">
                   Project Budget (USD)
                 </label>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-col sm:flex-row">
                   {" "}
                   {/* small gap between buttons */}
                   {budgets.map((budgetOption) => (
