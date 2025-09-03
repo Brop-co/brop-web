@@ -11,7 +11,7 @@ import {
   Heart,
   Zap,
 } from "lucide-react";
-import Link from "next/link"; // Import the Next.js Link component
+import Link from "next/link";
 
 interface AboutDropdownProps {
   onMouseEnter?: () => void;
@@ -24,19 +24,19 @@ const AboutDropdown = ({ onMouseEnter, onMouseLeave }: AboutDropdownProps) => {
       icon: Building2,
       title: "Company",
       description: "Learn more about who we are",
-      href: "/about", // Link to the /about page
+      href: "/about/#home",
     },
     {
       icon: Users,
       title: "Our Team",
       description: "Meet the people behind the magic",
-      href: "/about/#team", // Link to the /about page and scroll to the #team section
+      href: "/about/#team",
     },
     {
       icon: Briefcase,
       title: "Careers",
       description: "Join and grow with our talented team",
-      href: "/about/#careers", // Link to the /about page and scroll to the #careers section
+      href: "/about/#careers",
     },
   ];
 
@@ -45,21 +45,25 @@ const AboutDropdown = ({ onMouseEnter, onMouseLeave }: AboutDropdownProps) => {
       icon: Award,
       title: "Excellence",
       description: "Delivering quality in everything we do",
+      href: "/about/#excellence",
     },
     {
       icon: Globe,
       title: "Innovation",
       description: "Pushing creative boundaries forward",
+      href: "/about/#innovation",
     },
     {
       icon: Heart,
       title: "Passion",
       description: "Love for design and creativity drives us",
+      href: "/about/#passion",
     },
     {
       icon: Zap,
       title: "Impact",
       description: "Creating meaningful change for brands",
+      href: "/about/#impact",
     },
   ];
 
@@ -87,12 +91,7 @@ const AboutDropdown = ({ onMouseEnter, onMouseLeave }: AboutDropdownProps) => {
             </div>
             <div className="space-y-6">
               {companyInfo.map((item, index) => (
-                // Use Link component to handle navigation
-                <Link
-                  key={index}
-                  href={item.href}
-                  className="block" // Make Link a block element to contain the motion div
-                >
+                <Link key={index} href={item.href} className="block">
                   <motion.div
                     whileHover={{ x: 4 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
@@ -130,27 +129,28 @@ const AboutDropdown = ({ onMouseEnter, onMouseLeave }: AboutDropdownProps) => {
             </div>
             <div className="space-y-6">
               {values.map((value, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="flex items-start space-x-4 group cursor-pointer"
-                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#F5F5F7] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#FDC448] transition-colors duration-200">
-                    <value.icon
-                      size={20}
-                      className="text-[#3827C7] group-hover:text-[#02021E] transition-colors duration-200"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-[#02021E] text-base sm:text-lg mb-1 group-hover:text-[#3827C7] transition-colors duration-200">
-                      {value.title}
-                    </h4>
-                    <p className="text-[#8B8B94] text-sm sm:text-base leading-relaxed">
-                      {value.description}
-                    </p>
-                  </div>
-                </motion.div>
+                <Link key={index} href={value.href} className="block">
+                  <motion.div
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="flex items-start space-x-4 group cursor-pointer"
+                  >
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#F5F5F7] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#FDC448] transition-colors duration-200">
+                      <value.icon
+                        size={20}
+                        className="text-[#3827C7] group-hover:text-[#02021E] transition-colors duration-200"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-[#02021E] text-base sm:text-lg mb-1 group-hover:text-[#3827C7] transition-colors duration-200">
+                        {value.title}
+                      </h4>
+                      <p className="text-[#8B8B94] text-sm sm:text-base leading-relaxed">
+                        {value.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
           </div>

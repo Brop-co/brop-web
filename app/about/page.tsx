@@ -2,6 +2,7 @@
 
 import About from "@/components/about/About";
 import Approach from "@/components/about/Approach";
+import Commitments from "@/components/about/Commitments";
 import Hero from "@/components/about/Hero";
 import CustomCursor from "@/components/CustomCursor";
 import Header from "@/components/Header";
@@ -15,6 +16,7 @@ export default function AboutPage() {
       <About />
       <Approach />
       <CustomCursor />
+      <Commitments />
     </main>
   );
 }

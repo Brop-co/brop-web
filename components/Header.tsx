@@ -27,6 +27,7 @@ import {
   Briefcase,
   Award,
 } from "lucide-react";
+import Link from "next/link";
 import AboutDropdown from "./AboutDropdown";
 import ProjectsDropdown from "./ProjectsDropdown";
 import ServicesDropdown from "./ServicesDropdown";
@@ -36,11 +37,14 @@ type DropdownKey = "about" | "projects" | "services";
 interface DropdownItem {
   name: string;
   icon: LucideIcon;
+  href: string;
 }
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<
+    string | null | undefined
+  >(null);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -55,42 +59,74 @@ const Header = () => {
   ];
 
   // Mobile dropdown data
+  // NOTE: This data should be in sync with the desktop dropdown components
   const mobileDropdownData: Record<DropdownKey, DropdownItem[]> = {
     about: [
-      { name: "Company", icon: Building2 },
-      { name: "Our Team", icon: Users },
-      { name: "Careers", icon: Briefcase },
-      { name: "Excellence", icon: Award },
-      { name: "Innovation", icon: Globe },
-      { name: "Passion", icon: Heart },
-      { name: "Impact", icon: Zap },
+      { name: "Company", icon: Building2, href: "/about/#home" },
+      { name: "Our Team", icon: Users, href: "/about/#team" },
+      { name: "Careers", icon: Briefcase, href: "/about/#careers" },
+      { name: "Excellence", icon: Award, href: "/about/#excellence" },
+      { name: "Innovation", icon: Globe, href: "/about/#innovation" },
+      { name: "Passion", icon: Heart, href: "/about/#passion" },
+      { name: "Impact", icon: Zap, href: "/about/#impact" },
     ],
     projects: [
-      { name: "Multicard", icon: Globe },
-      { name: "ContinuOS", icon: Zap },
-      { name: "Brandformance", icon: Video },
-      { name: "Foothills", icon: Heart },
-      { name: "Branding", icon: Palette },
-      { name: "Web Design", icon: Monitor },
-      { name: "UX/UI Design", icon: Smartphone },
+      { name: "Multicard", icon: Globe, href: "/projects/#multicard" },
+      { name: "ContinuOS", icon: Zap, href: "/projects/#continuos" },
+      { name: "Brandformance", icon: Video, href: "/projects/#brandformance" },
+      { name: "Foothills", icon: Heart, href: "/projects/#foothills" },
+      { name: "Branding", icon: Palette, href: "/projects/#branding" },
+      { name: "Web Design", icon: Monitor, href: "/projects/#web-design" },
+      {
+        name: "UX/UI Design",
+        icon: Smartphone,
+        href: "/projects/#ux-ui-design",
+      },
     ],
     services: [
-      { name: "Web Design", icon: Monitor },
-      { name: "Branding", icon: PenTool },
-      { name: "UX/UI Design", icon: Tablet },
-      { name: "Motion Design", icon: RotateCcw },
-      { name: "Content Creation", icon: Lightbulb },
-      { name: "Webflow Development", icon: FolderOpen },
-      { name: "SEO", icon: Search },
-      { name: "Landing Page", icon: FileText },
-      { name: "Creative Design Subscription", icon: RotateCcw },
-      { name: "Content Design & Socials", icon: Users },
-      { name: "Website as a Service", icon: Shield },
-      { name: "Marketing Content", icon: Package },
+      { name: "Web Design", icon: Monitor, href: "/services/#web-design" },
+      { name: "Branding", icon: PenTool, href: "/services/#branding" },
+      { name: "UX/UI Design", icon: Tablet, href: "/services/#ux-ui-design" },
+      {
+        name: "Motion Design",
+        icon: RotateCcw,
+        href: "/services/#motion-design",
+      },
+      {
+        name: "Content Creation",
+        icon: Lightbulb,
+        href: "/services/#content-creation",
+      },
+      {
+        name: "Webflow Development",
+        icon: FolderOpen,
+        href: "/services/#webflow-development",
+      },
+      { name: "SEO", icon: Search, href: "/services/#seo" },
+      { name: "Landing Page", icon: FileText, href: "/services/#landing-page" },
+      {
+        name: "Creative Design Subscription",
+        icon: RotateCcw,
+        href: "/services/#creative-design-subscription",
+      },
+      {
+        name: "Content Design & Socials",
+        icon: Users,
+        href: "/services/#content-design",
+      },
+      {
+        name: "Website as a Service",
+        icon: Shield,
+        href: "/services/#website-as-a-service",
+      },
+      {
+        name: "Marketing Content",
+        icon: Package,
+        href: "/services/#marketing-content",
+      },
     ],
   };
 
-  // Clear timeout helper function
   const clearDropdownTimeout = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -101,12 +137,10 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      // Close dropdown on scroll
       if (activeDropdown) {
         setActiveDropdown(null);
         clearDropdownTimeout();
       }
-      // Header visibility logic
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsHeaderVisible(false);
       } else if (currentScrollY < lastScrollY) {
@@ -128,7 +162,7 @@ const Header = () => {
     clearDropdownTimeout();
     timeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 150); // Slightly longer delay for better UX
+    }, 150);
   };
 
   const handleDropdownMouseEnter = () => {
@@ -142,14 +176,12 @@ const Header = () => {
     }, 150);
   };
 
-  // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
       clearDropdownTimeout();
     };
   }, []);
 
-  // Close dropdown when header becomes invisible
   useEffect(() => {
     if (!isHeaderVisible && activeDropdown) {
       setActiveDropdown(null);
@@ -158,7 +190,6 @@ const Header = () => {
   }, [isHeaderVisible, activeDropdown]);
 
   const renderDropdown = () => {
-    // Explicitly handle each case and ensure we return null for invalid states
     if (!activeDropdown) return null;
     switch (activeDropdown) {
       case "about":
@@ -183,7 +214,6 @@ const Header = () => {
           />
         );
       default:
-        // Explicitly set to null if we get an invalid dropdown value
         setActiveDropdown(null);
         return null;
     }
@@ -208,23 +238,25 @@ const Header = () => {
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-3"
-          >
-            <img
-              src="/logo.svg"
-              alt="Brop Logo"
-              className="w-12 h-12 sm:w-14 sm:h-14"
-            />
-            <span className="text-3xl sm:text-4xl font-semibold text-gray-900 lowercase">
-              brop
-            </span>
-          </motion.div>
+          <Link href="/">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center space-x-3"
+            >
+              <img
+                src="/logo.svg"
+                alt="Brop Logo"
+                className="w-12 h-12 sm:w-14 sm:h-14"
+              />
+              <span className="text-3xl sm:text-4xl font-semibold text-gray-900 lowercase">
+                brop
+              </span>
+            </motion.div>
+          </Link>
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-12">
             {menuItems.map((item) => {
-              const isActive = activeDropdown === item.dropdown; // 👈 new helper
+              const isActive = activeDropdown === item.dropdown;
               return (
                 <div
                   key={item.name}
@@ -236,12 +268,12 @@ const Header = () => {
                   }}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <motion.a
-                    href={item.href}
+                  <Link
+                    href={item.href || "#"}
                     className={`relative font-medium text-lg sm:text-xl transition-colors duration-200 flex items-center space-x-2 py-3 group ${
                       item.hasDropdown
                         ? isActive
-                          ? "text-gray-600" // 👈 stays highlighted when dropdown is open
+                          ? "text-gray-600"
                           : "text-gray-900 hover:text-gray-600"
                         : "text-gray-900"
                     }`}
@@ -255,7 +287,7 @@ const Header = () => {
                     {item.hasDropdown && (
                       <motion.span
                         animate={{
-                          rotate: isActive ? 180 : 0, // 👈 rotate when dropdown is active
+                          rotate: isActive ? 180 : 0,
                         }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                       >
@@ -265,7 +297,7 @@ const Header = () => {
                         />
                       </motion.span>
                     )}
-                  </motion.a>
+                  </Link>
                 </div>
               );
             })}
@@ -300,97 +332,111 @@ const Header = () => {
           </div>
         </div>
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden py-6 border-t border-gray-200"
-          >
-            <div className="flex flex-col">
-              {menuItems.map((item, index) => {
-                const isActive = activeDropdown === item.dropdown;
-                const dropdownItems: DropdownItem[] = item.dropdown
-                  ? mobileDropdownData[item.dropdown as DropdownKey] || []
-                  : [];
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="md:hidden py-6 border-t border-gray-200"
+            >
+              <div className="flex flex-col">
+                {menuItems.map((item, index) => {
+                  const isActive = activeDropdown === item.dropdown;
+                  const dropdownItems: DropdownItem[] = item.dropdown
+                    ? mobileDropdownData[item.dropdown as DropdownKey] || []
+                    : [];
 
-                return (
-                  <div key={item.name} className="flex flex-col">
-                    {/* Menu Button */}
-                    <button
-                      onClick={() => {
-                        if (item.hasDropdown && item.dropdown) {
-                          setActiveDropdown(isActive ? null : item.dropdown);
-                        } else {
-                          setIsMenuOpen(false);
-                        }
-                      }}
-                      className={`flex justify-between items-center font-medium text-lg py-4 px-4 transition-colors duration-200 ${
-                        isActive
-                          ? "text-gray-600 bg-gray-50"
-                          : "text-gray-900 hover:text-gray-600 hover:bg-gray-50"
-                      }`}
-                    >
-                      {item.name}
-                      {item.hasDropdown && (
-                        <motion.span
-                          animate={{ rotate: isActive ? 180 : 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                  return (
+                    <div key={item.name} className="flex flex-col">
+                      {item.hasDropdown ? (
+                        // This is for dropdown items like 'About' and 'Services'
+                        <button
+                          onClick={() =>
+                            setActiveDropdown(isActive ? null : item.dropdown)
+                          }
+                          className={`flex justify-between items-center font-medium text-lg py-4 px-4 transition-colors duration-200 ${
+                            isActive
+                              ? "text-gray-600 bg-gray-50"
+                              : "text-gray-900 hover:text-gray-600 hover:bg-gray-50"
+                          }`}
                         >
-                          <ChevronDown size={20} />
-                        </motion.span>
+                          {item.name}
+                          <motion.span
+                            animate={{ rotate: isActive ? 180 : 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                          >
+                            <ChevronDown size={20} />
+                          </motion.span>
+                        </button>
+                      ) : (
+                        // This is for non-dropdown items like 'Home' and 'For Startups'
+                        <Link
+                          href={item.href || "#"}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="flex justify-between items-center font-medium text-lg py-4 px-4 transition-colors duration-200 text-gray-900 hover:text-gray-600 hover:bg-gray-50"
+                        >
+                          {item.name}
+                        </Link>
                       )}
-                    </button>
 
-                    {/* Mobile Dropdown Content */}
-                    <AnimatePresence>
-                      {item.hasDropdown && isActive && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="overflow-hidden bg-gray-50 border-t border-gray-200"
-                        >
-                          <div className="px-6 py-4">
-                            <div className="grid grid-cols-2 gap-3">
-                              {dropdownItems.map((dropdownItem, idx) => {
-                                const IconComponent = dropdownItem.icon;
-                                return (
-                                  <motion.button
-                                    key={idx}
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    className="flex items-center space-x-3 p-3 rounded-lg bg-white hover:bg-blue-50 transition-colors duration-200 text-left group"
-                                  >
-                                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 transition-colors duration-200">
-                                      <IconComponent
-                                        size={16}
-                                        className="text-blue-600 group-hover:text-white transition-colors duration-200"
-                                      />
-                                    </div>
-                                    <span className="font-medium text-gray-900 text-sm group-hover:text-blue-600 transition-colors duration-200">
-                                      {dropdownItem.name}
-                                    </span>
-                                  </motion.button>
-                                );
-                              })}
+                      {/* Mobile Dropdown Content */}
+                      <AnimatePresence>
+                        {item.hasDropdown && isActive && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden bg-gray-50 border-t border-gray-200"
+                          >
+                            <div className="px-6 py-4">
+                              <div className="grid grid-cols-2 gap-3">
+                                {dropdownItems.map((dropdownItem, idx) => {
+                                  const IconComponent = dropdownItem.icon;
+                                  return (
+                                    <Link
+                                      key={idx}
+                                      href={dropdownItem.href}
+                                      className="block"
+                                      onClick={() => setIsMenuOpen(false)}
+                                    >
+                                      <motion.div
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="flex items-center space-x-3 p-3 rounded-lg bg-white hover:bg-blue-50 transition-colors duration-200 text-left group"
+                                      >
+                                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 transition-colors duration-200">
+                                          <IconComponent
+                                            size={16}
+                                            className="text-blue-600 group-hover:text-white transition-colors duration-200"
+                                          />
+                                        </div>
+                                        <span className="font-medium text-gray-900 text-sm group-hover:text-blue-600 transition-colors duration-200">
+                                          {dropdownItem.name}
+                                        </span>
+                                      </motion.div>
+                                    </Link>
+                                  );
+                                })}
+                              </div>
                             </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
-
-              {/* Chat button */}
-              <button className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-4 px-6 rounded-lg transition-colors duration-200 w-full text-center text-lg mt-4 mx-4">
-                Let's chat 👋
-              </button>
-            </div>
-          </motion.div>
-        )}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+                {/* Chat button */}
+                <Link href="/contact" className="px-4">
+                  <button className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-4 px-6 rounded-lg transition-colors duration-200 w-full text-center text-lg mt-4">
+                    Let's chat 👋
+                  </button>
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
       {/* Desktop Dropdown Menus */}
       <AnimatePresence mode="wait">
@@ -413,4 +459,5 @@ const Header = () => {
     </motion.header>
   );
 };
+
 export default Header;
