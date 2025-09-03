@@ -143,7 +143,7 @@ const Testimonials = () => {
                 delay: 0.3 + index * 0.1,
                 ease: "easeOut",
               }}
-              className="flex-shrink-0 w-80 sm:w-11/12 md:w-1/3 lg:w-1/4"
+              className="flex-shrink-0 w-11/12 sm:w-9/12 md:w-1/3 lg:w-1/4"
             >
               <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-lg h-full flex flex-col">
                 <p className="text-gray-700 leading-relaxed text-lg sm:text-xl flex-1 mb-6">
