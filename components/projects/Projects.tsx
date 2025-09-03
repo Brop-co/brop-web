@@ -111,10 +111,10 @@ const Projects = () => {
           </div>
 
           <div className="flex items-end justify-end">
-            <div className="border border-gray-900 w-14 rounded-xl h-14 flex items-center justify-center mx-2">
+            <div className="border border-gray-900 w-14 rounded-xl h-14 flex items-center justify-center mx-2 hover:bg-gray-900 hover:text-white">
               <LayoutGrid size={24} strokeWidth={1.5} />
             </div>
-            <div className="border border-gray-900 rounded-xl w-14 h-14 flex items-center justify-center mx-2">
+            <div className="border border-gray-900 rounded-xl w-14 h-14 flex items-center justify-center mx-2 hover:bg-gray-900 hover:text-white">
               <List size={24} strokeWidth={1.5} />
             </div>
           </div>

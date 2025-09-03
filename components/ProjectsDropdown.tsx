@@ -54,19 +54,19 @@ const ProjectsDropdown = ({
       icon: Palette,
       title: "Branding",
       description: "Crafting memorable brand identities",
-      href: "/services/#branding",
+      href: "/projects/#branding",
     },
     {
       icon: Monitor,
       title: "Web Design",
       description: "Building beautiful and functional websites",
-      href: "/services/#web-design",
+      href: "/projects/#web-design",
     },
     {
       icon: Smartphone,
       title: "UX/UI Design",
       description: "Designing intuitive user experiences",
-      href: "/services/#ux-ui-design",
+      href: "/projects/#ux-ui-design",
     },
   ];
 
