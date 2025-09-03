@@ -205,7 +205,7 @@ const Header = () => {
       }}
       className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <motion.div
@@ -398,7 +398,7 @@ const Header = () => {
           <motion.div
             key={activeDropdown}
             ref={dropdownRef}
-            className="hidden md:block absolute top-full left-0 right-0 max-w-7xl m-auto"
+            className="hidden md:block absolute top-full left-0 right-0 max-w-[1500px] m-auto"
             onMouseEnter={handleDropdownMouseEnter}
             onMouseLeave={handleDropdownMouseLeave}
             initial={{ opacity: 0 }}

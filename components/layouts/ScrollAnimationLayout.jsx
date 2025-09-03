@@ -39,7 +39,7 @@ const ScrollAnimationLayout = ({
       <motion.div
         className="w-full flex flex-col justify-center items-center min-h-screen relative z-10"
         style={{
-          maxWidth: isShrunken ? "1280px" : "100%",
+          maxWidth: isShrunken ? "1500px" : "100%",
           marginLeft: "auto",
           marginRight: "auto",
           borderRadius: isShrunken ? "24px" : "0px",

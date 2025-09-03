@@ -26,7 +26,7 @@ const About = () => {
       id="about"
       className="py-24 sm:py-28 px-6 sm:px-8 lg:px-16 bg-gray-200"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1500px] mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
