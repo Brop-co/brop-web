@@ -96,7 +96,7 @@ const About = () => {
                   transition={{ type: "spring", stiffness: 150 }}
                   className="absolute bottom-6 right-6"
                 >
-                  <div className="w-7 h-7 bg-blue-500 rounded-md flex items-center justify-center">
+                  <div className="w-7 h-7 bg-blue-500 rounded-md  items-center justify-center flex">
                     <Linkedin
                       className="w-4 h-4 text-white"
                       fill="white"
