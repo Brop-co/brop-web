@@ -1,8 +1,16 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode, FC } from "react";
 
-const ScrollAnimationLayout = ({
+interface ScrollAnimationLayoutProps {
+  children: ReactNode;
+  sectionId?: string;
+  shrinkThreshold?: number;
+  backgroundColor?: string;
+  backgroundOverlay?: string;
+}
+
+const ScrollAnimationLayout: FC<ScrollAnimationLayoutProps> = ({
   children,
   sectionId = "animated-section",
   shrinkThreshold = 0.2,
