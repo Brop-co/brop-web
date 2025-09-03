@@ -47,11 +47,11 @@ const Header = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const menuItems = [
-    { name: "Home", href: "#home", hasDropdown: false },
+    { name: "Home", href: "/#home", hasDropdown: false },
     { name: "About", hasDropdown: true, dropdown: "about" },
     { name: "Projects", hasDropdown: true, dropdown: "projects" },
     { name: "Services", hasDropdown: true, dropdown: "services" },
-    { name: "For Startups", href: "#startups", hasDropdown: false },
+    { name: "For Startups", href: "/#startups", hasDropdown: false },
   ];
 
   // Mobile dropdown data
