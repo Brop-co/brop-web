@@ -202,7 +202,7 @@ const Contact = () => {
                       whileTap={{ scale: 0.98 }}
                       whileHover={{ borderColor: "#111827" }} // Tailwind gray-900
                       onClick={() => handleServiceToggle(service)}
-                      className={`relative overflow-hidden inline-flex whitespace-nowrap items-center justify-center py-3 px-3 rounded-full text-base sm:text-lg font-medium cursor-pointer transition-all duration-500 border border-gray-100`}
+                      className={`relative overflow-hidden inline-flex whitespace-nowrap items-center justify-center py-3 px-4 rounded-full text-base sm:text-lg font-medium cursor-pointer transition-all duration-500 border border-gray-100`}
                     >
                       {/* Animated background for selected state */}
                       <span
@@ -215,7 +215,7 @@ const Contact = () => {
 
                       {/* Text on top */}
                       <span
-                        className={`relative z-10 flex items-center justify-center w-full h-full transition-colors duration-500 ${
+                        className={`relative z-10 flex items-center justify-center w-full h-full transition-colors duration-500 text-lg sm:text-xl ${
                           selectedServices.includes(service)
                             ? "text-white"
                             : "text-gray-900"
