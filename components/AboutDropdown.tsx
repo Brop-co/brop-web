@@ -77,7 +77,7 @@ const AboutDropdown = ({ onMouseEnter, onMouseLeave }: AboutDropdownProps) => {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 bg-blue-50 py-10 lg:py-12 rounded-3xl">
+      <div className="max-w-[1460px] mx-auto px-4 sm:px-6 lg:px-8 bg-blue-50 py-10 lg:py-12 rounded-3xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
           {/* Column 1: Company Info */}
           <div>

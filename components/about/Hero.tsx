@@ -33,7 +33,7 @@ const HeroContent = () => {
 
   return (
     <>
-      <div className="max-w-[1500px] mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1460px] mx-auto text-center px-4 sm:px-6 lg:px-8">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

@@ -105,7 +105,7 @@ const Testimonials = () => {
 
   return (
     <section id="testimonials" className="py-28 bg-gray-200">
-      <div className="max-w-[1500px] mx-auto">
+      <div className="max-w-[1460px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -172,7 +172,7 @@ const Testimonials = () => {
           ))}
         </div>
 
-        <div className="max-w-[1500px] mx-auto">
+        <div className="max-w-[1460px] mx-auto">
           <div className="flex items-center gap-6 mt-8 w-full px-4 sm:px-6 lg:px-8">
             <div className="flex-1 relative">
               <div className="w-full h-1 bg-gray-300/70 rounded-full overflow-hidden">

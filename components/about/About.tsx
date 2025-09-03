@@ -26,7 +26,7 @@ const About = () => {
       id="about"
       className="py-24 sm:py-28 px-6 sm:px-8 lg:px-16 bg-gray-200"
     >
-      <div className="max-w-[1500px] mx-auto">
+      <div className="max-w-[1460px] mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -45,7 +45,7 @@ const About = () => {
 
           {/* Right: Tagline */}
           <div>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-900 leading-snug sm:leading-tight">
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 leading-snug sm:leading-tight">
               We are explorers. We constantly seek ways to make an impact
               towards solving problems through creativity.
             </h3>

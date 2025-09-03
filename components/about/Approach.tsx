@@ -34,7 +34,7 @@ const approachSteps = [
 const Approach = () => {
   return (
     <section className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-12 xl:px-16 bg-gray-200">
-      <div className="mx-auto max-w-[1500px]">
+      <div className="mx-auto max-w-[1460px]">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -50,7 +50,7 @@ const Approach = () => {
             </h2>
           </div>
           <div className="pr-0 md:pr-12 lg:pr-36">
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-900 leading-snug sm:leading-tight">
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 leading-snug sm:leading-tight">
               First step to solving a problem is recognizing there is one.
             </h3>
           </div>

@@ -52,7 +52,7 @@ const ScrollAnimationLayout: FC<ScrollAnimationLayoutProps> = ({
 
   // Calculate shrinked width dynamically to match About section
   const getShrinkWidth = () => {
-    const maxContentWidth = 1500; // same as About max-w-[1500px]
+    const maxContentWidth = 1500; // same as About max-w-[1460px]
 
     // About section paddings: px-6 sm:px-8 lg:px-16
     const basePadding = 24; // 6 * 4

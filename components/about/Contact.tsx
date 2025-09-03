@@ -94,6 +94,28 @@ const Contact = () => {
     <section id="contact" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200">
       <div className="max-w-[1460px] mx-auto">
         <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20"
+        >
+          {/* Left: Title */}
+          <div className="flex items-center space-x-4">
+            <div className="w-3 h-3 bg-black rounded-full"></div>
+            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
+              We're explorers
+            </h2>
+          </div>
+
+          {/* Right: Tagline */}
+          <div className="">
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 leading-snug sm:leading-tight">
+              Ready to take next step with us?
+            </h3>
+          </div>
+        </motion.div>
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}

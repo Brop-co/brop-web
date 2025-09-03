@@ -24,7 +24,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-200">
-      <div className="max-w-[1500px] mx-auto px-6 sm:px-8 lg:px-12 py-20">
+      <div className="max-w-[1460px] mx-auto px-6 sm:px-8 lg:px-12 py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-16">
           {/* Column 1: Company */}
           <motion.div
@@ -195,7 +195,7 @@ const Footer = () => {
         transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
         className="border-t border-gray-200 py-8"
       >
-        <div className="max-w-[1500px] mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-[1460px] mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex flex-col sm:flex-row items-center justify-between space-y-5 sm:space-y-0">
             <div className="flex items-center space-x-3">
               <img src="/logo.svg" alt="Brop Logo" className="w-10 h-10" />
