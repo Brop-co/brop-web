@@ -111,10 +111,10 @@ const Projects = () => {
           </div>
 
           <div className="flex items-end justify-end">
-            <div className="border border-gray-900 w-14 rounded-xl h-14 flex items-center justify-center mx-2 hover:bg-gray-900 hover:text-white">
+            <div className="border border-gray-900 w-14 rounded-xl h-14 flex items-center justify-center mx-2 hover:bg-gray-900 hover:text-white cursor-pointer transition-colors">
               <LayoutGrid size={24} strokeWidth={1.5} />
             </div>
-            <div className="border border-gray-900 rounded-xl w-14 h-14 flex items-center justify-center mx-2 hover:bg-gray-900 hover:text-white">
+            <div className="border border-gray-900 rounded-xl w-14 h-14 flex items-center justify-center mx-2 hover:bg-gray-900 hover:text-white cursor-pointer transition-colors">
               <List size={24} strokeWidth={1.5} />
             </div>
           </div>
@@ -173,29 +173,36 @@ const Projects = () => {
                 <motion.img
                   src={p.imageUrl}
                   alt={p.title}
-                  className="w-full  object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
                 />
               </a>
 
-              {/* below image: left: title - year ; right: module pill */}
-              <div className="mt-4 flex justify-between items-center">
-                <div className="flex  items-center">
-                  <h3 className="text-3xl font-[700] text-gray-900">
-                    {p.title} —
-                  </h3>
-                  <div className="text-gray-400 text-3xl font-medium">{`${
-                    p.year ?? ""
-                  }`}</div>
+              {/* Responsive card content */}
+              <div className="mt-4">
+                {/* Title and Year - Stack on mobile, inline on larger screens */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 mb-3">
+                  <div className="flex items-baseline flex-wrap">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-[700] text-gray-900 break-words">
+                      {p.title}
+                    </h3>
+                    <span className="text-xl sm:text-2xl lg:text-3xl font-[700] text-gray-900 ml-1 sm:ml-2">
+                      —
+                    </span>
+                  </div>
+                  <div className="text-lg sm:text-xl lg:text-3xl font-medium text-gray-400 sm:ml-2">
+                    {p.year ?? ""}
+                  </div>
                 </div>
 
-                <div className="flex items-center space-x-2">
+                {/* Modules - Responsive layout */}
+                <div className="flex flex-wrap gap-2">
                   {p.modules.map((module, moduleIdx) => (
                     <span
                       key={moduleIdx}
-                      className="text-sm px-4 py-2 rounded-full border border-gray-200 bg-white shadow-sm"
+                      className="text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gray-200 bg-white shadow-sm whitespace-nowrap"
                     >
                       {module}
                     </span>
