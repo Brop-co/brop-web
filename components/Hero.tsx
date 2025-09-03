@@ -61,7 +61,7 @@ const HeroContent = () => {
         >
           <motion.button
             whileTap={{ scale: 0.95 }}
-            className="relative overflow-hidden group font-medium py-5 px-10 rounded-full text-xl cursor-pointer"
+            className="relative overflow-hidden group font-medium py-5 px-10 rounded-full text-xl cursor-pointer bg-gray-200"
           >
             <span className="absolute inset-0 bg-gray-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
             <span className="relative z-10 flex items-center gap-3 font-[550] text-gray-900 group-hover:text-white transition-colors duration-500">

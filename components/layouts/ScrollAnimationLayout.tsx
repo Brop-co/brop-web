@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState, useEffect, ReactNode, FC } from "react";
+import { useState, useEffect, FC, ReactNode } from "react";
 
 interface ScrollAnimationLayoutProps {
   children: ReactNode;
@@ -18,7 +18,21 @@ const ScrollAnimationLayout: FC<ScrollAnimationLayoutProps> = ({
   backgroundOverlay = "bg-gray-200",
 }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
 
+  // Track viewport height & width
+  useEffect(() => {
+    const updateViewport = () => {
+      setViewportHeight(window.innerHeight);
+      setWindowWidth(window.innerWidth);
+    };
+    updateViewport();
+    window.addEventListener("resize", updateViewport);
+    return () => window.removeEventListener("resize", updateViewport);
+  }, []);
+
+  // Track scroll progress
   useEffect(() => {
     const handleScroll = () => {
       const sectionElement = document.getElementById(sectionId);
@@ -27,8 +41,7 @@ const ScrollAnimationLayout: FC<ScrollAnimationLayoutProps> = ({
       const sectionHeight = sectionElement.offsetHeight;
       const scrolled = window.scrollY;
 
-      const shouldShrink = scrolled > sectionHeight * shrinkThreshold;
-      setScrollProgress(shouldShrink ? 1 : 0);
+      setScrollProgress(scrolled > sectionHeight * shrinkThreshold ? 1 : 0);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -37,17 +50,37 @@ const ScrollAnimationLayout: FC<ScrollAnimationLayoutProps> = ({
 
   const isShrunken = scrollProgress === 1;
 
+  // Calculate shrinked width dynamically to match About section
+  const getShrinkWidth = () => {
+    const maxContentWidth = 1500; // same as About max-w-[1500px]
+
+    // About section paddings: px-6 sm:px-8 lg:px-16
+    const basePadding = 24; // 6 * 4
+    const smPadding = 32; // 8 * 4
+    const lgPadding = 64; // 16 * 4
+
+    if (windowWidth >= 1024)
+      return Math.min(maxContentWidth, windowWidth - lgPadding * 2) + "px";
+    if (windowWidth >= 640)
+      return Math.min(maxContentWidth, windowWidth - smPadding * 2) + "px";
+    return windowWidth - basePadding * 2 + "px";
+  };
+
   return (
     <section
       id={sectionId}
-      className="relative min-h-screen flex flex-col justify-center items-center"
+      className="relative flex flex-col justify-center items-center overflow-hidden"
+      style={{
+        height: viewportHeight > 0 ? `${viewportHeight}px` : "100vh",
+        maxHeight: "100vh",
+      }}
     >
       <div className={`absolute inset-0 ${backgroundOverlay} z-0`}></div>
 
       <motion.div
-        className="w-full flex flex-col justify-center items-center min-h-screen relative z-10"
+        className="w-full flex flex-col justify-center items-center relative z-10 h-full"
         style={{
-          maxWidth: isShrunken ? "1500px" : "100%",
+          maxWidth: isShrunken ? getShrinkWidth() : "100%",
           marginLeft: "auto",
           marginRight: "auto",
           borderRadius: isShrunken ? "24px" : "0px",
