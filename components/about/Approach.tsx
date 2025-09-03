@@ -33,7 +33,10 @@ const approachSteps = [
 
 const Approach = () => {
   return (
-    <section className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-12 xl:px-16 bg-gray-200">
+    <section
+      id="approachs"
+      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-12 xl:px-16 bg-gray-200"
+    >
       <div className="mx-auto max-w-[1460px]">
         {/* Header */}
         <motion.div

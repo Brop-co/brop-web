@@ -32,7 +32,7 @@ const commitmentsData = [
 const Commitments = () => {
   return (
     <section
-      id="about"
+      id="commitments"
       className="py-24 sm:py-28 px-6 sm:px-8 lg:px-16 bg-gray-200"
     >
       <div className="max-w-[1460px] mx-auto">
