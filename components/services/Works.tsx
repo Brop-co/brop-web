@@ -122,7 +122,7 @@ const Works = () => {
         {/* UPDATED: Now uses native scroll with overflow-x-auto */}
         <div
           ref={trackRef}
-          className="flex gap-8 overflow-x-auto scrollbar-hide cursor-grab"
+          className="flex gap-8 overflow-x-auto scrollbar-hide cursor-grab pr-6 sm:pr-8 lg:pr-16"
         >
           {projects.map((p, i) => (
             <div
