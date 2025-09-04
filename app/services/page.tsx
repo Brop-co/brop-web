@@ -8,6 +8,11 @@ import Header from "@/components/Header";
 import Projects from "@/components/projects/Projects";
 import Services from "@/components/services/Services";
 import Works from "@/components/services/Works";
+import Expertise from "@/components/services/Expertise";
+import Difference from "@/components/services/Difference";
+import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/services/faq";
+import Interested from "@/components/services/Interested";
 
 export default function ServicePage() {
   return (
@@ -15,8 +20,13 @@ export default function ServicePage() {
       <Header />
       <Hero />
       <Services />
-      <Works/>
+      <Works />
       <CustomCursor />
+      <Expertise />
+      <Difference />
+      <Testimonials title="Our clients" />
+      <FAQ />
+      <Interested />
       <Contact />
       <Footer />
     </main>

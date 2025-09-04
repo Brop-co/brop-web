@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
-const Testimonials = () => {
+const Testimonials = ({ title = "Testimonials" }: { title?: string }) => {
   const [progress, setProgress] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -106,7 +106,7 @@ const Testimonials = () => {
         >
           <div className="w-3 h-3 bg-black rounded-full"></div>
           <h2 className="text-3xl sm:text-4xl font-medium text-gray-900">
-            Testimonials
+            {title}
           </h2>
         </motion.div>
       </div>
