@@ -189,6 +189,16 @@ const Header = () => {
     }
   }, [isHeaderVisible, activeDropdown]);
 
+  const scrollToContact = () => {
+    const aboutSection = document.getElementById("contact");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   const renderDropdown = () => {
     if (!activeDropdown) return null;
     switch (activeDropdown) {
@@ -311,6 +321,7 @@ const Header = () => {
               className="hidden md:block"
             >
               <motion.button
+                onClick={scrollToContact}
                 whileTap={{ scale: 0.95 }}
                 className="relative overflow-hidden group font-medium py-3 px-8 rounded-full text-lg sm:text-xl cursor-pointer bg-gray-200"
               >

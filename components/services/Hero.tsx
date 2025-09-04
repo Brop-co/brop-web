@@ -15,8 +15,8 @@ const Hero = () => {
     return () => window.removeEventListener("resize", updateViewport);
   }, []);
 
-  const scrollTProjects = () => {
-    const aboutSection = document.getElementById("projects");
+  const scrollToServices = () => {
+    const aboutSection = document.getElementById("services");
     if (aboutSection) {
       aboutSection.scrollIntoView({
         behavior: "smooth",
@@ -51,14 +51,15 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl sm:text-5xl lg:text-7xl font-medium text-gray-900 leading-tight max-w-4xl"
           >
-            Good design looks nice, but great design solves a problem.
+            Explore Our Services
           </motion.h1>
         </div>
-        <p className="absolute bottom-28 text-base md:text-xl">
-          See the problems that we solved
+        <p className="absolute bottom-28 text-base md:text-xl flex flex-col items-center">
+          <span>Solutions to help your brand</span>
+          <span>stand out and grow</span>
         </p>
         <motion.div
-          onClick={scrollTProjects}
+          onClick={scrollToServices}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
