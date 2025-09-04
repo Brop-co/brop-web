@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, LucideIcon, Menu } from "lucide-react";
+import { ChevronDown, LucideIcon, Menu, X } from "lucide-react";
 import {
   Monitor,
   PenTool,
@@ -229,6 +229,36 @@ const Header = () => {
     }
   };
 
+  // Animated Menu Icon Component
+  const AnimatedMenuIcon = ({ isOpen }: { isOpen: boolean }) => (
+    <div className="w-6 h-6 flex items-center justify-center relative">
+      <motion.span
+        className="absolute w-5 h-0.5 bg-gray-700"
+        animate={{
+          rotate: isOpen ? 45 : 0,
+          y: isOpen ? 0 : -6,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      />
+      <motion.span
+        className="absolute w-5 h-0.5 bg-gray-700"
+        animate={{
+          opacity: isOpen ? 0 : 1,
+          x: isOpen ? -20 : 0,
+        }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
+      />
+      <motion.span
+        className="absolute w-5 h-0.5 bg-gray-700"
+        animate={{
+          rotate: isOpen ? -45 : 0,
+          y: isOpen ? 0 : 6,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      />
+    </div>
+  );
+
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
@@ -263,8 +293,9 @@ const Header = () => {
               </span>
             </motion.div>
           </Link>
+
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-12">
+          <nav className="hidden lg:flex space-x-12">
             {menuItems.map((item) => {
               const isActive = activeDropdown === item.dropdown;
               return (
@@ -280,7 +311,7 @@ const Header = () => {
                 >
                   <Link
                     href={item.href || "#"}
-                    className={`relative font-medium text-lg sm:text-xl transition-colors duration-200 flex items-center space-x-2 py-3 group ${
+                    className={`relative font-medium text-lg xl:text-xl transition-colors duration-200 flex items-center space-x-2 py-3 group ${
                       item.hasDropdown
                         ? isActive
                           ? "text-gray-600"
@@ -312,18 +343,20 @@ const Header = () => {
               );
             })}
           </nav>
+
           {/* Right Side */}
-          <div className="flex items-center space-x-5">
+          <div className="flex items-center space-x-3 sm:space-x-5">
+            {/* Desktop Let's Chat Button - Hidden on medium devices */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="hidden md:block"
+              className="hidden lg:block"
             >
               <motion.button
                 onClick={scrollToContact}
                 whileTap={{ scale: 0.95 }}
-                className="relative overflow-hidden group font-medium py-3 px-8 rounded-full text-lg sm:text-xl cursor-pointer bg-gray-200"
+                className="relative overflow-hidden group font-medium py-3 px-6 xl:px-8 rounded-full text-lg xl:text-xl cursor-pointer bg-gray-200 whitespace-nowrap"
               >
                 <span className="absolute inset-0 bg-gray-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
                 <span className="relative z-10 flex items-center gap-2 font-[550] text-gray-900 group-hover:text-white transition-colors duration-500">
@@ -334,14 +367,18 @@ const Header = () => {
                 </span>
               </motion.button>
             </motion.div>
-            <button
+
+            {/* Mobile Menu Button */}
+            <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:text-gray-900"
+              className="lg:hidden w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:text-gray-900 transition-colors duration-200"
+              whileTap={{ scale: 0.95 }}
             >
-              <Menu size={22} />
-            </button>
+              <AnimatedMenuIcon isOpen={isMenuOpen} />
+            </motion.button>
           </div>
         </div>
+
         {/* Mobile Menu */}
         <AnimatePresence>
           {isMenuOpen && (
@@ -349,7 +386,7 @@ const Header = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="md:hidden py-6 border-t border-gray-200"
+              className="lg:hidden py-6 border-t border-gray-200"
             >
               <div className="flex flex-col">
                 {menuItems.map((item, index) => {
@@ -438,24 +475,34 @@ const Header = () => {
                     </div>
                   );
                 })}
-                {/* Chat button */}
-                <Link href="/contact" className="px-4">
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-4 px-6 rounded-lg transition-colors duration-200 w-full text-center text-lg mt-4">
-                    Let's chat 👋
-                  </button>
-                </Link>
+
+                {/* Mobile Chat Button */}
+                <div className="px-4 mt-4">
+                  <motion.button
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      scrollToContact();
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-4 px-6 rounded-lg transition-colors duration-200 w-full text-center text-lg flex items-center justify-center gap-2"
+                  >
+                    Let's chat
+                    <span className="inline-block">👋</span>
+                  </motion.button>
+                </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+
       {/* Desktop Dropdown Menus */}
       <AnimatePresence mode="wait">
         {activeDropdown && (
           <motion.div
             key={activeDropdown}
             ref={dropdownRef}
-            className="hidden md:block absolute top-full left-0 right-0 max-w-[1460px] m-auto"
+            className="hidden lg:block absolute top-full left-0 right-0 max-w-[1460px] m-auto"
             onMouseEnter={handleDropdownMouseEnter}
             onMouseLeave={handleDropdownMouseLeave}
             initial={{ opacity: 0 }}
