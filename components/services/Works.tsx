@@ -43,16 +43,16 @@ const Works = () => {
     {
       title: "Fractal",
       year: 2024,
-      imageUrl: "https://i.imgur.com/u5vSt6g.png",
+      imageUrl: "https://placehold.co/800x600/4a4a4a/ffffff/png?text=Fractal",
       projectUrl: "#",
       modules: ["DESIGN SOLUTIONS", "EXPERT COLLABORATION", "Branding"],
-      cardClassName: "bg-[#111111] text-white border-gray-800",
+      cardClassName: "bg-green-50 text-gray-900 border-gray-200",
       moduleStyle: "text",
     },
     {
       title: "Incipet",
       year: 2024,
-      imageUrl: "https://i.imgur.com/Kz4YxLg.png",
+      imageUrl: "https://placehold.co/800x600/4a4a4a/ffffff/png?text=Incipet",
       projectUrl: "#",
       modules: ["Webflow Dev", "Web Design", "Branding"],
       cardClassName:
@@ -62,7 +62,7 @@ const Works = () => {
     {
       title: "TitanX",
       year: 2025,
-      imageUrl: "https://placehold.co/800x600/1a1a1a/ffffff/png?text=TitanX",
+      imageUrl: "https://placehold.co/800x600/4a4a4a/ffffff/png?text=TitanX",
       projectUrl: "#",
       modules: ["Fintech", "Branding", "Web Design"],
       cardClassName: "bg-gray-100 border-gray-200 text-gray-900",
@@ -74,7 +74,7 @@ const Works = () => {
       imageUrl: "https://placehold.co/800x600/4a4a4a/ffffff/png?text=Vantir",
       projectUrl: "#",
       modules: ["Artificial Intelligence", "UI/UX"],
-      cardClassName: "bg-[#2A2B3A] text-white border-gray-700",
+      cardClassName: "bg-blue-50 text-gray-900 border-gray-200",
       moduleStyle: "text",
     },
   ];
@@ -180,7 +180,6 @@ const Works = () => {
 
       <div className="max-w-[1460px] mx-auto px-4 sm:px-8 lg:px-16 mt-8 hidden lg:flex items-center gap-8">
         <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
-          {/* UPDATED: Progress bar width is now based on scrollProgress state */}
           <motion.div
             className="h-full bg-gray-900"
             style={{ width: `${scrollProgress * 100}%` }}
@@ -204,6 +203,21 @@ const Works = () => {
             <ChevronRight size={24} />
           </motion.button>
         </div>
+      </div>
+      {/* Small Center Button */}
+      <div className="text-center mt-20">
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          className="relative overflow-hidden group font-medium py-4 px-10 rounded-full text-lg sm:text-xl cursor-pointer bg-gray-900 flex items-center space-x-3 mx-auto group-hover:bg-gray-100 transition-colors duration-500"
+          onClick={() => (window.location.href = "/projects")}
+        >
+          <span className="absolute inset-0 bg-gray-100 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+          <span className="relative z-10 flex items-center gap-3 text-white group-hover:text-gray-900 transition-colors duration-500">
+            <span>All projects</span>
+          </span>
+        </motion.button>
       </div>
     </section>
   );
