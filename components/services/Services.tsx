@@ -95,7 +95,7 @@ const Services = () => {
       id="services"
       className="py-20 md:py-28 px-4 sm:px-8 lg:px-16 bg-gray-100"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1460px] mx-auto">
         {/* Main container card with an initial animation */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}

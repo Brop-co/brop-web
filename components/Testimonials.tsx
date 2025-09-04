@@ -91,17 +91,8 @@ const Testimonials = () => {
         ? container.scrollLeft - scrollAmount
         : container.scrollLeft + scrollAmount;
 
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    newScroll = Math.max(0, Math.min(newScroll, maxScroll));
-
     container.scrollTo({ left: newScroll, behavior: "smooth" });
   };
-
-  const progressBarWidth = scrollContainerRef.current
-    ? (scrollContainerRef.current.clientWidth /
-        scrollContainerRef.current.scrollWidth) *
-      100
-    : 100;
 
   return (
     <section id="testimonials" className="py-28 bg-gray-200">
@@ -176,20 +167,17 @@ const Testimonials = () => {
           <div className="flex items-center gap-6 mt-8 w-full px-4 sm:px-6 lg:px-8">
             <div className="flex-1 relative">
               <div className="w-full h-1 bg-gray-300/70 rounded-full overflow-hidden">
+                {/* UPDATED: Changed from a moving thumb to a filling progress bar */}
                 <motion.div
                   className="h-full bg-gray-900 rounded-full"
                   style={{
-                    width: `${progressBarWidth}%`,
-                    transform: `translateX(${
-                      progress * (100 - progressBarWidth)
-                    }%)`,
+                    width: `${progress * 100}%`,
                   }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
                 />
               </div>
             </div>
 
-            <div className="flex items-center space-x-2 flex-shrink-0">
+            <div className="hidden sm:flex items-center space-x-2 flex-shrink-0">
               <motion.button
                 onClick={() => scrollByPage("left")}
                 whileHover={{ scale: 1.1 }}
