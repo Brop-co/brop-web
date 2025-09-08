@@ -55,7 +55,7 @@ const Header = () => {
     { name: "About", hasDropdown: true, dropdown: "about" },
     { name: "Projects", hasDropdown: true, dropdown: "projects" },
     { name: "Services", hasDropdown: true, dropdown: "services" },
-    { name: "For Startups", href: "/#startups", hasDropdown: false },
+    { name: "For Startups", href: "/startups", hasDropdown: false },
   ];
 
   // Mobile dropdown data
