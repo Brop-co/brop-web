@@ -3,54 +3,31 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const Services = () => {
+const Works = () => {
   const services = [
     {
       id: "01",
-      name: "Website Design",
+      name: "Vision",
       description:
-        "Get a high-performing website that captivates and converts. Our web design blends creativity and strategy for seamless digital experiences.",
+        "We start by understanding your vision, goals, problems and audience. Together, we align on how services can elevate your startup and ensure your expectations are crystal clear.",
     },
     {
       id: "02",
-      name: "Branding",
+      name: "Solutions",
       description:
-        "We craft unique visual identities, logos, and messaging to build recognition, trust, and long-term success.",
+        "We craft cohesive solutions designed to grow with your startup, ensuring every element aligns seamlessly with your vision and goals.",
     },
     {
       id: "03",
-      name: "UX/UI",
+      name: "Refinement",
       description:
-        "We design intuitive, engaging interfaces that enhance usability, boost conversions, and create seamless digital experiences for your audience.",
+        "We collaborate closely during the review process, incorporating your feedback into precise adjustments until everything looks and feels just right.",
     },
     {
       id: "04",
-      name: "Motion Design",
+      name: "Hand Over",
       description:
-        "Bring your brand to life with stunning motion graphics and UI animations that enhance storytelling, engagement, and user experience.",
-    },
-    {
-      id: "05",
-      name: "SEO",
-      description:
-        "Boost rankings, increase organic traffic, and grow your business with expert SEO strategies, technical optimization, and content-driven results.",
-    },
-    {
-      id: "06",
-      name: "Content Creation",
-      description: "Content that turns visitors into loyal customers.",
-    },
-    {
-      id: "07",
-      name: "Landing Page",
-      description:
-        "Strategic, visually compelling landing pages that tell stories, capture leads, and maximize conversions.",
-    },
-    {
-      id: "08",
-      name: "Webflow Development",
-      description:
-        "We build fast, visually stunning Webflow websites that are easy to manage, fully responsive, and optimized for performance and growth.",
+        "With polished deliverables, we equip you with everything needed to launch and scale successfully.",
     },
   ];
 
@@ -102,7 +79,6 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="bg-white rounded-3xl p-5 sm:p-12 lg:p-20 shadow-lg"
         >
           {/* Section Header */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-12 lg:mb-16">
@@ -116,14 +92,14 @@ const Services = () => {
                 className="w-3 h-3 bg-black rounded-full"
               ></motion.div>
               <h2 className="text-3xl sm:text-4xl font-medium text-gray-900">
-                Our services
+                How it works
               </h2>
             </div>
 
             {/* Right: Tagline */}
             <div>
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight">
-                Our Core Creative Offerings
+                Our Simple 4-Step Collaboration Proces
               </h3>
             </div>
           </div>
@@ -163,7 +139,7 @@ const Services = () => {
                 >
                   {/* Front Face */}
                   <div
-                    className="absolute inset-0 bg-gray-200 flex flex-col justify-between p-4 sm:p-6 text-gray-900 rounded-2xl"
+                    className="absolute inset-0 bg-white flex flex-col justify-between p-4 sm:p-6 text-gray-900 rounded-2xl"
                     style={{
                       backfaceVisibility: "hidden",
                       WebkitBackfaceVisibility: "hidden",
@@ -203,4 +179,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Works;
