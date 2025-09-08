@@ -104,7 +104,7 @@ const Need: React.FC = () => {
     <section id="need" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200">
       <div className="max-w-[1460px] mx-auto">
         <div ref={targetRef} className="lg:h-[800vh]">
-          <div className="lg:sticky top-0 h-[125vh] lg:h-[65vh] bg-gray-200">
+          <div className="lg:sticky top-0 h-[130vh] lg:h-[65vh] bg-gray-200">
             {/* Title and Tagline */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
