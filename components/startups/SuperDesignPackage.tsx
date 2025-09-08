@@ -65,7 +65,7 @@ const SuperDesignPackage = () => {
           transition={{ duration: 0.8, ease: "easeOut", staggerChildren: 0.2 }}
           className="flex flex-col gap-y-14 bg-white p-4 sm:p-12 rounded-3xl"
         >
-          <h3 className="text-3xl sm:text-5xl lg:text-6xl font-[600] text-gray-900 leading-snug sm:leading-tight w-full md:w-[40%] mb-8">
+          <h3 className="text-3xl sm:text-5xl lg:text-6xl font-[600] text-gray-900 leading-snug sm:leading-tight w-full md:w-[40%] ">
             Transform Your Online Presence
           </h3>
 
@@ -75,11 +75,11 @@ const SuperDesignPackage = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex flex-col lg:flex-row items-center justify-between gap-6"
+              className="flex flex-col lg:flex-row items-start justify-between gap-6"
             >
               {/* Left Side: ID + Title */}
-              <div className="flex items-center gap-10 lg:w-[25%]">
-                <span className="flex-none text-xl sm:text-2xl lg:text-3xl text-gray-900 font-medium">
+              <div className="flex items-center gap-2 lg:gap-10 w-full">
+                <span className="flex-none text-xl sm:text-2xl lg:text-3xl text-gray-900 font-semibold lg:block">
                   {item.id}
                 </span>
                 <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-900">
@@ -87,13 +87,13 @@ const SuperDesignPackage = () => {
                 </p>
               </div>
 
-              {/* Middle: Description */}
-              <p className="text-gray-900 text-xl sm:text-2xl lg:text-3xl  lg:w-[38%]">
+              {/* Middle: Description (hidden on small screens) */}
+              <p className="hidden lg:block text-gray-900 text-xl sm:text-2xl lg:text-3xl w-full">
                 {item.description}
               </p>
 
               {/* Right: Image */}
-              <div className="w-28 h-20 sm:w-36 sm:h-24 lg:w-44 lg:h-28 overflow-hidden rounded-xl flex-shrink-0">
+              <div className="w-full h-48 sm:h-56 lg:w-44 lg:h-28 overflow-hidden rounded-xl flex-shrink-0">
                 <img
                   src={item.image}
                   alt={item.title}
