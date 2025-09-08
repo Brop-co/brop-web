@@ -1,16 +1,10 @@
 "use client";
-import {
-  motion,
-  useMotionValue,
-  useTransform,
-  useSpring,
-  useScroll,
-} from "framer-motion";
-import { useState, useRef } from "react";
-import { useLayoutEffect } from "react";
+
+import React, { useState, useRef, useLayoutEffect } from "react";
+import { motion, useSpring, useTransform, useScroll } from "framer-motion";
 import { ChevronDown, ArrowUpRight, ArrowRight } from "lucide-react";
 
-const Need = () => {
+const Need: React.FC = () => {
   const [selectedServices, setSelectedServices] = useState(["Website Design"]);
   const [budget, setBudget] = useState("");
   const [formData, setFormData] = useState({
@@ -21,93 +15,17 @@ const Need = () => {
     project: "",
   });
 
-  const freeChipRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const [isFreeChipMoved, setIsFreeChipMoved] = useState(false);
-
-  const springConfig = { damping: 25, stiffness: 700 };
-  const x = useSpring(
-    useTransform(mouseX, [-100, 100], [-300, 300]),
-    springConfig
-  );
-  const y = useSpring(
-    useTransform(mouseY, [-100, 100], [-300, 300]),
-    springConfig
-  );
-
-  const services = [
-    "Website Design",
-    "UX/UI",
-    "Motion Design",
-    "Landing page",
-    "Content Creation",
-    "SEO",
-    "Branding",
-    "Webflow Development",
-  ];
-
-  const budgets = ["Free", "< $10k", "> $10k"];
-
-  const handleServiceToggle = (service: string) => {
-    if (selectedServices.includes(service)) {
-      setSelectedServices(selectedServices.filter((s) => s !== service));
-    } else {
-      setSelectedServices([...selectedServices, service]);
-    }
-  };
-
-  const handleBudgetSelect = (budgetOption: string) => {
-    if (budgetOption === "Free") return; // Prevent selecting Free
-    setBudget(budgetOption);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (freeChipRef.current) {
-      const rect = freeChipRef.current.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const distanceX = e.clientX - centerX;
-      const distanceY = e.clientY - centerY;
-
-      if (Math.abs(distanceX) < 100 && Math.abs(distanceY) < 100) {
-        if (!isFreeChipMoved) {
-          mouseX.set(-distanceX * 3);
-          mouseY.set(-distanceY * 3);
-          setIsFreeChipMoved(true);
-        } else {
-          mouseX.set(0);
-          mouseY.set(0);
-          setIsFreeChipMoved(false);
-        }
-      }
-    }
-  };
-
-  const handleFreeChipClick = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-    setIsFreeChipMoved(false);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", { ...formData, selectedServices, budget });
-  };
-
-  const targetRef = useRef(null);
+  const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
 
-  // --- SMOOTHING LAYER: make the scroll progress extremely smooth ---
-  // We create a smoothed spring version of scrollYProgress and use that
-  // in all transforms below. This reduces jitter and produces an "extremely"
-  // smooth feel without changing other logic.
-  const smoothScroll = useSpring(scrollYProgress, {
-    damping: 35,
-    stiffness: 60,
-    mass: 0.6,
+  // Global smoothing spring for the scroll progress (controls overall "butteriness")
+  const globalSmooth = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 42,
+    mass: 1,
   });
 
+  // Cards data
   const cards = [
     {
       image: "/images/man.gif",
@@ -127,57 +45,67 @@ const Need = () => {
     },
   ];
 
-  const cardRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [containerWidth, setContainerWidth] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
 
+  // Update sizes on layout and resize
   useLayoutEffect(() => {
-    if (cardRef.current) {
-      setCardWidth(cardRef.current.offsetWidth);
-    }
+    const measure = () => {
+      if (containerRef.current)
+        setContainerWidth(containerRef.current.offsetWidth);
+      if (cardRef.current) setCardWidth(cardRef.current.offsetWidth);
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (containerRef.current) ro.observe(containerRef.current);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
   }, []);
 
-  const maxX = Math.max(0, cardWidth * 0.425);
+  const maxX = containerWidth * 0.5 || 0; // how far the whole set should translate
+  const gifMoveDistance = cardWidth * 0.425 || 120; // fallback distance
 
-  // Left positions for cards (as percentages)
-  const card1Left = useTransform(
-    smoothScroll,
-    [0, 0.2, 0.2, 0.4, 0.4, 0.6, 0.6, 0.8, 0.8, 1],
-    [35, 35, 35, 17.5, 17.5, 17.5, 17.5, 0, 0, 0]
-  );
-  const card2Left = useTransform(
-    smoothScroll,
-    [0, 0.2, 0.2, 0.4, 0.4, 0.6, 0.6, 0.8, 0.8, 1],
-    [100, 100, 100, 52.5, 52.5, 52.5, 52.5, 35, 35, 35]
-  );
-  const card3Left = useTransform(
-    smoothScroll,
-    [0, 0.2, 0.2, 0.4, 0.4, 0.6, 0.6, 0.8, 0.8, 1],
-    [100, 100, 100, 100, 100, 100, 100, 70, 70, 70]
-  );
+  // Smooth translate for the whole cards container
+  const cardsXRaw = useTransform(globalSmooth, [0, 1], [0, -maxX]);
+  const cardsX = useSpring(cardsXRaw, {
+    stiffness: 90,
+    damping: 46,
+    mass: 1.2,
+  });
 
-  const lefts = [card1Left, card2Left, card3Left];
+  // Create a spring and transform for each gif so they animate sequentially.
+  // We'll split the progress into equal sequential segments so each GIF starts
+  // when the previous one finished.
+  const segments = cards.length;
 
-  // Gif positions (x translate in px) - Fixed to stay within bounds
-  const gif1X = useTransform(
-    smoothScroll,
-    [0, 0.2, 0.2, 1],
-    [0, maxX, maxX, maxX]
-  );
-  const gif2X = useTransform(
-    smoothScroll,
-    [0, 0.4, 0.4, 0.6, 0.6, 1],
-    [0, 0, 0, maxX, maxX, maxX]
-  );
-  const gif3X = useTransform(smoothScroll, [0, 0.8, 0.8, 1], [0, 0, 0, maxX]);
+  const gifSprings = cards.map((_, i) => {
+    const start = i / segments; // 0, 1/3, 2/3
+    const end = (i + 1) / segments; // 1/3, 2/3, 1
 
-  const gifXs = [gif1X, gif2X, gif3X];
+    // map the global progress to a 0 -> gifMoveDistance range but only during [start,end]
+    const t = useTransform(globalSmooth, [start, end], [0, gifMoveDistance], {
+      clamp: true,
+    });
+
+    // then smooth that mapped value with its own spring to avoid any micro-jumps
+    return useSpring(t, {
+      stiffness: 120,
+      damping: 38,
+      mass: 0.9,
+    });
+  });
 
   return (
     <section id="need" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200">
       <div className="max-w-[1460px] mx-auto">
-        <div ref={targetRef} className="h-[300vh]">
-          <div className="sticky top-0 h-[100vh] bg-gray-200">
-            {/* Title and Tagline - Now inside sticky container */}
+        <div ref={targetRef} className="lg:h-[800vh]">
+          <div className="lg:sticky top-0 h-[125vh] lg:h-[65vh] bg-gray-200">
+            {/* Title and Tagline */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -185,56 +113,82 @@ const Need = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20 pt-20"
             >
-              {/* Left: Title */}
               <div className="flex items-center space-x-4">
                 <div className="w-3 h-3 bg-black rounded-full"></div>
                 <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
                   Why Startups need Brop
                 </h2>
               </div>
-              {/* Right: Tagline */}
-              <div className="">
+              <div>
                 <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 leading-snug sm:leading-tight px-0 md:px-8">
                   The Impact of our Design and Branding on Startup Success
                 </h3>
               </div>
             </motion.div>
 
-            {/* Cards Animation - UPDATED HEIGHT HERE */}
-            <div className="flex items-center justify-center overflow-hidden h-[520px]">
-              <div className="relative w-full h-[520px]">
+            {/* Cards Section */}
+            <div className="h-[520px]">
+              {/* Desktop (animated) */}
+              <motion.div
+                ref={containerRef}
+                className="hidden lg:flex relative"
+                style={{ x: cardsX }}
+              >
                 {cards.map((card, index) => (
                   <motion.div
                     key={index}
                     ref={index === 0 ? cardRef : null}
-                    className="absolute bg-white rounded-2xl p-8 shadow-sm will-change-transform flex flex-col"
+                    className="absolute bg-white rounded-2xl p-8 shadow-sm flex flex-col w-[32%] h-[480px]"
                     style={{
-                      left: useTransform(lefts[index], (val) => `${val}%`),
-                      width: "30%",
-                      height: "480px",
+                      left: `${50 + index * 34}%`,
                     }}
                   >
-                    {/* Image container with overflow hidden to prevent images from going beyond */}
                     <div className="relative h-[30%] overflow-hidden">
                       <motion.img
                         src={card.image}
                         alt=""
                         className="absolute left-0 h-full w-[50%] rounded-3xl object-cover"
+                        // GPU-accelerate and hint for smoother transforms
                         style={{
-                          x: gifXs[index],
-                          // Add these constraints to ensure the image doesn't go beyond bounds
-                          clipPath: "inset(0 0 0 0)",
+                          x: gifSprings[index],
+                          willChange: "transform",
+                          transform: "translateZ(0)",
+                          backfaceVisibility: "hidden",
                         }}
                       />
                     </div>
-
                     <div className="mt-auto">
                       <h4 className="text-5xl font-bold mb-3">{card.title}</h4>
-                      <p className="text-base text-gray-600 leading-relaxed">
+                      <p className="text-xl text-gray-600 leading-tight pr-[30%]">
                         {card.subtitle}
                       </p>
                     </div>
                   </motion.div>
+                ))}
+              </motion.div>
+
+              {/* Mobile & Tablet (stacked, left-aligned) */}
+              <div className="flex flex-col  lg:hidden gap-8">
+                {cards.map((card, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-2xl p-6 shadow-md flex flex-col items-start text-left"
+                  >
+                    <div className="w-[70%] sm:w-[40%] h-40 overflow-hidden rounded-xl mb-4 self-start">
+                      <img
+                        src={card.image}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <h4 className="text-3xl sm:text-4xl font-bold mb-2 text-gray-900">
+                      {card.title}
+                    </h4>
+                    <p className="text-lg sm:text-xl text-gray-600 leading-relaxed pr-[30%">
+                      {card.subtitle}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
