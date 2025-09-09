@@ -4,7 +4,10 @@ import { motion } from "framer-motion";
 
 const Interested = () => {
   return (
-    <section className="py-16 px-4 sm:py-20 sm:px-6 lg:py-24 lg:px-16 bg-gray-200">
+    <section
+      id="interested"
+      className="py-16 px-4 sm:py-20 sm:px-6 lg:py-24 lg:px-16 bg-gray-200"
+    >
       <div className="max-w-[1460px] mx-auto">
         <div className="bg-white rounded-3xl p-6 sm:p-10 lg:p-16 relative overflow-hidden">
           {/* Decorative dots */}

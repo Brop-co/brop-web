@@ -53,7 +53,7 @@ const Comparison = () => {
 
   return (
     <section
-      id="services"
+      id="comparison"
       className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-10 lg:px-16 bg-gray-200"
     >
       <div className="max-w-[1460px] mx-auto">

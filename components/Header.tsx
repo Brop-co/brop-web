@@ -52,35 +52,44 @@ const Header = () => {
 
   const menuItems = [
     { name: "Home", href: "/#home", hasDropdown: false },
-    { name: "About", hasDropdown: true, dropdown: "about" },
-    { name: "Projects", hasDropdown: true, dropdown: "projects" },
-    { name: "Services", hasDropdown: true, dropdown: "services" },
+    { name: "About", href: "/about", hasDropdown: true, dropdown: "about" },
+    {
+      name: "Projects",
+      href: "projects",
+      hasDropdown: true,
+      dropdown: "projects",
+    },
+    {
+      name: "Services",
+      href: "/services",
+      hasDropdown: true,
+      dropdown: "services",
+    },
     { name: "For Startups", href: "/startups", hasDropdown: false },
   ];
 
   // Mobile dropdown data
-  // NOTE: This data should be in sync with the desktop dropdown components
   const mobileDropdownData: Record<DropdownKey, DropdownItem[]> = {
     about: [
       { name: "Company", icon: Building2, href: "/about/#home" },
-      { name: "Our Team", icon: Users, href: "/about/#team" },
-      { name: "Careers", icon: Briefcase, href: "/about/#careers" },
-      { name: "Excellence", icon: Award, href: "/about/#excellence" },
-      { name: "Innovation", icon: Globe, href: "/about/#innovation" },
-      { name: "Passion", icon: Heart, href: "/about/#passion" },
-      { name: "Impact", icon: Zap, href: "/about/#impact" },
+      { name: "Our Team", icon: Users, href: "/about/#about" },
+      { name: "Careers", icon: Briefcase, href: "/about/#approachs" },
     ],
     projects: [
-      { name: "Multicard", icon: Globe, href: "/projects/#multicard" },
-      { name: "ContinuOS", icon: Zap, href: "/projects/#continuos" },
-      { name: "Brandformance", icon: Video, href: "/projects/#brandformance" },
-      { name: "Foothills", icon: Heart, href: "/projects/#foothills" },
-      { name: "Branding", icon: Palette, href: "/projects/#branding" },
-      { name: "Web Design", icon: Monitor, href: "/projects/#web-design" },
+      {
+        name: "Branding",
+        icon: Palette,
+        href: "/projects/?filter=branding#projects",
+      },
+      {
+        name: "Web Design",
+        icon: Monitor,
+        href: "/projects/?filter=web design#projects",
+      },
       {
         name: "UX/UI Design",
         icon: Smartphone,
-        href: "/projects/#ux-ui-design",
+        href: "/projects/?filter=ui/ux#projects",
       },
     ],
     services: [

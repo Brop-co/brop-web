@@ -27,25 +27,25 @@ const ProjectsDropdown = ({
       icon: Globe,
       title: "Multicard",
       description: "Discover a powerful fintech platform",
-      href: "/projects/#multicard",
+      href: "https://github.com",
     },
     {
       icon: Zap,
       title: "ContinuOS",
       description: "Seamless OS experience with smart features",
-      href: "/projects/#continuos",
+      href: "https://github.com",
     },
     {
       icon: Video,
       title: "Brandformance",
       description: "Elevating brand performance through design",
-      href: "/projects/#brandformance",
+      href: "https://github.com",
     },
     {
       icon: Heart,
       title: "Foothills",
       description: "A community-focused real estate project",
-      href: "/projects/#foothills",
+      href: "https://github.com",
     },
   ];
 
@@ -54,19 +54,19 @@ const ProjectsDropdown = ({
       icon: Palette,
       title: "Branding",
       description: "Crafting memorable brand identities",
-      href: "/projects/#branding",
+      href: "/projects/?filter=branding#projects",
     },
     {
       icon: Monitor,
       title: "Web Design",
       description: "Building beautiful and functional websites",
-      href: "/projects/#web-design",
+      href: "/projects/?filter=web design#projects",
     },
     {
       icon: Smartphone,
       title: "UX/UI Design",
       description: "Designing intuitive user experiences",
-      href: "/projects/#ux-ui-design",
+      href: "/projects/?filter=ui/ux#projects",
     },
   ];
 
@@ -94,7 +94,13 @@ const ProjectsDropdown = ({
             </div>
             <div className="space-y-6">
               {projects.map((item, index) => (
-                <Link key={index} href={item.href} className="block">
+                <a
+                  key={index}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
                   <motion.div
                     whileHover={{ x: 4 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
@@ -115,7 +121,7 @@ const ProjectsDropdown = ({
                       </p>
                     </div>
                   </motion.div>
-                </Link>
+                </a>
               ))}
             </div>
           </div>

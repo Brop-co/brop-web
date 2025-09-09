@@ -69,7 +69,7 @@ const Works = () => {
 
   return (
     <section
-      id="services"
+      id="works"
       className="py-20 md:py-28 px-4 sm:px-8 lg:px-16 bg-gray-200"
     >
       <div className="max-w-[1460px] mx-auto">

@@ -119,7 +119,13 @@ const useIsMobile = (): boolean => {
   return isMobile;
 };
 
-const Card: React.FC<CardProps> = ({ data, index, totalCards, scrollYProgress, isMobile }) => {
+const Card: React.FC<CardProps> = ({
+  data,
+  index,
+  totalCards,
+  scrollYProgress,
+  isMobile,
+}) => {
   if (isMobile) {
     // Mobile version (stacked, image first, text after)
     return (
@@ -281,7 +287,7 @@ const Packages: React.FC = () => {
   });
 
   return (
-    <section id="super-offers" className="bg-gray-200">
+    <section id="offers" className="bg-gray-200">
       {/* Header Section stays same */}
       <div className="py-24 sm:py-28 px-6 sm:px-8 lg:px-16 bg-gray-200">
         <div className="max-w-[1460px] mx-auto">

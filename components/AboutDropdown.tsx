@@ -30,13 +30,13 @@ const AboutDropdown = ({ onMouseEnter, onMouseLeave }: AboutDropdownProps) => {
       icon: Users,
       title: "Our Team",
       description: "Meet the people behind the magic",
-      href: "/about/#team",
+      href: "/about/#about",
     },
     {
       icon: Briefcase,
       title: "Careers",
       description: "Join and grow with our talented team",
-      href: "/about/#careers",
+      href: "/about/#approachs",
     },
   ];
 
@@ -45,25 +45,25 @@ const AboutDropdown = ({ onMouseEnter, onMouseLeave }: AboutDropdownProps) => {
       icon: Award,
       title: "Excellence",
       description: "Delivering quality in everything we do",
-      href: "/about/#excellence",
+      href: "",
     },
     {
       icon: Globe,
       title: "Innovation",
       description: "Pushing creative boundaries forward",
-      href: "/about/#innovation",
+      href: "",
     },
     {
       icon: Heart,
       title: "Passion",
       description: "Love for design and creativity drives us",
-      href: "/about/#passion",
+      href: "",
     },
     {
       icon: Zap,
       title: "Impact",
       description: "Creating meaningful change for brands",
-      href: "/about/#impact",
+      href: "",
     },
   ];
 
@@ -129,7 +129,7 @@ const AboutDropdown = ({ onMouseEnter, onMouseLeave }: AboutDropdownProps) => {
             </div>
             <div className="space-y-6">
               {values.map((value, index) => (
-                <Link key={index} href={value.href} className="block">
+                <div key={index} className="block">
                   <motion.div
                     whileHover={{ x: 4 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
@@ -150,7 +150,7 @@ const AboutDropdown = ({ onMouseEnter, onMouseLeave }: AboutDropdownProps) => {
                       </p>
                     </div>
                   </motion.div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>

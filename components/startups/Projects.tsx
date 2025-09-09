@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 // ✅ Define the project type
@@ -289,20 +290,22 @@ const Projects = () => {
             Discover our recent projects
           </h2>
 
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            className="relative overflow-hidden group font-medium py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg cursor-pointer bg-gray-900 w-full sm:w-auto"
-          >
-            <span className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
-            <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 font-[550] text-lg sm:text-xl text-white group-hover:text-gray-900 transition-colors duration-500">
-              Explore now
-              <img
-                src="/logo.svg"
-                alt="Logo"
-                className="w-5 h-5 inline-block  transition-transform duration-500"
-              />
-            </span>
-          </motion.button>
+          <Link href="/projects/#projects">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              className="relative overflow-hidden group font-medium py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg cursor-pointer bg-gray-900 w-full sm:w-auto"
+            >
+              <span className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+              <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 font-[550] text-lg sm:text-xl text-white group-hover:text-gray-900 transition-colors duration-500">
+                Explore now
+                <img
+                  src="/logo.svg"
+                  alt="Logo"
+                  className="w-5 h-5 inline-block group-hover:-rotate-45 transition-transform duration-500"
+                />
+              </span>
+            </motion.button>
+          </Link>
         </motion.div>
         <div
           ref={containerRef}
@@ -319,20 +322,22 @@ const Projects = () => {
               Discover our recent projects
             </h2>
 
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              className="relative overflow-hidden group font-medium py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg cursor-pointer bg-gray-900 w-full sm:w-auto"
-            >
-              <span className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
-              <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 font-[550] text-lg sm:text-xl text-white group-hover:text-gray-900 transition-colors duration-500">
-                Explore now
-                <img
-                  src="/logo.svg"
-                  alt="Logo"
-                  className="w-5 h-5 inline-block  transition-transform duration-500"
-                />
-              </span>
-            </motion.button>
+            <Link href="/projects/#projects">
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                className="relative overflow-hidden group font-medium py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg cursor-pointer bg-gray-900 w-full sm:w-auto"
+              >
+                <span className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 font-[550] text-lg sm:text-xl text-white group-hover:text-gray-900 transition-colors duration-500">
+                  Explore now
+                  <img
+                    src="/logo.svg"
+                    alt="Logo"
+                    className="w-5 h-5 inline-block group-hover:-rotate-45 transition-transform duration-500"
+                  />
+                </span>
+              </motion.button>
+            </Link>
           </motion.div>
 
           {projects.map((project, index) => (

@@ -1,12 +1,12 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { LayoutGrid, List } from "lucide-react";
 
 type ModuleType = "Web Design" | "UI/UX" | "Branding" | "Embedded";
 
-// Added 'type' to the interface
 interface ProjectProps {
   title: string;
   description?: string;
@@ -14,14 +14,15 @@ interface ProjectProps {
   projectUrl?: string | null;
   figmaUrl?: string | null;
   githubUrl?: string | null;
-  type?: string; // This will be used for the right-most column in list view
+  type?: string;
   modules: ModuleType[];
   year?: number;
 }
 
 const Projects = () => {
-  // ----- DATA -----
-  // Added 'type' to each project object to match the new design
+  const searchParams = useSearchParams();
+  const filterParam = searchParams.get("filter");
+
   const projects: ProjectProps[] = [
     {
       title: "TitanX",
@@ -70,6 +71,25 @@ const Projects = () => {
   );
   const itemRefs = useRef<Record<string, HTMLDivElement>>({});
 
+  // ----- SYNC FILTER WITH URL -----
+  useEffect(() => {
+    if (!filterParam) {
+      setActiveModule("All");
+      return;
+    }
+
+    const lowerFilter = decodeURIComponent(filterParam).toLowerCase();
+    const moduleMap: Record<string, ModuleType | "All"> = {
+      all: "All",
+      branding: "Branding",
+      "web design": "Web Design",
+      "ui/ux": "UI/UX",
+      embedded: "Embedded",
+    };
+
+    setActiveModule(moduleMap[lowerFilter] || "All");
+  }, [filterParam]);
+
   // ----- MODULES / FILTER -----
   const availableModules = useMemo(() => {
     const set = new Set<ModuleType>();
@@ -107,7 +127,7 @@ const Projects = () => {
       className="py-24 px-6 sm:px-8 lg:px-16 bg-white rounded-3xl"
     >
       <div className="max-w-[1460px] mx-auto">
-        {/* --- HEADER --- */}
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -147,7 +167,7 @@ const Projects = () => {
           </div>
         </motion.div>
 
-        {/* --- MODULE FILTER ROW --- */}
+        {/* MODULE FILTER ROW */}
         <motion.div
           className="flex flex-wrap gap-3 mb-12"
           initial="hidden"
@@ -177,9 +197,8 @@ const Projects = () => {
           })}
         </motion.div>
 
-        {/* --- PROJECT LIST / GRID CONTAINER --- */}
+        {/* PROJECT LIST / GRID */}
         <div className="relative">
-          {/* List view with hover image preview - only on large screens */}
           {layout === "list" && (
             <AnimatePresence>
               {hoveredProject && (
@@ -218,7 +237,7 @@ const Projects = () => {
             className={
               layout === "grid"
                 ? "grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-14"
-                : "flex flex-col" // Simple flex column for list view
+                : "flex flex-col"
             }
             initial="hidden"
             animate="visible"
@@ -238,9 +257,7 @@ const Projects = () => {
                   layout === "list" && setHoveredProject(null)
                 }
               >
-                {/* --- CONDITIONAL RENDERING FOR LAYOUT --- */}
                 {layout === "grid" ? (
-                  // --- GRID VIEW ITEM ---
                   <div>
                     <a
                       href={p.projectUrl ?? "#"}
@@ -278,9 +295,7 @@ const Projects = () => {
                     </div>
                   </div>
                 ) : (
-                  // --- LIST VIEW ITEM ---
                   <div className="relative w-full py-4 px-0 group-hover:px-6 border-b border-gray-200 last:border-b-0 overflow-hidden transition-all duration-400">
-                    {/* Animated background overlay - only on large screens */}
                     <motion.div
                       className="absolute inset-0 bg-gray-200 hidden lg:block"
                       initial={{ y: "100%" }}
@@ -292,17 +307,11 @@ const Projects = () => {
                         ease: "easeOut",
                       }}
                     />
-
-                    {/* Content */}
                     <div className="relative z-10">
-                      {/* Desktop Layout */}
                       <div className="hidden md:grid grid-cols-[auto_1fr_1.5fr_auto] items-center gap-x-8">
-                        {/* 1. Index */}
                         <span className="text-base text-gray-400">
                           {String(filtered.length - idx).padStart(2, "0")}
                         </span>
-
-                        {/* 2. Title and Year */}
                         <div className="flex items-baseline gap-x-3">
                           <h3 className="text-2xl font-bold text-gray-900 whitespace-nowrap">
                             {p.title}
@@ -311,8 +320,6 @@ const Projects = () => {
                             - {p.year}
                           </span>
                         </div>
-
-                        {/* 3. Modules */}
                         <div className="flex justify-center items-center gap-2">
                           {p.modules.map((module, moduleIdx) => (
                             <span
@@ -323,16 +330,11 @@ const Projects = () => {
                             </span>
                           ))}
                         </div>
-
-                        {/* 4. Type */}
                         <span className="text-base text-gray-500 justify-self-end text-right">
                           {p.type}
                         </span>
                       </div>
-
-                      {/* Mobile Layout */}
                       <div className="md:hidden">
-                        {/* Title, Year, Type Row */}
                         <div className="flex items-baseline justify-between mb-3">
                           <div className="flex items-baseline gap-2">
                             <h3 className="text-lg font-bold text-gray-900">
@@ -346,8 +348,6 @@ const Projects = () => {
                             {p.type}
                           </span>
                         </div>
-
-                        {/* Modules Row */}
                         <div className="flex flex-wrap gap-2">
                           {p.modules.map((module, moduleIdx) => (
                             <span
