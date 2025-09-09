@@ -1,8 +1,29 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
-const offersData = [
+// Type definitions
+interface OfferData {
+  id: string;
+  title: string;
+  description: string;
+  services: string[];
+  image: string;
+  cta: {
+    text: string;
+    link: string;
+  };
+}
+
+interface CardProps {
+  data: OfferData;
+  index: number;
+  totalCards: number;
+  scrollYProgress: MotionValue<number>;
+  isMobile: boolean;
+}
+
+const offersData: OfferData[] = [
   {
     id: "01",
     title: "Web Design",
@@ -85,8 +106,8 @@ const offersData = [
   },
 ];
 
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
+const useIsMobile = (): boolean => {
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 1024); // lg breakpoint
@@ -98,7 +119,7 @@ const useIsMobile = () => {
   return isMobile;
 };
 
-const Card = ({ data, index, totalCards, scrollYProgress, isMobile }) => {
+const Card: React.FC<CardProps> = ({ data, index, totalCards, scrollYProgress, isMobile }) => {
   if (isMobile) {
     // Mobile version (stacked, image first, text after)
     return (
@@ -126,7 +147,7 @@ const Card = ({ data, index, totalCards, scrollYProgress, isMobile }) => {
                   Services:
                 </p>
                 <div className="space-y-2">
-                  {data.services.map((service, i) => (
+                  {data.services.map((service: string, i: number) => (
                     <div key={i} className="flex items-center space-x-2">
                       <div className="w-1.5 h-1.5 bg-black rounded-full"></div>
                       <span className="text-gray-900 text-xl">{service}</span>
@@ -212,7 +233,7 @@ const Card = ({ data, index, totalCards, scrollYProgress, isMobile }) => {
                 Services:
               </p>
               <div className="space-y-2">
-                {data.services.map((service, i) => (
+                {data.services.map((service: string, i: number) => (
                   <div key={i} className="flex items-center space-x-2">
                     <div className="w-1.5 h-1.5 bg-black rounded-full"></div>
                     <span className="text-gray-900 text-2xl">{service}</span>
@@ -250,8 +271,8 @@ const Card = ({ data, index, totalCards, scrollYProgress, isMobile }) => {
   );
 };
 
-const Packages = () => {
-  const containerRef = useRef(null);
+const Packages: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
 
   const { scrollYProgress } = useScroll({
@@ -291,7 +312,7 @@ const Packages = () => {
       {isMobile ? (
         // Normal stacked layout
         <div className="flex flex-col space-y-12">
-          {offersData.map((offer, index) => (
+          {offersData.map((offer: OfferData, index: number) => (
             <Card
               key={offer.id}
               data={offer}
@@ -310,7 +331,7 @@ const Packages = () => {
           style={{ height: `${offersData.length * 100}vh` }}
         >
           <div className="sticky top-0 h-screen overflow-hidden">
-            {offersData.map((offer, index) => (
+            {offersData.map((offer: OfferData, index: number) => (
               <Card
                 key={offer.id}
                 data={offer}
