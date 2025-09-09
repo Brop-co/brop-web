@@ -10,6 +10,7 @@ import Interested from "@/components/startups/Interested";
 import Works from "@/components/startups/Works";
 import Comparison from "@/components/startups/Comparison";
 import SuperDesignPackage from "@/components/startups/SuperDesignPackage";
+import Packages from "@/components/startups/Packages";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <Need />
       <CustomCursor />
+      <Packages />
       <SuperDesignPackage />
       <Works />
       <Comparison />
