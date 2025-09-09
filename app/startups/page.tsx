@@ -11,6 +11,7 @@ import Works from "@/components/startups/Works";
 import Comparison from "@/components/startups/Comparison";
 import SuperDesignPackage from "@/components/startups/SuperDesignPackage";
 import Packages from "@/components/startups/Packages";
+import Projects from "@/components/startups/Projects";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Need />
       <CustomCursor />
       <Packages />
+      <Projects />
       <SuperDesignPackage />
       <Works />
       <Comparison />
