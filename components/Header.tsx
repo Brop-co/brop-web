@@ -93,46 +93,26 @@ const Header = () => {
       },
     ],
     services: [
-      { name: "Web Design", icon: Monitor, href: "/services/#web-design" },
-      { name: "Branding", icon: PenTool, href: "/services/#branding" },
-      { name: "UX/UI Design", icon: Tablet, href: "/services/#ux-ui-design" },
+      { name: "Web Design", icon: Monitor, href: "/services/#services" },
+      { name: "Branding", icon: PenTool, href: "/services/#services" },
+      { name: "UX/UI Design", icon: Tablet, href: "/services/#services" },
       {
         name: "Motion Design",
         icon: RotateCcw,
-        href: "/services/#motion-design",
+        href: "/services/#services",
       },
       {
         name: "Content Creation",
         icon: Lightbulb,
-        href: "/services/#content-creation",
+        href: "/services/#services",
       },
       {
         name: "Webflow Development",
         icon: FolderOpen,
-        href: "/services/#webflow-development",
+        href: "/services/#services",
       },
-      { name: "SEO", icon: Search, href: "/services/#seo" },
-      { name: "Landing Page", icon: FileText, href: "/services/#landing-page" },
-      {
-        name: "Creative Design Subscription",
-        icon: RotateCcw,
-        href: "/services/#creative-design-subscription",
-      },
-      {
-        name: "Content Design & Socials",
-        icon: Users,
-        href: "/services/#content-design",
-      },
-      {
-        name: "Website as a Service",
-        icon: Shield,
-        href: "/services/#website-as-a-service",
-      },
-      {
-        name: "Marketing Content",
-        icon: Package,
-        href: "/services/#marketing-content",
-      },
+      { name: "SEO", icon: Search, href: "/services/#services" },
+      { name: "Landing Page", icon: FileText, href: "/services/#services" },
     ],
   };
 
