@@ -8,7 +8,7 @@ import Projects from "@/components/Projects";
 import Services from "@/components/Services";
 import CustomCursor from "@/components/CustomCursor";
 import Testimonials from "@/components/Testimonials";
-import Contact from "@/components/Contact";
+import Contact from "@/components/about/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {

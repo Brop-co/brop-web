@@ -38,7 +38,7 @@ const HeroContent = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl sm:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-tight"
+          className="text-6xl sm:text-7xl lg:text-8xl font-semibold text-gray-900 mb-6 leading-tight"
         >
           Your trusted creative partner
         </motion.h1>
@@ -106,7 +106,7 @@ const HeroContent = () => {
           transition: "opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         }}
       >
-        <div className="flex items-center gap-8 text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900">
+        <div className="flex items-center gap-8 text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-900">
           <motion.div
             className="flex items-center gap-8 whitespace-nowrap"
             animate={{ x: [0, -1000] }}

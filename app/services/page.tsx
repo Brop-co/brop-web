@@ -20,11 +20,11 @@ export default function ServicePage() {
       <Header />
       <Hero />
       <Services />
-      <Works />
+      {/* <Works /> */}
       <CustomCursor />
       <Expertise />
       <Difference />
-      <Testimonials title="Our clients" />
+      <Testimonials title="Our Individual Testimonials" />
       <FAQ />
       <Interested />
       <Contact />

@@ -154,6 +154,7 @@
 /* Base styles */
 html {
   scroll-behavior: smooth;
+  font-size: 14px; /* Lower base size to scale down all text */
 }
 
 body {
