@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 import { ChevronDown, ArrowUpRight, ArrowRight } from "lucide-react";
 
 const Contact = () => {
-  const [selectedServices, setSelectedServices] = useState(["Website Design"]);
+  const [selectedServices, setSelectedServices] = useState(["Software Crafting"]);
   const [budget, setBudget] = useState("");
   const [formData, setFormData] = useState({
     name: "",
@@ -31,14 +31,14 @@ const Contact = () => {
   );
 
   const services = [
-    "Website Design",
-    "UX/UI",
-    "Motion Design",
-    "Landing page",
-    "Content Creation",
-    "SEO",
+    "Software Crafting",
     "Branding",
-    "Webflow Development",
+    "UX/UI Design",
+    "Motion Design",
+    "Workflow Automation",
+    "SEO",
+    "AR and 3D",
+    "Security",
   ];
 
   const budgets = ["Free", "< $10k", "> $10k"];
@@ -228,20 +228,18 @@ const Contact = () => {
                     >
                       {/* Animated background for selected state */}
                       <span
-                        className={`absolute inset-0 bg-gray-900 transition-transform duration-500 ${
-                          selectedServices.includes(service)
-                            ? "translate-y-0"
-                            : "translate-y-full"
-                        }`}
+                        className={`absolute inset-0 bg-gray-900 transition-transform duration-500 ${selectedServices.includes(service)
+                          ? "translate-y-0"
+                          : "translate-y-[105%]"
+                          }`}
                       ></span>
 
                       {/* Text on top */}
                       <span
-                        className={`relative z-10 flex items-center justify-center w-full h-full transition-colors duration-500 text-lg sm:text-xl ${
-                          selectedServices.includes(service)
-                            ? "text-white"
-                            : "text-gray-900"
-                        }`}
+                        className={`relative z-10 flex items-center justify-center w-full h-full transition-colors duration-500 text-lg sm:text-xl ${selectedServices.includes(service)
+                          ? "text-white"
+                          : "text-gray-900"
+                          }`}
                       >
                         {service}
                       </span>
@@ -282,20 +280,18 @@ const Contact = () => {
                       >
                         {/* Animated background for selected state */}
                         <span
-                          className={`absolute inset-0 bg-gray-900 transition-transform duration-500 ${
-                            budget === budgetOption
-                              ? "translate-y-0"
-                              : "translate-y-full"
-                          }`}
+                          className={`absolute inset-0 bg-gray-900 transition-transform duration-500 ${budget === budgetOption
+                            ? "translate-y-0"
+                            : "translate-y-[105%]"
+                            }`}
                         ></span>
 
                         {/* Text on top */}
                         <span
-                          className={`relative z-10 flex items-center justify-center w-full h-full transition-colors duration-500 ${
-                            budget === budgetOption
-                              ? "text-white"
-                              : "text-gray-900"
-                          }`}
+                          className={`relative z-10 flex items-center justify-center w-full h-full transition-colors duration-500 ${budget === budgetOption
+                            ? "text-white"
+                            : "text-gray-900"
+                            }`}
                         >
                           {budgetOption}
                         </span>
@@ -328,7 +324,7 @@ const Contact = () => {
                   whileTap={{ scale: 0.9 }}
                   className="relative overflow-hidden group font-medium py-4 px-16 rounded-full text-lg sm:text-xl cursor-pointer bg-gray-900 flex items-center space-x-3 group-hover:bg-gray-100 transition-colors duration-500"
                 >
-                  <span className="absolute inset-0 bg-gray-100 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                  <span className="absolute inset-0 bg-gray-100 translate-y-[105%] group-hover:translate-y-0 transition-transform duration-500"></span>
                   <span className="relative z-10 flex items-center gap-3 text-white group-hover:text-gray-900 transition-colors duration-500">
                     <span>Submit</span>
                     <ArrowRight
