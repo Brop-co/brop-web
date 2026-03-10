@@ -283,14 +283,13 @@ const Header = () => {
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-12">
+          <nav className="hidden lg:flex space-x-12 items-center">
             {menuItems.map((item) => {
               const isActive = activeDropdown === item.dropdown;
               return (
                 <div
                   key={item.name}
-                  className="relative"
+                  className="relative h-20 flex items-center"
                   onMouseEnter={() => {
                     if (item.hasDropdown && item.dropdown) {
                       handleMouseEnter(item.dropdown);
@@ -300,20 +299,13 @@ const Header = () => {
                 >
                   <Link
                     href={item.href || "#"}
-                    className={`relative font-medium text-lg xl:text-xl transition-colors duration-200 flex items-center space-x-2 py-3 group ${
-                      item.hasDropdown
-                        ? isActive
-                          ? "text-gray-600"
-                          : "text-gray-900 hover:text-gray-600"
-                        : "text-gray-900"
-                    }`}
+                    data-cursor="hover"
+                    className={`relative font-medium text-lg xl:text-xl transition-all duration-300 flex items-center space-x-2 px-6 py-2.5 rounded-full group ${isActive
+                      ? "bg-gray-100/80 text-gray-900"
+                      : "text-gray-900 hover:bg-gray-50/80"
+                      }`}
                   >
-                    <span className="relative">
-                      {item.name}
-                      {!item.hasDropdown && (
-                        <span className="absolute left-0 bottom-0 h-[1px] bg-gray-900 w-full scale-x-0 origin-right transition-transform duration-300 ease-in-out group-hover:scale-x-100 group-hover:origin-left"></span>
-                      )}
-                    </span>
+                    <span>{item.name}</span>
                     {item.hasDropdown && (
                       <motion.span
                         animate={{
@@ -322,8 +314,8 @@ const Header = () => {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                       >
                         <ChevronDown
-                          size={20}
-                          className="transition-transform duration-300"
+                          size={18}
+                          className={`transition-colors duration-300 ${isActive ? 'text-gray-900' : 'text-gray-400 group-hover:text-gray-900'}`}
                         />
                       </motion.span>
                     )}
@@ -345,9 +337,10 @@ const Header = () => {
               <motion.button
                 onClick={scrollToContact}
                 whileTap={{ scale: 0.95 }}
+                data-cursor="hover"
                 className="relative overflow-hidden group font-medium py-3 px-6 xl:px-8 rounded-full text-lg xl:text-xl cursor-pointer bg-gray-200 whitespace-nowrap"
               >
-                <span className="absolute inset-0 bg-gray-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                <span className="absolute inset-0 bg-gray-900 translate-y-[105%] group-hover:translate-y-0 transition-transform duration-500"></span>
                 <span className="relative z-10 flex items-center gap-2 font-[550] text-gray-900 group-hover:text-white transition-colors duration-500">
                   Let's chat
                   <span className="inline-block group-hover:-rotate-45 transition-transform duration-500">
@@ -392,11 +385,10 @@ const Header = () => {
                           onClick={() =>
                             setActiveDropdown(isActive ? null : item.dropdown)
                           }
-                          className={`flex justify-between items-center font-medium text-lg py-4 px-4 transition-colors duration-200 ${
-                            isActive
-                              ? "text-gray-600 bg-gray-50"
-                              : "text-gray-900 hover:text-gray-600 hover:bg-gray-50"
-                          }`}
+                          className={`flex justify-between items-center font-medium text-lg py-4 px-4 transition-colors duration-200 ${isActive
+                            ? "text-gray-600 bg-gray-50"
+                            : "text-gray-900 hover:text-gray-600 hover:bg-gray-50"
+                            }`}
                         >
                           {item.name}
                           <motion.span

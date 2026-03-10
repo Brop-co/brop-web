@@ -7,9 +7,9 @@ const Services = () => {
   const services = [
     {
       id: "01",
-      name: "Website Design",
+      name: "Software Crafting",
       description:
-        "Get a high-performing website that captivates and converts. Our web design blends creativity and strategy for seamless digital experiences.",
+        "Get a high-performing website that captivates and converts. Our bespoke digital solutions blend creativity and strategy for seamless experiences.",
     },
     {
       id: "02",
@@ -19,7 +19,7 @@ const Services = () => {
     },
     {
       id: "03",
-      name: "UX/UI",
+      name: "UX/UI Design",
       description:
         "We design intuitive, engaging interfaces that enhance usability, boost conversions, and create seamless digital experiences for your audience.",
     },
@@ -31,26 +31,27 @@ const Services = () => {
     },
     {
       id: "05",
+      name: "Workflow Automation",
+      description:
+        "Streamlined processes powered by intelligent logic. We build fast, visually stunning automated workflows optimized for performance and growth.",
+    },
+    {
+      id: "06",
       name: "SEO",
       description:
         "Boost rankings, increase organic traffic, and grow your business with expert SEO strategies, technical optimization, and content-driven results.",
     },
     {
-      id: "06",
-      name: "Content Creation",
-      description: "Content that turns visitors into loyal customers.",
-    },
-    {
       id: "07",
-      name: "Landing Page",
+      name: "AR and 3D",
       description:
-        "Strategic, visually compelling landing pages that tell stories, capture leads, and maximize conversions.",
+        "Immersive experiences that transcend dimensions. Strategic, visually compelling 3D environments that tell stories and engage users.",
     },
     {
       id: "08",
-      name: "Webflow Development",
+      name: "Security",
       description:
-        "We build fast, visually stunning Webflow websites that are easy to manage, fully responsive, and optimized for performance and growth.",
+        "Robust protection for your digital ecosystem. We provide turnkey solutions that ensure your platforms remain secure, reliable, and compliant.",
     },
   ];
 
@@ -140,7 +141,7 @@ const Services = () => {
               // Each card is a motion component with its own variants
               <motion.div
                 key={service.id}
-                className="relative h-[300px] md:h-[360px] rounded-3xl group cursor-pointer"
+                className="relative h-[200px] md:h-[230px] rounded-3xl group cursor-pointer"
                 style={{ perspective: "1000px" }}
                 variants={cardVariants}
               >
@@ -179,17 +180,17 @@ const Services = () => {
 
                   {/* Back Face */}
                   <div
-                    className="absolute inset-0 bg-gray-900 flex flex-col justify-between p-4 sm:p-6 text-white rounded-2xl"
+                    className="absolute inset-0 bg-gray-900 flex flex-col justify-start p-4 sm:p-6 text-white rounded-2xl"
                     style={{
                       backfaceVisibility: "hidden",
                       WebkitBackfaceVisibility: "hidden",
                       transform: "rotateY(180deg)",
                     }}
                   >
-                    <h4 className="text-xl sm:text-2xl lg:text-3xl font-medium">
+                    <h4 className="text-xl sm:text-2xl lg:text-3xl font-medium mb-10 sm:mb-12 lg:mb-14">
                       {service.name}
                     </h4>
-                    <p className="text-sm sm:text-base leading-tight">
+                    <p className="text-sm sm:text-base leading-snug text-gray-300">
                       {service.description}
                     </p>
                   </div>

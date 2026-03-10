@@ -51,7 +51,7 @@ const Difference = () => {
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 leading-tight"
               >
-                Eloqwnt
+                Brop
                 <br />
                 In Numbers
               </motion.h2>
@@ -79,7 +79,7 @@ const Difference = () => {
                   whileTap={{ scale: 0.95 }}
                   className="relative overflow-hidden group font-medium py-3 px-8 rounded-full text-lg sm:text-xl cursor-pointer bg-gray-200"
                 >
-                  <span className="absolute inset-0 bg-gray-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                  <span className="absolute inset-0 bg-gray-900 translate-y-[105%] group-hover:translate-y-0 transition-transform duration-500"></span>
                   <span className="relative z-10 flex items-center gap-2 font-[550] text-gray-900 group-hover:text-white transition-colors duration-500">
                     Let's chat
                     <span className="inline-block group-hover:-rotate-45 transition-transform duration-500">

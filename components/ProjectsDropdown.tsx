@@ -1,16 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Monitor,
-  Palette,
-  Smartphone,
-  Video,
-  Globe,
-  Heart,
-  Zap,
-} from "lucide-react";
+import { Globe, Zap, Video, Heart } from "lucide-react";
 import Link from "next/link";
 
 interface ProjectsDropdownProps {
@@ -49,124 +40,48 @@ const ProjectsDropdown = ({
     },
   ];
 
-  const services = [
-    {
-      icon: Palette,
-      title: "Branding",
-      description: "Crafting memorable brand identities",
-      href: "/projects/?filter=branding#projects",
-    },
-    {
-      icon: Monitor,
-      title: "Web Design",
-      description: "Building beautiful and functional websites",
-      href: "/projects/?filter=web design#projects",
-    },
-    {
-      icon: Smartphone,
-      title: "UX/UI Design",
-      description: "Designing intuitive user experiences",
-      href: "/projects/?filter=ui/ux#projects",
-    },
-  ];
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className="absolute top-full left-0 right-0 z-40"
+    <div
+      className="w-full pt-2"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="max-w-[1460px] mx-auto px-4 sm:px-6 lg:px-8 bg-blue-50 py-10 lg:py-12 rounded-3xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
-          {/* Column 1: Featured Projects */}
-          <div>
-            <div className="bg-[#F5F5F7] px-6 py-4 rounded-lg mb-8">
-              <div className="flex items-center justify-between">
-                <span className="text-[#02021E] font-semibold text-lg sm:text-xl">
-                  Featured Projects
-                </span>
-                <ArrowRight size={20} className="text-[#3827C7]" />
-              </div>
-            </div>
-            <div className="space-y-6">
-              {projects.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <motion.div
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="flex items-start space-x-4 group"
-                  >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#F5F5F7] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#3827C7] transition-colors duration-200">
-                      <item.icon
-                        size={20}
-                        className="text-[#3827C7] group-hover:text-white transition-colors duration-200"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-[#02021E] text-base sm:text-lg mb-1 group-hover:text-[#3827C7] transition-colors duration-200">
-                        {item.title}
-                      </h4>
-                      <p className="text-[#8B8B94] text-sm sm:text-base leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Column 2: Creative Disciplines */}
-          <div>
-            <div className="bg-[#FDC448] px-6 py-4 rounded-lg mb-8">
-              <div className="flex items-center justify-between">
-                <span className="text-[#02021E] font-semibold text-lg sm:text-xl">
-                  Creative Disciplines
-                </span>
-                <ArrowRight size={20} className="text-[#02021E]" />
-              </div>
-            </div>
-            <div className="space-y-6">
-              {services.map((item, index) => (
-                <Link key={index} href={item.href} className="block">
-                  <motion.div
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="flex items-start space-x-4 group cursor-pointer"
-                  >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#F5F5F7] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#FDC448] transition-colors duration-200">
-                      <item.icon
-                        size={20}
-                        className="text-[#3827C7] group-hover:text-[#02021E] transition-colors duration-200"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-[#02021E] text-base sm:text-lg mb-1 group-hover:text-[#3827C7] transition-colors duration-200">
-                        {item.title}
-                      </h4>
-                      <p className="text-[#8B8B94] text-sm sm:text-base leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
-          </div>
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 10 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="max-w-6xl mx-auto bg-[#F1F6F9] rounded-[40px] p-6 lg:p-8 shadow-sm border border-white/50"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {projects.map((item, index) => (
+            <Link key={index} href={item.href} className="group block" target="_blank" rel="noopener noreferrer" data-cursor="hover">
+              <motion.div
+                className="flex flex-col items-start p-5 lg:p-6 rounded-[32px] transition-all duration-300 group-hover:bg-white h-full"
+              >
+                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-gray-100/50 mb-4">
+                  <item.icon
+                    size={24}
+                    className="text-black"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-semibold text-black text-lg lg:text-xl mb-1 transition-all duration-300 relative inline-block">
+                    {item.title}
+                    <span className="absolute left-0 bottom-0 w-0 h-[1.5px] bg-black transition-all duration-300 group-hover:w-full"></span>
+                  </h4>
+                  <p className="text-gray-500 text-sm lg:text-base leading-snug">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.div>
+            </Link>
+          ))}
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 
 export default ProjectsDropdown;
+

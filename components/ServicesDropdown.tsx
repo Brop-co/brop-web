@@ -1,28 +1,57 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Monitor,
-  PenTool,
-  Tablet,
-  RotateCcw,
-  Lightbulb,
-  FolderOpen,
-  Search,
-  FileText,
-  Shield,
-  Users,
-  Package,
-  BarChart3,
-  Pencil,
-} from "lucide-react";
+import { FileText } from "lucide-react";
 import Link from "next/link";
+import { useRef } from "react";
+import { CodeXmlIcon } from "./icons/CodeXmlIcon";
+import { SparklesIcon } from "./icons/SparklesIcon";
+import { FigmaIcon } from "./icons/FigmaIcon";
+import { FramerIcon } from "./icons/FramerIcon";
+import { BrainIcon } from "./icons/BrainIcon";
+import { SearchIcon } from "./icons/SearchIcon";
+import { EyeIcon } from "./icons/EyeIcon";
+import { ShieldCheckIcon } from "./icons/ShieldCheckIcon";
 
 interface ServicesDropdownProps {
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 }
+
+const DropdownItem = ({ item }: { item: any }) => {
+  const iconRef = useRef<any>(null);
+
+  return (
+    <Link
+      href={item.href}
+      className="group block"
+      data-cursor="hover"
+      onMouseEnter={() => iconRef.current?.startAnimation?.()}
+      onMouseLeave={() => iconRef.current?.stopAnimation?.()}
+    >
+      <motion.div
+        className="flex flex-col items-start p-5 lg:p-6 rounded-[32px] transition-all duration-300 group-hover:bg-white h-full"
+      >
+        <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-gray-100/50 mb-4">
+          <item.icon
+            ref={iconRef}
+            size={24}
+            className="text-black"
+          />
+        </div>
+        <div className="flex-1 min-w-0">
+          <h4 className="font-semibold text-black text-lg lg:text-xl mb-1 transition-all duration-300 relative inline-block">
+            {item.title}
+            <span className="absolute left-0 bottom-0 w-0 h-[1.5px] bg-black transition-all duration-300 group-hover:w-full"></span>
+          </h4>
+          <p className="text-gray-500 text-sm lg:text-base leading-snug">
+            {item.description}
+          </p>
+        </div>
+      </motion.div>
+    </Link>
+  );
+};
 
 const ServicesDropdown = ({
   onMouseEnter,
@@ -30,223 +59,80 @@ const ServicesDropdown = ({
 }: ServicesDropdownProps) => {
   const coreServices = [
     {
-      icon: Monitor,
-      title: "Web Design",
-      description: "Engaging assets for all platforms",
+      icon: CodeXmlIcon,
+      title: "Software Crafting",
+      description: "Bespoke digital solutions built with precision.",
       href: "/services/#services",
     },
     {
-      icon: PenTool,
+      icon: SparklesIcon,
       title: "Branding",
-      description: "Memorable & Strategic identities",
+      description: "Distinctive identities that resonate and endure.",
       href: "/services/#services",
     },
     {
-      icon: Tablet,
+      icon: FigmaIcon,
       title: "UX/UI Design",
-      description: "Seamless & intuitive experiences",
+      description: "User-centric interfaces that engage and convert.",
       href: "/services/#services",
     },
     {
-      icon: RotateCcw,
+      icon: FramerIcon,
       title: "Motion Design",
-      description: "Engaging animations for brands",
+      description: "Dynamic animations that bring brands to life.",
+      href: "/services/#services",
+    },
+  ];
+
+  const developmentServices = [
+    {
+      icon: BrainIcon,
+      title: "Workflow Automation",
+      description: "Streamlined processes powered by intelligent logic.",
       href: "/services/#services",
     },
     {
-      icon: Lightbulb,
-      title: "Content Creation",
-      description: "Compelling brand storytelling",
-      href: "/services/#services",
-    },
-    {
-      icon: FolderOpen,
-      title: "Webflow Development",
-      description: "Functional & interactive websites",
-      href: "/services/#services",
-    },
-    {
-      icon: Search,
+      icon: SearchIcon,
       title: "SEO",
-      description: "Boosting search rankings and traffic",
+      description: "Organic growth strategies to dominate search results.",
       href: "/services/#services",
     },
     {
-      icon: FileText,
-      title: "Landing Page",
-      description: "High converting landing pages",
+      icon: EyeIcon,
+      title: "AR and 3D",
+      description: "Immersive experiences that transcend dimensions.",
       href: "/services/#services",
     },
-  ];
-
-  const specializedServices = [
     {
-      icon: RotateCcw,
-      title: "Creative Design Subscription",
-      description: "Web design, ux/ui, branding services",
-      href: "/services/#creative-design-subscription",
-    },
-    {
-      icon: Users,
-      title: "Content Design & Socials",
-      description: "Engaging assets for all platforms",
-      href: "/services/#content-design-socials",
-    },
-    {
-      icon: Shield,
-      title: "Website as a Service",
-      description: "Complete Turnkey WAAS solution",
-      href: "/services/#website-as-a-service",
-    },
-    {
-      icon: Package,
-      title: "Marketing Content",
-      description: "Content creation for your marketing",
-      href: "/services/#marketing-content",
-    },
-  ];
-
-  // Note: The following are not used in the final component, but I am adding them to the data structure
-  // for consistency and future use, as they were present in the prompt.
-  const readyMadeSolutions = [
-    {
-      icon: Package,
-      title: "Branding Pack",
-      description: "Customizable marketing assets",
-      href: "/services/#branding-pack",
-    },
-    {
-      icon: Pencil,
-      title: "Superdesign.space",
-      description: "Ready to use custom websites",
-      href: "/services/#superdesign-space",
-    },
-  ];
-
-  const otherServices = [
-    {
-      icon: RotateCcw,
-      title: "Creative Direction",
-      description: "Art direction in branding, web & motion design.",
-      href: "/services/#creative-direction",
-    },
-    {
-      icon: BarChart3,
-      title: "Presentation Design",
-      description: "Captivating decks that tell your story",
-      href: "/services/#presentation-design",
-    },
-    {
-      icon: Package,
-      title: "Packaging Design",
-      description: "Production ready packaging designs",
-      href: "/services/#packaging-design",
-    },
-    {
-      icon: FileText,
-      title: "Landing Page",
-      description: "Engaging assets for all platforms",
-      href: "/services/#landing-page-other", // Added -other to avoid duplicate ID
-    },
-    {
-      icon: Pencil,
-      title: "Grey-Label Design",
-      description: "Flexible design support for agencies.",
-      href: "/services/#grey-label-design",
+      icon: ShieldCheckIcon,
+      title: "Security",
+      description: "Robust protection for your digital ecosystem.",
+      href: "/services/#services",
     },
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className="absolute top-full left-0 right-0 z-40"
+    <div
+      className="w-full pt-2"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="max-w-[1460px] mx-auto px-4 sm:px-6 lg:px-8 bg-blue-50 py-10 lg:py-12 rounded-3xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
-          {/* Column 1: Core Services */}
-          <div>
-            <div className="bg-[#F5F5F7] px-6 py-4 rounded-lg mb-8">
-              <div className="flex items-center justify-between">
-                <span className="text-[#02021E] font-semibold text-lg sm:text-xl">
-                  Core Services
-                </span>
-                <ArrowRight size={20} className="text-[#3827C7]" />
-              </div>
-            </div>
-            <div className="space-y-6">
-              {coreServices.map((service, index) => (
-                <Link key={index} href={service.href} className="block">
-                  <motion.div
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="flex items-start space-x-4 group"
-                  >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#F5F5F7] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#3827C7] transition-colors duration-200">
-                      <service.icon
-                        size={20}
-                        className="text-[#3827C7] group-hover:text-white transition-colors duration-200"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-[#02021E] text-base sm:text-lg mb-1 group-hover:text-[#3827C7] transition-colors duration-200">
-                        {service.title}
-                      </h4>
-                      <p className="text-[#8B8B94] text-sm sm:text-base leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Column 2: Specialized Services */}
-          <div>
-            <div className="bg-[#FDC448] px-6 py-4 rounded-lg mb-8">
-              <div className="flex items-center justify-between">
-                <span className="text-[#02021E] font-semibold text-lg sm:text-xl">
-                  Specialized
-                </span>
-                <ArrowRight size={20} className="text-[#02021E]" />
-              </div>
-            </div>
-            <div className="space-y-6">
-              {specializedServices.map((service, index) => (
-                <Link key={index} href={service.href} className="block">
-                  <motion.div
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="flex items-start space-x-4 group"
-                  >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#F5F5F7] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#FDC448] transition-colors duration-200">
-                      <service.icon
-                        size={20}
-                        className="text-[#3827C7] group-hover:text-[#02021E] transition-colors duration-200"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-[#02021E] text-base sm:text-lg mb-1 group-hover:text-[#3827C7] transition-colors duration-200">
-                        {service.title}
-                      </h4>
-                      <p className="text-[#8B8B94] text-sm sm:text-base leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
-          </div>
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 10 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="max-w-6xl mx-auto bg-[#F1F6F9] rounded-[40px] p-6 lg:p-10 shadow-sm border border-white/50"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {[...coreServices, ...developmentServices].map((item, index) => (
+            <DropdownItem key={index} item={item} />
+          ))}
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 
 export default ServicesDropdown;
+
