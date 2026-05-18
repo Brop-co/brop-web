@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import CountUp from "@/components/CountUp";
 
 const CarouselCard = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -38,7 +39,7 @@ const CarouselCard = () => {
 
             <div className="relative z-10 p-6 sm:p-10">
                 <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white mb-2 drop-shadow-md">
-                    15+ Industries
+                    <CountUp to={15} duration={2.5} />+ Industries
                 </h3>
                 <p className="text-white/90 text-sm sm:text-base lg:text-lg font-medium drop-shadow-sm">
                     Diverse experience across multiple sectors
@@ -119,15 +120,15 @@ const Expertise = () => {
     const x = useTransform(scrollYProgress, [0, 1], [0, -scrollRange]);
 
     return (
-        <section ref={targetRef} className="relative h-[250vh] bg-gray-200">
+        <section ref={targetRef} className="relative h-[250vh] bg-gray-200 dark:bg-dark-base">
             {/* Sticky container stays in viewport during the 250vh scroll */}
             <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden py-12 lg:py-24">
 
                 {/* Section Header (Aligned to page container) */}
                 <div className="w-full px-4 sm:px-6 lg:px-10 mb-8 sm:mb-12">
                     <div className="max-w-[1720px] mx-auto flex items-center space-x-4" ref={titleContainerRef}>
-                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-black rounded-full"></div>
-                        <h2 className="text-xl sm:text-2xl font-medium text-gray-900">
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+                        <h2 className="text-xl sm:text-2xl font-medium text-gray-900 dark:text-white">
                             Our Expertise
                         </h2>
                     </div>
@@ -140,12 +141,12 @@ const Expertise = () => {
                     className="flex gap-4 sm:gap-6 lg:gap-8 w-max items-center"
                 >
                     {/* Card 1: 20+ Team */}
-                    <div className="w-[85vw] md:w-[45vw] lg:w-[31vw] xl:w-[27vw] h-[50vh] min-h-[400px] max-h-[550px] flex-shrink-0 bg-white rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 relative overflow-hidden flex flex-col border border-gray-100 shadow-sm">
+                    <div className="w-[85vw] md:w-[45vw] lg:w-[31vw] xl:w-[27vw] h-[50vh] min-h-[400px] max-h-[550px] flex-shrink-0 bg-white dark:bg-dark-surface rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 relative overflow-hidden flex flex-col border border-gray-100 dark:border-white/5 shadow-sm">
                         <div className="z-10 mb-8">
-                            <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-gray-900 mb-2">
-                                20+
+                            <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-gray-900 dark:text-white mb-2">
+                                <CountUp to={20} duration={2.5} />+
                             </h3>
-                            <p className="text-gray-500 text-sm sm:text-base lg:text-lg font-medium">
+                            <p className="text-gray-500 dark:text-white/50 text-sm sm:text-base lg:text-lg font-medium">
                                 Team of talented creative experts
                             </p>
                         </div>
@@ -163,12 +164,12 @@ const Expertise = () => {
                     </div>
 
                     {/* Card 2: 5+ Years */}
-                    <div className="w-[85vw] md:w-[45vw] lg:w-[31vw] xl:w-[27vw] h-[50vh] min-h-[400px] max-h-[550px] flex-shrink-0 bg-white rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 relative overflow-hidden flex flex-col border border-gray-100 shadow-sm">
+                    <div className="w-[85vw] md:w-[45vw] lg:w-[31vw] xl:w-[27vw] h-[50vh] min-h-[400px] max-h-[550px] flex-shrink-0 bg-white dark:bg-dark-surface rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 relative overflow-hidden flex flex-col border border-gray-100 dark:border-white/5 shadow-sm">
                         <div className="z-10 mb-8">
-                            <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-gray-900 mb-2">
-                                5+ Years
+                            <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-gray-900 dark:text-white mb-2">
+                                <CountUp to={5} duration={2.5} />+ Years
                             </h3>
-                            <p className="text-gray-500 text-sm sm:text-base lg:text-lg font-medium">
+                            <p className="text-gray-500 dark:text-white/50 text-sm sm:text-base lg:text-lg font-medium">
                                 Experience in transforming businesses
                             </p>
                         </div>
@@ -186,12 +187,12 @@ const Expertise = () => {
                     </div>
 
                     {/* Card 3: 100+ Projects */}
-                    <div className="w-[85vw] md:w-[45vw] lg:w-[31vw] xl:w-[27vw] h-[50vh] min-h-[400px] max-h-[550px] flex-shrink-0 bg-white rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 relative overflow-hidden flex flex-col border border-gray-100 shadow-sm">
+                    <div className="w-[85vw] md:w-[45vw] lg:w-[31vw] xl:w-[27vw] h-[50vh] min-h-[400px] max-h-[550px] flex-shrink-0 bg-white dark:bg-dark-surface rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 relative overflow-hidden flex flex-col border border-gray-100 dark:border-white/5 shadow-sm">
                         <div className="z-10 mb-8">
-                            <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-gray-900 mb-2">
-                                100+
+                            <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-gray-900 dark:text-white mb-2">
+                                <CountUp to={100} duration={2.5} />+
                             </h3>
-                            <p className="text-gray-500 text-sm sm:text-base lg:text-lg font-medium">
+                            <p className="text-gray-500 dark:text-white/50 text-sm sm:text-base lg:text-lg font-medium">
                                 Successfully completed projects
                             </p>
                         </div>

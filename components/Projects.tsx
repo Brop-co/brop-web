@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import ScrollFloat from "@/components/ScrollFloat";
 
 const Projects = () => {
   const projects = [
@@ -28,7 +29,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200">
+    <section id="projects" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200 dark:bg-dark-base">
       <div className="max-w-[1460px] mx-auto">
         {/* Section Header */}
         <motion.div
@@ -40,17 +41,25 @@ const Projects = () => {
         >
           {/* Left: Featured Works title */}
           <div className="flex items-center space-x-4">
-            <div className="w-3 h-3 bg-black rounded-full"></div>
-            <h2 className="text-3xl sm:text-4xl font-medium text-gray-900">
+            <div className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+            <h2 className="text-3xl sm:text-4xl font-medium text-gray-900 dark:text-white">
               Featured Works
             </h2>
           </div>
 
           {/* Right: Tagline */}
           <div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight">
+            <ScrollFloat
+              animationDuration={1}
+              ease="back.inOut(2)"
+              scrollStart="center bottom+=50%"
+              scrollEnd="bottom bottom-=40%"
+              stagger={0.03}
+              containerClassName="my-0"
+              textClassName="font-medium text-gray-900 dark:text-white leading-tight"
+            >
               We create solutions but most importantly we identify problems.
-            </h3>
+            </ScrollFloat>
           </div>
         </motion.div>
 
@@ -60,7 +69,7 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="bg-white rounded-3xl p-10 sm:p-16 lg:p-20 shadow-lg"
+          className="bg-white dark:bg-dark-surface rounded-3xl p-10 sm:p-16 lg:p-20 shadow-lg dark:shadow-none dark:border dark:border-white/5"
         >
           {/* Project Cards */}
           <div className="space-y-20">
@@ -75,7 +84,7 @@ const Projects = () => {
                   delay: 0.3 + index * 0.1,
                   ease: "easeOut",
                 }}
-                className="border-b border-gray-100 last:border-b-0 pb-20 last:pb-0"
+                className="border-b border-gray-100 dark:border-white/5 last:border-b-0 pb-20 last:pb-0"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
                   {/* Left Column - Project Details */}
@@ -87,18 +96,18 @@ const Projects = () => {
                     {/* Category and Title */}
                     <div className="space-y-6">
                       <div className="flex items-center space-x-4">
-                        <div className="w-3 h-3 bg-black rounded-full"></div>
-                        <span className="text-xl text-gray-600">
+                        <div className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+                        <span className="text-xl text-gray-600 dark:text-white/50">
                           {project.category}
                         </span>
                       </div>
-                      <h3 className="text-5xl sm:text-6xl font-medium text-gray-900 underline decoration-2 underline-offset-4">
+                      <h3 className="cursor-target text-5xl sm:text-6xl font-medium text-gray-900 dark:text-white underline decoration-2 underline-offset-4 w-fit">
                         {project.title}
                       </h3>
                     </div>
 
                     {/* Description */}
-                    <p className="text-xl sm:text-2xl text-gray-700 leading-relaxed">
+                    <p className="text-xl sm:text-2xl text-gray-700 dark:text-white/70 leading-relaxed">
                       {project.description}
                     </p>
 
@@ -108,13 +117,13 @@ const Projects = () => {
                         {project.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="px-5 py-3 bg-gray-200 text-gray-700 rounded-full text-base sm:text-lg font-medium"
+                            className="px-5 py-3 bg-gray-200 dark:bg-white/10 text-gray-700 dark:text-white/70 rounded-full text-base sm:text-lg font-medium"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
-                      <span className="text-xl sm:text-3xl font-bold text-gray-900">
+                      <span className="text-xl sm:text-3xl font-bold text-gray-900 dark:text-white">
                         {project.number}
                       </span>
                     </div>
@@ -122,12 +131,12 @@ const Projects = () => {
 
                   {/* Right Column - Project Screenshot */}
                   <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                    <div className="bg-gray-200 rounded-2xl p-6 shadow-inner">
-                      <div className="bg-white rounded-xl p-8 shadow-sm">
+                    <div className="bg-gray-200 dark:bg-dark-base rounded-2xl p-6 shadow-inner">
+                      <div className="bg-white dark:bg-dark-surface rounded-xl p-8 shadow-sm">
                         {/* Placeholder for actual screenshot */}
-                        <div className="bg-gray-100 rounded-lg h-96 flex items-center justify-center">
-                          <div className="text-center text-gray-500">
-                            <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mb-5 mx-auto">
+                        <div className="bg-gray-100 dark:bg-white/5 rounded-lg h-96 flex items-center justify-center">
+                          <div className="text-center text-gray-500 dark:text-white/30">
+                            <div className="w-20 h-20 bg-gray-200 dark:bg-white/10 rounded-full flex items-center justify-center mb-5 mx-auto">
                               <span className="text-3xl">📱</span>
                             </div>
                             <p className="text-base sm:text-lg">
@@ -149,10 +158,10 @@ const Projects = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="relative overflow-hidden group font-medium py-4 px-10 rounded-full text-lg sm:text-xl cursor-pointer bg-gray-900 flex items-center space-x-3 mx-auto group-hover:bg-gray-100 transition-colors duration-500"
+              className="relative overflow-hidden group font-medium py-4 px-10 rounded-full text-lg sm:text-xl cursor-pointer bg-[#3827C7] dark:bg-[#FDC448] flex items-center space-x-3 mx-auto transition-colors duration-500"
             >
-              <span className="absolute inset-0 bg-gray-100 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
-              <span className="relative z-10 flex items-center gap-3 text-white group-hover:text-gray-900 transition-colors duration-500">
+              <span className="absolute inset-0 bg-white dark:bg-dark-base translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+              <span className="relative z-10 flex items-center gap-3 text-white dark:text-dark-base group-hover:text-[#3827C7] dark:group-hover:text-[#FDC448] transition-colors duration-500">
                 <span>See all projects</span>
                 <ArrowRight
                   size={20}

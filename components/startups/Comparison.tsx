@@ -54,7 +54,7 @@ const Comparison = () => {
   return (
     <section
       id="comparison"
-      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-10 lg:px-16 bg-gray-200"
+      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-10 lg:px-16 bg-gray-200 dark:bg-dark-base"
     >
       <div className="max-w-[1460px] mx-auto">
         {/* Main container card with an initial animation */}
@@ -73,23 +73,23 @@ const Comparison = () => {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="w-3 h-3 bg-black rounded-full"
+                className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"
               />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 dark:text-white">
                 Comparison
               </h2>
             </div>
 
             {/* Right: Main heading */}
             <div>
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 leading-snug sm:leading-snug md:leading-tight">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 dark:text-white leading-snug sm:leading-snug md:leading-tight">
                 What makes us different from others
               </h3>
             </div>
           </div>
 
           {/* Comparison Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 bg-white p-4 sm:p-8 md:p-12 lg:p-16 rounded-3xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 bg-white dark:bg-dark-surface p-4 sm:p-8 md:p-12 lg:p-16 rounded-3xl dark:border dark:border-white/5">
             {/* Left Card */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -242,7 +242,7 @@ const Comparison = () => {
                   className={`w-full ${
                     rightCard.textColor === "white"
                       ? "bg-white text-gray-900 hover:bg-gray-100"
-                      : "bg-gray-900 text-white hover:bg-gray-800"
+                      : "bg-[#3827C7] text-white hover:bg-[#3827C7]/90"
                   } font-medium py-3 sm:py-4 px-5 sm:px-6 rounded-full mt-6 sm:mt-8 transition-all duration-200`}
                 >
                   {rightCard.cta.text} {rightCard.cta.emoji}

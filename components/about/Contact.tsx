@@ -91,7 +91,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200">
+    <section id="contact" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200 dark:bg-dark-base">
       <div className="max-w-[1460px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -102,15 +102,15 @@ const Contact = () => {
         >
           {/* Left: Title */}
           <div className="flex items-center space-x-4">
-            <div className="w-3 h-3 bg-black rounded-full"></div>
-            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
+            <div className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 dark:text-white">
               We're explorers
             </h2>
           </div>
 
           {/* Right: Tagline */}
           <div className="">
-            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 leading-snug sm:leading-tight">
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 dark:text-white leading-snug sm:leading-tight">
               Ready to take next step with us?
             </h3>
           </div>
@@ -120,7 +120,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="bg-white rounded-3xl p-10 sm:p-16 lg:p-20 shadow-lg"
+          className="bg-white dark:bg-dark-surface rounded-3xl p-10 sm:p-16 lg:p-20 shadow-lg dark:shadow-none dark:border dark:border-white/5"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
             <div className="space-y-10">
@@ -129,7 +129,7 @@ const Contact = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                className="bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium py-3 px-5 rounded-full text-base sm:text-lg transition-colors duration-200"
+                className="bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-900 dark:text-white font-medium py-3 px-5 rounded-full text-base sm:text-lg transition-colors duration-200"
               >
                 Contact us
               </motion.button>
@@ -139,7 +139,7 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                className="text-5xl sm:text-6xl lg:text-8xl font-medium text-gray-900 leading-tight pr-12"
+                className="text-5xl sm:text-6xl lg:text-8xl font-medium text-gray-900 dark:text-white leading-tight pr-12"
               >
                 Let's make an impact
               </motion.h2>
@@ -155,7 +155,7 @@ const Contact = () => {
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-base sm:text-lg font-medium text-gray-700 mb-2">
+                  <label className="block text-base sm:text-lg font-medium text-gray-700 dark:text-white/70 mb-2">
                     Name
                   </label>
                   <input
@@ -165,11 +165,11 @@ const Contact = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px]"
+                    className="w-full border-b border-gray-300 dark:border-white/20 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px] dark:text-white dark:placeholder:text-white/30"
                   />
                 </div>
                 <div>
-                  <label className="block text-base sm:text-lg font-medium text-gray-700 mb-2">
+                  <label className="block text-base sm:text-lg font-medium text-gray-700 dark:text-white/70 mb-2">
                     Company
                   </label>
                   <input
@@ -179,11 +179,11 @@ const Contact = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, company: e.target.value })
                     }
-                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px]"
+                    className="w-full border-b border-gray-300 dark:border-white/20 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px] dark:text-white dark:placeholder:text-white/30"
                   />
                 </div>
                 <div>
-                  <label className="block text-base sm:text-lg font-medium text-gray-700 mb-2">
+                  <label className="block text-base sm:text-lg font-medium text-gray-700 dark:text-white/70 mb-2">
                     Your Email
                   </label>
                   <input
@@ -193,11 +193,11 @@ const Contact = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px]"
+                    className="w-full border-b border-gray-300 dark:border-white/20 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px] dark:text-white dark:placeholder:text-white/30"
                   />
                 </div>
                 <div>
-                  <label className="block text-base sm:text-lg font-medium text-gray-700 mb-2">
+                  <label className="block text-base sm:text-lg font-medium text-gray-700 dark:text-white/70 mb-2">
                     Your Phone
                   </label>
                   <input
@@ -207,13 +207,13 @@ const Contact = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px]"
+                    className="w-full border-b border-gray-300 dark:border-white/20 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors duration-200 text-xl sm:text-2xl placeholder:text-[12px] dark:text-white dark:placeholder:text-white/30"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-base sm:text-lg font-medium text-gray-700 mb-4">
+                <label className="block text-base sm:text-lg font-medium text-gray-700 dark:text-white/70 mb-4">
                   I'm interested in...
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -224,11 +224,11 @@ const Contact = () => {
                       whileTap={{ scale: 0.98 }}
                       whileHover={{ borderColor: "#111827" }} // Tailwind gray-900
                       onClick={() => handleServiceToggle(service)}
-                      className={`relative overflow-hidden inline-flex whitespace-nowrap items-center justify-center py-3 px-4 rounded-full text-base sm:text-lg font-medium cursor-pointer transition-all duration-500 border border-gray-100`}
+                      className={`relative overflow-hidden inline-flex whitespace-nowrap items-center justify-center py-3 px-4 rounded-full text-base sm:text-lg font-medium cursor-pointer transition-all duration-500 border border-gray-100 dark:border-white/10`}
                     >
                       {/* Animated background for selected state */}
                       <span
-                        className={`absolute inset-0 bg-gray-900 transition-transform duration-500 ${selectedServices.includes(service)
+                        className={`absolute inset-0 bg-[#3827C7] dark:bg-[#FDC448] transition-transform duration-500 ${selectedServices.includes(service)
                           ? "translate-y-0"
                           : "translate-y-[105%]"
                           }`}
@@ -237,8 +237,8 @@ const Contact = () => {
                       {/* Text on top */}
                       <span
                         className={`relative z-10 flex items-center justify-center w-full h-full transition-colors duration-500 text-lg sm:text-xl ${selectedServices.includes(service)
-                          ? "text-white"
-                          : "text-gray-900"
+                          ? "text-white dark:text-dark-base"
+                          : "text-gray-900 dark:text-white"
                           }`}
                       >
                         {service}
@@ -249,7 +249,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-base sm:text-lg font-medium text-gray-700 mb-4">
+                <label className="block text-base sm:text-lg font-medium text-gray-700 dark:text-white/70 mb-4">
                   Project Budget (USD)
                 </label>
                 <div className="flex gap-2 flex-col sm:flex-row">
@@ -276,11 +276,11 @@ const Contact = () => {
                         onClick={() => handleBudgetSelect(budgetOption)}
                         whileTap={{ scale: 0.95 }}
                         whileHover={{ borderColor: "#111827" }} // gray-900 on hover
-                        className="relative overflow-hidden group font-medium py-3 px-6 rounded-full text-base sm:text-lg cursor-pointer transition-all duration-500 border border-gray-100 w-full"
+                        className="relative overflow-hidden group font-medium py-3 px-6 rounded-full text-base sm:text-lg cursor-pointer transition-all duration-500 border border-gray-100 dark:border-white/10 w-full"
                       >
                         {/* Animated background for selected state */}
                         <span
-                          className={`absolute inset-0 bg-gray-900 transition-transform duration-500 ${budget === budgetOption
+                          className={`absolute inset-0 bg-[#3827C7] dark:bg-[#FDC448] transition-transform duration-500 ${budget === budgetOption
                             ? "translate-y-0"
                             : "translate-y-[105%]"
                             }`}
@@ -289,8 +289,8 @@ const Contact = () => {
                         {/* Text on top */}
                         <span
                           className={`relative z-10 flex items-center justify-center w-full h-full transition-colors duration-500 ${budget === budgetOption
-                            ? "text-white"
-                            : "text-gray-900"
+                            ? "text-white dark:text-dark-base"
+                            : "text-gray-900 dark:text-white"
                             }`}
                         >
                           {budgetOption}
@@ -302,7 +302,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-base sm:text-lg font-medium text-gray-700 mb-4">
+                <label className="block text-base sm:text-lg font-medium text-gray-700 dark:text-white/70 mb-4">
                   Tell us about your project.
                 </label>
                 <div className="relative">
@@ -313,7 +313,7 @@ const Contact = () => {
                     }
                     placeholder="Write something concise...."
                     rows={4}
-                    className="w-full border-b border-gray-300 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 transition-colors duration-200 text-xl sm:text-2xl resize-none"
+                    className="w-full border-b border-gray-300 dark:border-white/20 py-2 px-0 bg-transparent focus:outline-none focus:border-gray-900 dark:focus:border-white transition-colors duration-200 text-xl sm:text-2xl resize-none dark:text-white dark:placeholder:text-white/30"
                   />
                 </div>
               </div>
@@ -322,10 +322,10 @@ const Contact = () => {
                 <motion.button
                   type="submit"
                   whileTap={{ scale: 0.9 }}
-                  className="relative overflow-hidden group font-medium py-4 px-16 rounded-full text-lg sm:text-xl cursor-pointer bg-gray-900 flex items-center space-x-3 group-hover:bg-gray-100 transition-colors duration-500"
+                  className="relative overflow-hidden group font-medium py-4 px-16 rounded-full text-lg sm:text-xl cursor-pointer bg-[#3827C7] dark:bg-[#FDC448] flex items-center space-x-3 transition-colors duration-500"
                 >
-                  <span className="absolute inset-0 bg-gray-100 translate-y-[105%] group-hover:translate-y-0 transition-transform duration-500"></span>
-                  <span className="relative z-10 flex items-center gap-3 text-white group-hover:text-gray-900 transition-colors duration-500">
+                  <span className="absolute inset-0 bg-white translate-y-[105%] group-hover:translate-y-0 transition-transform duration-500"></span>
+                  <span className="relative z-10 flex items-center gap-3 text-white dark:text-dark-base group-hover:text-[#3827C7] dark:group-hover:text-dark-base transition-colors duration-500">
                     <span>Submit</span>
                     <ArrowRight
                       size={20}

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://brop.co.rw'),
@@ -68,7 +69,7 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <head>
                 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
                 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -148,8 +149,10 @@ export default function RootLayout({
                     }}
                 />
             </head>
-            <body className="antialiased">
-                {children}
+            <body className="antialiased bg-white dark:bg-dark-base transition-colors duration-300">
+                <ThemeProvider>
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     )

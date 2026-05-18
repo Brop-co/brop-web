@@ -261,7 +261,7 @@ const Projects = () => {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative bg-gradient-to-br from-gray-200 to-gray-200 overflow-hidden py-20"
+      className="relative bg-gradient-to-br from-gray-200 to-gray-200 dark:from-dark-base dark:to-dark-base overflow-hidden py-20"
     >
       <div className="max-w-[1460px] mx-auto px-8">
         {/* Decorative dots */}
@@ -274,8 +274,8 @@ const Projects = () => {
         >
           {/* Left: Title */}
           <div className="flex items-center space-x-3 sm:space-x-4">
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-black rounded-full"></div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-medium text-gray-900">
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-medium text-gray-900 dark:text-white">
               Projects
             </h2>
           </div>
@@ -286,7 +286,7 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-8 relative z-10 block lg:hidden"
         >
-          <h2 className=" text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-semibold text-gray-900 mb-4">
+          <h2 className=" text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-semibold text-gray-900 dark:text-white mb-4">
             Discover our recent projects
           </h2>
 
@@ -318,7 +318,7 @@ const Projects = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-8 relative z-10 hidden lg:block"
           >
-            <h2 className=" text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-semibold text-gray-900 mb-4">
+            <h2 className=" text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-semibold text-gray-900 dark:text-white mb-4">
               Discover our recent projects
             </h2>
 

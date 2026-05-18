@@ -70,7 +70,7 @@ const Works = () => {
   return (
     <section
       id="works"
-      className="py-20 md:py-28 px-4 sm:px-8 lg:px-16 bg-gray-200"
+      className="py-20 md:py-28 px-4 sm:px-8 lg:px-16 bg-gray-200 dark:bg-dark-base"
     >
       <div className="max-w-[1460px] mx-auto">
         {/* Main container card with an initial animation */}
@@ -89,16 +89,16 @@ const Works = () => {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="w-3 h-3 bg-black rounded-full"
+                className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"
               ></motion.div>
-              <h2 className="text-3xl sm:text-4xl font-medium text-gray-900">
+              <h2 className="text-3xl sm:text-4xl font-medium text-gray-900 dark:text-white">
                 How it works
               </h2>
             </div>
 
             {/* Right: Tagline */}
             <div>
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 dark:text-white leading-tight">
                 Our Simple 4-Step Collaboration Proces
               </h3>
             </div>
@@ -139,16 +139,16 @@ const Works = () => {
                 >
                   {/* Front Face */}
                   <div
-                    className="absolute inset-0 bg-white flex flex-col justify-between p-4 sm:p-6 text-gray-900 rounded-2xl"
+                    className="absolute inset-0 bg-white dark:bg-dark-surface flex flex-col justify-between p-4 sm:p-6 text-gray-900 dark:text-white rounded-2xl"
                     style={{
                       backfaceVisibility: "hidden",
                       WebkitBackfaceVisibility: "hidden",
                     }}
                   >
-                    <span className="text-lg sm:text-xl font-medium text-gray-500">
-                      {service.id}
-                    </span>
-                    <h4 className="text-xl sm:text-2xl lg:text-3xl font-medium">
+                      <span className="text-lg sm:text-xl font-medium text-gray-500 dark:text-white/40">
+                        {service.id}
+                      </span>
+                      <h4 className="text-xl sm:text-2xl lg:text-3xl font-medium dark:text-white">
                       {service.name}
                     </h4>
                   </div>

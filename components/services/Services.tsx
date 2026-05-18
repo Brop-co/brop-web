@@ -94,7 +94,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="py-20 md:py-28 px-4 sm:px-8 lg:px-16 bg-gray-200"
+      className="py-20 md:py-28 px-4 sm:px-8 lg:px-16 bg-gray-200 dark:bg-dark-base"
     >
       <div className="max-w-[1460px] mx-auto">
         {/* Main container card with an initial animation */}
@@ -103,7 +103,7 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="bg-white rounded-3xl p-5 sm:p-12 lg:p-20 shadow-lg"
+          className="bg-white dark:bg-dark-surface rounded-3xl p-5 sm:p-12 lg:p-20 shadow-lg dark:shadow-none dark:border dark:border-white/5"
         >
           {/* Section Header */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-12 lg:mb-16">
@@ -114,16 +114,16 @@ const Services = () => {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="w-3 h-3 bg-black rounded-full"
+                className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"
               ></motion.div>
-              <h2 className="text-3xl sm:text-4xl font-medium text-gray-900">
+              <h2 className="text-3xl sm:text-4xl font-medium text-gray-900 dark:text-white">
                 Our services
               </h2>
             </div>
 
             {/* Right: Tagline */}
             <div>
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 dark:text-white leading-tight">
                 Our Core Creative Offerings
               </h3>
             </div>
@@ -164,13 +164,13 @@ const Services = () => {
                 >
                   {/* Front Face */}
                   <div
-                    className="absolute inset-0 bg-gray-200 flex flex-col justify-between p-4 sm:p-6 text-gray-900 rounded-2xl"
+                    className="absolute inset-0 bg-gray-200 dark:bg-black flex flex-col justify-between p-4 sm:p-6 text-gray-900 dark:text-white rounded-2xl"
                     style={{
                       backfaceVisibility: "hidden",
                       WebkitBackfaceVisibility: "hidden",
                     }}
                   >
-                    <span className="text-lg sm:text-xl font-medium text-gray-500">
+                    <span className="text-lg sm:text-xl font-medium text-gray-500 dark:text-gray-400">
                       {service.id}
                     </span>
                     <h4 className="text-xl sm:text-2xl lg:text-3xl font-medium">
@@ -180,7 +180,7 @@ const Services = () => {
 
                   {/* Back Face */}
                   <div
-                    className="absolute inset-0 bg-gray-900 flex flex-col justify-start p-4 sm:p-6 text-white rounded-2xl"
+                    className="absolute inset-0 bg-[#3827C7] dark:bg-[#FDC448] flex flex-col justify-start p-4 sm:p-6 text-white dark:text-black rounded-2xl"
                     style={{
                       backfaceVisibility: "hidden",
                       WebkitBackfaceVisibility: "hidden",
@@ -190,7 +190,7 @@ const Services = () => {
                     <h4 className="text-xl sm:text-2xl lg:text-3xl font-medium mb-10 sm:mb-12 lg:mb-14">
                       {service.name}
                     </h4>
-                    <p className="text-sm sm:text-base leading-snug text-gray-300">
+                    <p className="text-sm sm:text-base leading-snug text-gray-300 dark:text-black/80">
                       {service.description}
                     </p>
                   </div>

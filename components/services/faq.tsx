@@ -64,7 +64,7 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-24 px-6 sm:px-8 lg:px-16 bg-white">
+    <section id="faq" className="py-24 px-6 sm:px-8 lg:px-16 bg-white dark:bg-dark-surface">
       <div className="max-w-[1460px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -75,8 +75,8 @@ const FAQ = () => {
         >
           {/* Left: Title */}
           <div className="flex items-center space-x-4">
-            <div className="w-3 h-3 bg-black rounded-full"></div>
-            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
+              <div className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 dark:text-white">
               FAQ
             </h2>
           </div>
@@ -87,7 +87,7 @@ const FAQ = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 leading-tight mb-16">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 dark:text-white leading-tight mb-16">
             Frequently
             <br />
             Asked Questions
@@ -112,8 +112,8 @@ const FAQ = () => {
               <div
                 className={`transition-all duration-500 ease-in-out rounded-2xl ${
                   openIndex === index
-                    ? "bg-gray-200 text-gray-900 p-6 my-6"
-                    : "bg-white text-gray-900 p-6"
+                    ? "bg-gray-200 dark:bg-white/5 text-gray-900 dark:text-white p-6 my-6"
+                    : "bg-white dark:bg-transparent text-gray-900 dark:text-white p-6"
                 }`}
               >
                 <div
@@ -124,8 +124,8 @@ const FAQ = () => {
                     {item.question}
                   </h3>
                   <div
-                    className={`flex-shrink-0 w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center ${
-                      openIndex === index ? "bg-gray-900" : "bg-white"
+                    className={`flex-shrink-0 w-10 h-10 rounded-full border border-gray-300 dark:border-white/20 flex items-center justify-center ${
+                      openIndex === index ? "bg-[#3827C7] dark:bg-[#FDC448]" : "bg-white dark:bg-transparent"
                     }`}
                   >
                     <span
@@ -185,7 +185,7 @@ const FAQ = () => {
                       transition={{ duration: 0.4, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-900 text-base sm:text-lg leading-relaxed">
+                      <p className="text-gray-900 dark:text-white/70 text-base sm:text-lg leading-relaxed">
                         {item.answer}
                       </p>
                     </motion.div>

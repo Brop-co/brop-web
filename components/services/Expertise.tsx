@@ -13,22 +13,22 @@ const Expertise = () => {
     }
   };
   return (
-    <section id="expertise" className="py-24 px-6 sm:px-8 lg:px-16 bg-gray-200">
+    <section id="expertise" className="py-24 px-6 sm:px-8 lg:px-16 bg-gray-200 dark:bg-dark-base">
       <div className="max-w-[1460px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="bg-white rounded-3xl p-10 sm:p-16 lg:p-20 shadow-lg"
+          className="bg-white dark:bg-dark-surface rounded-3xl p-10 sm:p-16 lg:p-20 shadow-lg dark:shadow-none dark:border dark:border-white/5"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             {/* Left Content Area */}
             <div className="space-y-10">
               {/* Expertise title */}
               <div className="flex items-center space-x-4">
-                <div className="w-2.5 h-2.5 bg-black rounded-full"></div>
-                <h3 className="text-xl sm:text-2xl font-medium text-gray-900">
+                <div className="w-2.5 h-2.5 bg-black dark:bg-[#FDC448] rounded-full"></div>
+                <h3 className="text-xl sm:text-2xl font-medium text-gray-900 dark:text-white">
                   Expertise
                 </h3>
               </div>
@@ -39,7 +39,7 @@ const Expertise = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 leading-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 dark:text-white leading-tight"
               >
                 We solve real problems
               </motion.h2>
@@ -50,7 +50,7 @@ const Expertise = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                className="text-xl sm:text-2xl text-gray-700 leading-relaxed"
+                className="text-xl sm:text-2xl text-gray-700 dark:text-white/70 leading-relaxed"
               >
                 We combine years of expertise in UX/UI, Motion design, Webflow
                 development, and Web design to build high-performance digital
@@ -69,7 +69,7 @@ const Expertise = () => {
                   whileTap={{ scale: 0.95 }}
                   className="relative overflow-hidden group font-medium py-3 px-8 rounded-full text-lg sm:text-xl cursor-pointer bg-gray-200"
                 >
-                  <span className="absolute inset-0 bg-gray-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                  <span className="absolute inset-0 bg-[#3827C7] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
                   <span className="relative z-10 flex items-center gap-2 font-[550] text-gray-900 group-hover:text-white transition-colors duration-500">
                     Let's chat
                     <span className="inline-block group-hover:-rotate-45 transition-transform duration-500">

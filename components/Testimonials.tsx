@@ -21,8 +21,8 @@ const TestimonialCard = ({ testimonial, index }: { testimonial: any, index: numb
       onMouseEnter={() => iconRef.current?.startAnimation?.()}
       onMouseLeave={() => iconRef.current?.stopAnimation?.()}
     >
-      <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-lg h-full flex flex-col transition-shadow hover:shadow-xl">
-        <p className="text-gray-700 leading-relaxed text-lg sm:text-xl flex-1 mb-6">
+      <div className="bg-white dark:bg-dark-surface rounded-2xl p-8 lg:p-10 shadow-lg dark:shadow-none dark:border dark:border-white/5 h-full flex flex-col transition-shadow hover:shadow-xl">
+        <p className="text-gray-700 dark:text-white/70 leading-relaxed text-lg sm:text-xl flex-1 mb-6">
           {testimonial.text}
         </p>
         <div className="flex items-center space-x-4 mt-auto">
@@ -32,15 +32,15 @@ const TestimonialCard = ({ testimonial, index }: { testimonial: any, index: numb
             {testimonial.client.avatar}
           </div>
           <div className="flex-1">
-            <h4 className="font-bold text-gray-900 text-lg sm:text-xl">
+            <h4 className="font-bold text-gray-900 dark:text-white text-lg sm:text-xl">
               {testimonial.client.name}
             </h4>
-            <p className="text-gray-600 text-sm sm:text-base">
+            <p className="text-gray-600 dark:text-white/50 text-sm sm:text-base">
               {testimonial.client.role}
             </p>
           </div>
-          <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-blue-50 transition-colors">
-            <LinkedInIcon ref={iconRef} size={20} className="text-gray-600 group-hover:text-blue-600 transition-colors" />
+          <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gray-100 dark:bg-white/10 rounded-full flex items-center justify-center group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 transition-colors">
+            <LinkedInIcon ref={iconRef} size={20} className="text-gray-600 dark:text-white/50 group-hover:text-blue-600 transition-colors" />
           </div>
         </div>
       </div>
@@ -140,7 +140,7 @@ const Testimonials = ({ title = "Testimonials" }: { title?: string }) => {
   };
 
   return (
-    <section id="testimonials" className="py-28 bg-gray-200">
+    <section id="testimonials" className="py-28 bg-gray-200 dark:bg-dark-base">
       <div className="max-w-[1460px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -149,8 +149,8 @@ const Testimonials = ({ title = "Testimonials" }: { title?: string }) => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex items-center space-x-3 mb-12 px-4 sm:px-6 lg:px-8"
         >
-          <div className="w-3 h-3 bg-black rounded-full"></div>
-          <h2 className="text-3xl sm:text-4xl font-medium text-gray-900">
+          <div className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+          <h2 className="text-3xl sm:text-4xl font-medium text-gray-900 dark:text-white">
             {title}
           </h2>
         </motion.div>
@@ -176,10 +176,9 @@ const Testimonials = ({ title = "Testimonials" }: { title?: string }) => {
         <div className="max-w-[1460px] mx-auto">
           <div className="flex items-center gap-6 mt-8 w-full px-4 sm:px-6 lg:px-8">
             <div className="flex-1 relative">
-              <div className="w-full h-1 bg-gray-300/70 rounded-full overflow-hidden">
-                {/* UPDATED: Changed from a moving thumb to a filling progress bar */}
+              <div className="w-full h-1 bg-gray-300/70 dark:bg-white/10 rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-gray-900 rounded-full"
+                  className="h-full bg-[#3827C7] dark:bg-[#FDC448] rounded-full"
                   style={{
                     width: `${progress * 100}%`,
                   }}
@@ -192,7 +191,7 @@ const Testimonials = ({ title = "Testimonials" }: { title?: string }) => {
                 onClick={() => scrollByPage("left")}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-900 transition-all duration-200"
+                className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-600 dark:text-white hover:bg-[#3827C7] dark:hover:bg-[#FDC448] hover:text-white dark:hover:text-dark-base transition-all duration-200"
               >
                 <ChevronLeft size={24} />
               </motion.button>
@@ -200,7 +199,7 @@ const Testimonials = ({ title = "Testimonials" }: { title?: string }) => {
                 onClick={() => scrollByPage("right")}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-900 transition-all duration-300"
+                className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-600 dark:text-white hover:bg-[#3827C7] dark:hover:bg-[#FDC448] hover:text-white dark:hover:text-dark-base transition-all duration-300"
               >
                 <ChevronRight size={24} />
               </motion.button>

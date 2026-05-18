@@ -30,7 +30,7 @@ const SuperDesignPackage = () => {
   return (
     <section
       id="super-offers"
-      className="py-24 sm:py-28 px-6 sm:px-8 lg:px-16 bg-gray-200"
+      className="py-24 sm:py-28 px-6 sm:px-8 lg:px-16 bg-gray-200 dark:bg-dark-base"
     >
       <div className="max-w-[1460px] mx-auto">
         {/* Section Header */}
@@ -43,15 +43,15 @@ const SuperDesignPackage = () => {
         >
           {/* Left: Title */}
           <div className="flex items-center space-x-4">
-            <div className="w-3 h-3 bg-black rounded-full"></div>
-            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
+            <div className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 dark:text-white">
               Super Design Package
             </h2>
           </div>
 
           {/* Right: Tagline */}
           <div className="pl-0 md:pl-20 lg:pl-52">
-            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 leading-snug sm:leading-tight text-right">
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 dark:text-white leading-snug sm:leading-tight text-right">
               A special package for amazing website ready in 10 days.
             </h3>
           </div>
@@ -63,9 +63,9 @@ const SuperDesignPackage = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut", staggerChildren: 0.2 }}
-          className="flex flex-col gap-y-14 bg-white p-4 sm:p-12 rounded-3xl"
+          className="flex flex-col gap-y-14 bg-white dark:bg-dark-surface p-4 sm:p-12 rounded-3xl dark:border dark:border-white/5"
         >
-          <h3 className="text-3xl sm:text-5xl lg:text-6xl font-[600] text-gray-900 leading-snug sm:leading-tight w-full md:w-[40%] ">
+          <h3 className="text-3xl sm:text-5xl lg:text-6xl font-[600] text-gray-900 dark:text-white leading-snug sm:leading-tight w-full md:w-[40%] ">
             Transform Your Online Presence
           </h3>
 
@@ -79,16 +79,16 @@ const SuperDesignPackage = () => {
             >
               {/* Left Side: ID + Title */}
               <div className="flex items-center gap-2 lg:gap-10 w-full">
-                <span className="flex-none text-xl sm:text-2xl lg:text-3xl text-gray-900 font-semibold lg:block">
+                <span className="flex-none text-xl sm:text-2xl lg:text-3xl text-gray-900 dark:text-white font-semibold lg:block">
                   {item.id}
                 </span>
-                <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-900">
+                <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 dark:text-white">
                   {item.title}
                 </p>
               </div>
 
               {/* Middle: Description (hidden on small screens) */}
-              <p className="hidden lg:block text-gray-900 text-xl sm:text-2xl lg:text-3xl w-full">
+              <p className="hidden lg:block text-gray-900 dark:text-white/70 text-xl sm:text-2xl lg:text-3xl w-full">
                 {item.description}
               </p>
 

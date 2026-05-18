@@ -130,7 +130,7 @@ const Card: React.FC<CardProps> = ({
     // Mobile version (stacked, image first, text after)
     return (
       <div className="flex flex-col-reverse items-center justify-center px-6 sm:px-8 lg:px-16 py-10">
-        <div className="w-full max-w-[1300px] bg-white rounded-3xl p-6 sm:p-12 lg:p-16 overflow-hidden">
+        <div className="w-full max-w-[1300px] bg-white dark:bg-dark-surface rounded-3xl p-6 sm:p-12 lg:p-16 overflow-hidden">
           <div className="flex flex-col gap-8">
             {/* Image on top */}
             <div className="flex items-center justify-center">
@@ -142,29 +142,29 @@ const Card: React.FC<CardProps> = ({
             </div>
             {/* Text below */}
             <div className="flex flex-col justify-center">
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              <h2 className="text-4xl sm:text-5xl font-bold mb-6 dark:text-white">
                 {data.title}
               </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-white/60 mb-8 leading-relaxed">
                 {data.description}
               </p>
               <div className="mb-10">
-                <p className="text-xl font-semibold text-gray-900 mb-4">
+                <p className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Services:
                 </p>
                 <div className="space-y-2">
                   {data.services.map((service: string, i: number) => (
                     <div key={i} className="flex items-center space-x-2">
-                      <div className="w-1.5 h-1.5 bg-black rounded-full"></div>
-                      <span className="text-gray-900 text-xl">{service}</span>
+                      <div className="w-1.5 h-1.5 bg-black dark:bg-[#FDC448] rounded-full"></div>
+                      <span className="text-gray-900 dark:text-white text-xl">{service}</span>
                     </div>
                   ))}
                 </div>
               </div>
               <div>
-                <button className="relative overflow-hidden group font-medium py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg cursor-pointer bg-gray-200 w-full sm:w-auto">
-                  <span className="absolute inset-0 bg-gray-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
-                  <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 font-[550] text-lg sm:text-xl text-gray-900 group-hover:text-white transition-colors duration-500">
+                <button className="relative overflow-hidden group font-medium py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg cursor-pointer bg-gray-200 dark:bg-white/10 w-full sm:w-auto">
+                  <span className="absolute inset-0 bg-[#3827C7] dark:bg-[#FDC448] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                  <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 font-[550] text-lg sm:text-xl text-gray-900 dark:text-white group-hover:text-white dark:group-hover:text-dark-base transition-colors duration-500">
                     {data.cta.text}
                     <span className="inline-block">
                       <img
@@ -224,33 +224,33 @@ const Card: React.FC<CardProps> = ({
       className="absolute inset-0 flex items-center justify-center px-6 sm:px-8 lg:px-16"
     >
       {/* same as your original */}
-      <div className="w-full max-w-[1300px] bg-white rounded-3xl p-6 sm:p-12 lg:p-16 overflow-hidden">
+      <div className="w-full max-w-[1300px] bg-white dark:bg-dark-surface rounded-3xl p-6 sm:p-12 lg:p-16 overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[450px] lg:min-h-[550px]">
           {/* Left Content */}
           <div className="flex flex-col justify-center">
-            <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6 dark:text-white">
               {data.title}
             </h2>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-white/60 mb-8 leading-relaxed">
               {data.description}
             </p>
             <div className="mb-10">
-              <p className="text-xl font-semibold text-gray-900 mb-4">
+              <p className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                 Services:
               </p>
               <div className="space-y-2">
                 {data.services.map((service: string, i: number) => (
                   <div key={i} className="flex items-center space-x-2">
-                    <div className="w-1.5 h-1.5 bg-black rounded-full"></div>
-                    <span className="text-gray-900 text-2xl">{service}</span>
+                    <div className="w-1.5 h-1.5 bg-black dark:bg-[#FDC448] rounded-full"></div>
+                    <span className="text-gray-900 dark:text-white text-2xl">{service}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <button className="relative overflow-hidden group font-medium py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg cursor-pointer bg-gray-200 w-full sm:w-auto">
-                <span className="absolute inset-0 bg-gray-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
-                <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 font-[550] text-lg sm:text-xl text-gray-900 group-hover:text-white transition-colors duration-500">
+              <button className="relative overflow-hidden group font-medium py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg cursor-pointer bg-gray-200 dark:bg-white/10 w-full sm:w-auto">
+                <span className="absolute inset-0 bg-[#3827C7] dark:bg-[#FDC448] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 font-[550] text-lg sm:text-xl text-gray-900 dark:text-white group-hover:text-white dark:group-hover:text-dark-base transition-colors duration-500">
                   {data.cta.text}
                   <span className="inline-block">
                     <img
@@ -287,9 +287,9 @@ const Packages: React.FC = () => {
   });
 
   return (
-    <section id="offers" className="bg-gray-200">
+    <section id="offers" className="bg-gray-200 dark:bg-dark-base">
       {/* Header Section stays same */}
-      <div className="py-24 sm:py-28 px-6 sm:px-8 lg:px-16 bg-gray-200">
+        <div className="py-24 sm:py-28 px-6 sm:px-8 lg:px-16 bg-gray-200 dark:bg-dark-base">
         <div className="max-w-[1460px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -299,13 +299,13 @@ const Packages: React.FC = () => {
             className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20"
           >
             <div className="flex items-center space-x-4">
-              <div className="w-3 h-3 bg-black rounded-full"></div>
-              <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
+              <div className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+              <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 dark:text-white">
                 Our startup packages
               </h2>
             </div>
             <div>
-              <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 leading-snug sm:leading-tight">
+              <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 dark:text-white leading-snug sm:leading-tight">
                 Empower your startup with strategic design and branding that
                 attract investors and drive growth.
               </h3>

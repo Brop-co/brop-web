@@ -8,6 +8,8 @@ interface ScrollAnimationLayoutProps {
   shrinkThreshold?: number;
   backgroundColor?: string;
   backgroundOverlay?: string;
+  backgroundContent?: ReactNode;
+  disableShrink?: boolean;
 }
 
 const ScrollAnimationLayout: FC<ScrollAnimationLayoutProps> = ({
@@ -16,6 +18,8 @@ const ScrollAnimationLayout: FC<ScrollAnimationLayoutProps> = ({
   shrinkThreshold = 0.2,
   backgroundColor = "white",
   backgroundOverlay = "bg-gray-200",
+  backgroundContent,
+  disableShrink = false,
 }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [viewportHeight, setViewportHeight] = useState(0);
@@ -48,7 +52,7 @@ const ScrollAnimationLayout: FC<ScrollAnimationLayoutProps> = ({
     return () => window.removeEventListener("scroll", handleScroll);
   }, [sectionId, shrinkThreshold]);
 
-  const isShrunken = scrollProgress === 1;
+  const isShrunken = !disableShrink && scrollProgress === 1;
 
   // Calculate shrinked width dynamically to match About section
   const getShrinkWidth = () => {
@@ -77,6 +81,12 @@ const ScrollAnimationLayout: FC<ScrollAnimationLayoutProps> = ({
     >
       <div className={`absolute inset-0 ${backgroundOverlay} z-0`}></div>
 
+      {backgroundContent && (
+        <div className="absolute inset-0 z-[1]">
+          {backgroundContent}
+        </div>
+      )}
+
       <motion.div
         className="w-full flex flex-col justify-center items-center relative z-10 h-full"
         style={{
@@ -84,7 +94,7 @@ const ScrollAnimationLayout: FC<ScrollAnimationLayoutProps> = ({
           marginLeft: "auto",
           marginRight: "auto",
           borderRadius: isShrunken ? "24px" : "0px",
-          backgroundColor: backgroundColor,
+          backgroundColor: backgroundContent ? (isShrunken ? backgroundColor : 'transparent') : backgroundColor,
           padding: isShrunken ? "2rem" : "0",
           transition: `
             max-width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),

@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import CountUp from "@/components/CountUp";
 
 const stats = [
-  { id: "01", value: "100+", label: "Projects Completed" },
-  { id: "02", value: "98%", label: "Client Satisfaction Rate" },
-  { id: "03", value: "25+", label: "Experts In Our Team" },
-  { id: "04", value: "8/10", label: "Clients Return For More" },
+  { id: "01", numericValue: 100, suffix: "+", label: "Projects Completed" },
+  { id: "02", numericValue: 98, suffix: "%", label: "Client Satisfaction Rate" },
+  { id: "03", numericValue: 25, suffix: "+", label: "Experts In Our Team" },
+  { id: "04", numericValue: 8, suffix: "/10", label: "Clients Return For More" },
 ];
 
 const Difference = () => {
@@ -22,7 +23,7 @@ const Difference = () => {
   return (
     <section
       id="difference"
-      className="py-24 px-6 sm:px-8 lg:px-16 bg-gray-200"
+      className="py-24 px-6 sm:px-8 lg:px-16 bg-gray-200 dark:bg-dark-base"
     >
       <div className="max-w-[1460px] mx-auto">
         <motion.div
@@ -30,15 +31,15 @@ const Difference = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="bg-white rounded-3xl p-10 sm:p-16 lg:p-20 shadow-lg"
+          className="bg-white dark:bg-dark-surface rounded-3xl p-10 sm:p-16 lg:p-20 shadow-lg dark:shadow-none dark:border dark:border-white/5"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
             {/* Left Content Area */}
             <div className="space-y-10 flex flex-col justify-center">
               {/* Title */}
               <div className="flex items-center space-x-4">
-                <div className="w-2.5 h-2.5 bg-black rounded-full"></div>
-                <h3 className="text-xl sm:text-2xl font-medium text-gray-900">
+                <div className="w-2.5 h-2.5 bg-black dark:bg-[#FDC448] rounded-full"></div>
+                <h3 className="text-xl sm:text-2xl font-medium text-gray-900 dark:text-white">
                   What makes us different?
                 </h3>
               </div>
@@ -49,7 +50,7 @@ const Difference = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 leading-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 dark:text-white leading-tight"
               >
                 Brop
                 <br />
@@ -62,7 +63,7 @@ const Difference = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                className="text-xl sm:text-2xl text-gray-700 leading-relaxed max-w-lg"
+                className="text-xl sm:text-2xl text-gray-700 dark:text-white/70 leading-relaxed max-w-lg"
               >
                 Design is more than aesthetics—it's about measurable impact.
                 Here's how we make a difference.
@@ -103,16 +104,16 @@ const Difference = () => {
                     ease: "easeOut",
                     delay: 0.2 + index * 0.1,
                   }}
-                  className="bg-gray-200/70 rounded-3xl p-5 flex flex-col justify-between relative min-h-[250px] md:min-h-[270px]"
+                  className="bg-gray-200/70 dark:bg-white/5 rounded-3xl p-5 flex flex-col justify-between relative min-h-[250px] md:min-h-[270px]"
                 >
-                  <div className="self-end text-lg font-medium text-gray-500">
+                  <div className="self-end text-lg font-medium text-gray-500 dark:text-white/40">
                     {stat.id}
                   </div>
                   <div>
-                    <div className="text-5xl lg:text-6xl font-medium text-gray-900">
-                      {stat.value}
+                    <div className="text-5xl lg:text-6xl font-medium text-gray-900 dark:text-white">
+                      <CountUp to={stat.numericValue} duration={2.5} />{stat.suffix}
                     </div>
-                    <p className="text-lg text-gray-600 mt-2 max-w-[150px] leading-tight">
+                    <p className="text-lg text-gray-600 dark:text-white/60 mt-2 max-w-[150px] leading-tight">
                       {stat.label}
                     </p>
                   </div>

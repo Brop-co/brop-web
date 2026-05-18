@@ -35,7 +35,7 @@ const Approach = () => {
   return (
     <section
       id="approachs"
-      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-12 xl:px-16 bg-gray-200"
+      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-12 xl:px-16 bg-gray-200 dark:bg-dark-base"
     >
       <div className="mx-auto max-w-[1460px]">
         {/* Header */}
@@ -47,13 +47,13 @@ const Approach = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mb-12 md:mb-20"
         >
           <div className="flex items-center space-x-4">
-            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-black rounded-full"></div>
-            <h2 className="text-2xl sm:text-3xlfont-medium text-gray-900">
+            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+            <h2 className="text-2xl sm:text-3xlfont-medium text-gray-900 dark:text-white">
               Our Approach
             </h2>
           </div>
           <div className="pr-0 md:pr-12 lg:pr-36">
-            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 leading-snug sm:leading-tight">
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 dark:text-white leading-snug sm:leading-tight">
               First step to solving a problem is recognizing there is one.
             </h3>
           </div>
@@ -86,25 +86,25 @@ const Approach = () => {
                   transition: { type: "spring", stiffness: 100, damping: 15 },
                 },
               }}
-              className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden p-3 sm:p-4"
+              className="bg-white dark:bg-dark-surface rounded-2xl sm:rounded-3xl overflow-hidden p-3 sm:p-4 dark:border dark:border-white/5"
             >
               <div className="flex flex-col h-full">
                 <div className="flex items-center mb-6 sm:mb-12 md:mb-20">
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-black rounded-full mr-2 sm:mr-3"></span>
-                  <h4 className="text-sm sm:text-base md:text-xl lg:text-2xl font-medium text-gray-900">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-black dark:bg-[#FDC448] rounded-full mr-2 sm:mr-3"></span>
+                  <h4 className="text-sm sm:text-base md:text-xl lg:text-2xl font-medium text-gray-900 dark:text-white">
                     {step.title}
                   </h4>
                 </div>
 
                 <div className="flex-grow flex flex-col justify-end mt-auto">
                   <div className="flex flex-col items-end">
-                    <span className="text-base sm:text-lg lg:text-xl font-medium text-gray-300">
+                    <span className="text-base sm:text-lg lg:text-xl font-medium text-gray-300 dark:text-white/30">
                       {`0${step.id}`}
                     </span>
 
-                    <hr className="w-full border-t border-gray-200 mb-2 sm:mb-3" />
+                    <hr className="w-full border-t border-gray-200 dark:border-white/10 mb-2 sm:mb-3" />
 
-                    <p className="text-gray-500 leading-snug text-xs sm:text-sm lg:text-base text-right">
+                    <p className="text-gray-500 dark:text-white/50 leading-snug text-xs sm:text-sm lg:text-base text-right">
                       {step.description}
                     </p>
                   </div>

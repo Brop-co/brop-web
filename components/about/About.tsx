@@ -45,7 +45,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="py-24 sm:py-28 px-4 sm:px-6 lg:px-10 bg-gray-200"
+      className="py-24 sm:py-28 px-4 sm:px-6 lg:px-10 bg-gray-200 dark:bg-dark-base"
     >
       <div className="max-w-[1720px] mx-auto">
         {/* Section Header */}
@@ -58,15 +58,15 @@ const About = () => {
         >
           {/* Left: Title */}
           <div className="flex items-center space-x-4">
-            <div className="w-3 h-3 bg-black rounded-full"></div>
-            <h2 className="text-xl sm:text-2xl font-medium text-gray-900">
+            <div className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+            <h2 className="text-xl sm:text-2xl font-medium text-gray-900 dark:text-white">
               Who we are
             </h2>
           </div>
 
           {/* Right: Tagline */}
           <div>
-            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 leading-snug sm:leading-tight">
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 dark:text-white leading-snug sm:leading-tight">
               We are explorers. We constantly seek ways to make an impact
               towards solving problems through creativity.
             </h3>
@@ -85,7 +85,7 @@ const About = () => {
             <motion.div
               key={member.id}
               transition={{ type: "spring", stiffness: 120, damping: 15 }}
-              className="bg-white rounded-[32px] overflow-hidden shadow-sm p-4 sm:p-5 group flex flex-col h-full"
+              className="bg-white dark:bg-dark-surface rounded-[32px] overflow-hidden shadow-sm dark:border dark:border-white/5 p-4 sm:p-5 group flex flex-col h-full"
             >
               {/* Image container */}
               <motion.div
@@ -104,10 +104,10 @@ const About = () => {
               {/* Text + LinkedIn */}
               <div className="pt-5 flex flex-col flex-1 justify-between">
                 <div>
-                  <h4 className="text-lg sm:text-xl font-[600] text-gray-900 mb-1 leading-tight">
+                  <h4 className="text-lg sm:text-xl font-[600] text-gray-900 dark:text-white mb-1 leading-tight">
                     {member.name}
                   </h4>
-                  <p className="text-gray-500 text-sm sm:text-base mb-4">
+                  <p className="text-gray-500 dark:text-white/50 text-sm sm:text-base mb-4">
                     {member.description}
                   </p>
                 </div>

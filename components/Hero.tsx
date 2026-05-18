@@ -1,10 +1,18 @@
 "use client";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
+import { useTheme } from "@/components/ThemeProvider";
+import BlurText from "@/components/BlurText";
+import TextType from "@/components/TextType";
 import ScrollAnimationLayout from "@/components/layouts/ScrollAnimationLayout";
 
+const GridScan = dynamic(() => import("@/components/GridScan"), { ssr: false });
+
 const HeroContent = () => {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const [isShrunken, setIsShrunken] = useState(false);
 
   useEffect(() => {
@@ -34,24 +42,24 @@ const HeroContent = () => {
   return (
     <>
       <div className="max-w-[1460px] mx-auto text-center px-4 sm:px-6 lg:px-8">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-6xl sm:text-7xl lg:text-8xl font-semibold text-gray-900 mb-6 leading-tight"
-        >
-          Your trusted creative partner
-        </motion.h1>
+        <BlurText
+          text="Your trusted creative partner"
+          delay={120}
+          animateBy="words"
+          direction="top"
+          stepDuration={0.4}
+          className={`text-6xl sm:text-7xl lg:text-8xl font-semibold ${isDark ? "text-white" : "text-gray-900"} mb-6 leading-tight justify-center`}
+        />
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl sm:text-2xl lg:text-3xl text-gray-900 mx-auto leading-relaxed mb-10"
-        >
-          We deliver creative branding, web design, and UI/UX solutions to make
-          the most impact.
-        </motion.p>
+        <TextType
+          text="We deliver creative branding, web design, and UI/UX solutions to make the most impact."
+          as="p"
+          typingSpeed={30}
+          initialDelay={800}
+          loop={false}
+          showCursor={false}
+          className={`text-xl sm:text-2xl lg:text-3xl ${isDark ? "text-white/70" : "text-gray-600"} mx-auto leading-relaxed mb-10`}
+        />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -61,10 +69,10 @@ const HeroContent = () => {
         >
           <motion.button
             whileTap={{ scale: 0.95 }}
-            className="relative overflow-hidden group font-medium py-5 px-10 rounded-full text-xl cursor-pointer bg-gray-200"
+            className={`relative overflow-hidden group font-medium py-5 px-10 rounded-full text-xl cursor-pointer ${isDark ? "bg-[#FDC448]" : "bg-[#3827C7]"}`}
           >
-            <span className="absolute inset-0 bg-gray-900 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
-            <span className="relative z-10 flex items-center gap-3 font-[550] text-gray-900 group-hover:text-white transition-colors duration-500">
+            <span className={`absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ${isDark ? "bg-dark-base" : "bg-white"}`}></span>
+            <span className={`relative z-10 flex items-center gap-3 font-[550] transition-colors duration-500 ${isDark ? "text-dark-base group-hover:text-[#FDC448]" : "text-white group-hover:text-[#3827C7]"}`}>
               Request a quote
               <span className="inline-block group-hover:-rotate-45 transition-transform duration-500">
                 👋
@@ -87,7 +95,7 @@ const HeroContent = () => {
         }}
       >
         <motion.div
-          className="w-14 h-14 bg-gray-900 rounded-full flex items-center justify-center mx-auto cursor-pointer hover:bg-gray-300 transition-colors duration-200 text-gray-200 hover:text-gray-900"
+          className={`w-14 h-14 rounded-full flex items-center justify-center mx-auto cursor-pointer transition-colors duration-200 ${isDark ? "bg-white/20 border border-white/30 text-white hover:bg-white hover:text-gray-900" : "bg-gray-900/10 border border-gray-900/20 text-gray-900 hover:bg-gray-900 hover:text-white"}`}
           animate={{ y: [0, 12, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -106,26 +114,26 @@ const HeroContent = () => {
           transition: "opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         }}
       >
-        <div className="flex items-center gap-8 text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-900">
+        <div className={`flex items-center gap-8 text-2xl sm:text-3xl lg:text-4xl font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>
           <motion.div
             className="flex items-center gap-8 whitespace-nowrap"
             animate={{ x: [0, -1000] }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           >
             <span>PURPOSEFUL DESIGNS</span>
-            <span className="text-gray-400">/</span>
+            <span className={isDark ? "text-white/30" : "text-gray-900/30"}>/</span>
             <span>STRATEGIC EXPERIENCES</span>
-            <span className="text-gray-400">/</span>
+            <span className={isDark ? "text-white/30" : "text-gray-900/30"}>/</span>
             <span>RESULTS DRIVEN SOLUTIONS</span>
-            <span className="text-gray-400">/</span>
+            <span className={isDark ? "text-white/30" : "text-gray-900/30"}>/</span>
             <span>BUSINESS VALUE</span>
-            <span className="text-gray-400">/</span>
+            <span className={isDark ? "text-white/30" : "text-gray-900/30"}>/</span>
             <span>PURPOSEFUL DESIGNS</span>
-            <span className="text-gray-400">/</span>
+            <span className={isDark ? "text-white/30" : "text-gray-900/30"}>/</span>
             <span>STRATEGIC EXPERIENCES</span>
-            <span className="text-gray-400">/</span>
+            <span className={isDark ? "text-white/30" : "text-gray-900/30"}>/</span>
             <span>RESULTS DRIVEN SOLUTIONS</span>
-            <span className="text-gray-400">/</span>
+            <span className={isDark ? "text-white/30" : "text-gray-900/30"}>/</span>
             <span>BUSINESS VALUE</span>
           </motion.div>
         </div>
@@ -135,8 +143,30 @@ const HeroContent = () => {
 };
 
 const Hero = () => {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
-    <ScrollAnimationLayout sectionId="home">
+    <ScrollAnimationLayout
+      sectionId="home"
+      disableShrink
+      backgroundOverlay={isDark ? "bg-dark-base" : "bg-white"}
+      backgroundContent={
+        <GridScan
+          sensitivity={0.55}
+          lineThickness={1}
+          linesColor={isDark ? "#2F293A" : "#D1D5DB"}
+          gridScale={0.1}
+          scanColor={isDark ? "#FDC448" : "#3827C7"}
+          scanOpacity={0.4}
+          enablePost={isDark}
+          bloomIntensity={0.6}
+          chromaticAberration={0.0005}
+          noiseIntensity={0.01}
+          scanSoftness={1.8}
+        />
+      }
+    >
       <HeroContent />
     </ScrollAnimationLayout>
   );

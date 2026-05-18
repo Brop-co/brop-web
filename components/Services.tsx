@@ -16,7 +16,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200">
+    <section id="services" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200 dark:bg-dark-base">
       <div className="max-w-[1460px] mx-auto">
         {/* Services List in White Card */}
         <motion.div
@@ -24,7 +24,7 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="bg-white rounded-3xl p-10 sm:p-16 lg:p-20 shadow-lg"
+          className="bg-white dark:bg-dark-surface rounded-3xl p-10 sm:p-16 lg:p-20 shadow-lg dark:shadow-none dark:border dark:border-white/5"
         >
           {/* Section Header */}
           <motion.div
@@ -36,15 +36,15 @@ const Services = () => {
           >
             {/* Left: Our services title */}
             <div className="flex items-center space-x-4">
-              <div className="w-3 h-3 bg-black rounded-full"></div>
-              <h2 className="text-3xl sm:text-4xl font-medium text-gray-900">
+              <div className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+              <h2 className="text-3xl sm:text-4xl font-medium text-gray-900 dark:text-white">
                 Our services
               </h2>
             </div>
 
             {/* Right: Tagline */}
             <div>
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 dark:text-white leading-tight">
                 We create solutions but most importantly we identify problems.
               </h3>
             </div>
@@ -60,14 +60,14 @@ const Services = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ paddingLeft: 28, paddingRight: 28 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex items-center py-6 border-b border-gray-100 last:border-b-0 group cursor-pointer relative overflow-hidden"
+                className="flex items-center py-6 border-b border-gray-100 dark:border-white/5 last:border-b-0 group cursor-pointer relative overflow-hidden"
               >
-                {/* Sliding background from bottom to top */}
-                <span className="absolute inset-0 bg-gray-200 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                {/* Sliding background */}
+                <span className="absolute inset-0 bg-gray-200 dark:bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
 
                 {/* Service Number */}
                 <div className="w-20 flex-shrink-0 relative z-10">
-                  <span className="text-gray-900 text-xl sm:text-2xl font-medium">
+                  <span className="text-gray-900 dark:text-white text-xl sm:text-2xl font-medium">
                     {service.id}
                   </span>
                 </div>
@@ -75,7 +75,7 @@ const Services = () => {
                 {/* Service Name and Arrow */}
                 <div className="flex-1 flex items-center justify-between relative z-10 ml-6">
                   <motion.h4
-                    className="text-2xl sm:text-3xl font-bold text-gray-900 text-left overflow-hidden"
+                    className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white text-left overflow-hidden"
                     whileHover={{ y: [-2, 0] }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                   >
@@ -88,7 +88,7 @@ const Services = () => {
                   >
                     <ArrowRight
                       size={24}
-                      className="text-gray-900 group-hover:text-blue-600 transition-colors duration-200"
+                      className="text-gray-900 dark:text-white group-hover:text-[#3827C7] dark:group-hover:text-[#FDC448] transition-colors duration-200"
                     />
                   </motion.div>
                 </div>

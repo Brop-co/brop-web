@@ -124,7 +124,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-24 px-6 sm:px-8 lg:px-16 bg-white rounded-3xl"
+      className="py-24 px-6 sm:px-8 lg:px-16 bg-white dark:bg-dark-surface rounded-3xl"
     >
       <div className="max-w-[1460px] mx-auto">
         {/* HEADER */}
@@ -136,8 +136,8 @@ const Projects = () => {
           className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6 mb-8"
         >
           <div className="flex items-center space-x-4">
-            <div className="w-3 h-3 bg-black rounded-full" />
-            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
+            <div className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full" />
+            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 dark:text-white">
               Our projects
             </h2>
           </div>
@@ -145,10 +145,10 @@ const Projects = () => {
             <button
               onClick={() => setLayout("grid")}
               aria-label="Grid view"
-              className={`border border-gray-900 w-12 h-12 rounded-xl flex items-center justify-center mx-1 transition-colors ${
+              className={`border border-gray-900 dark:border-white/40 w-12 h-12 rounded-xl flex items-center justify-center mx-1 transition-colors ${
                 layout === "grid"
-                  ? "bg-gray-900 text-white"
-                  : "hover:bg-gray-900 hover:text-white cursor-pointer"
+                  ? "bg-gray-900 dark:bg-white/10 text-white"
+                  : "hover:bg-gray-900 dark:hover:bg-white/10 hover:text-white cursor-pointer text-gray-900 dark:text-white"
               }`}
             >
               <LayoutGrid size={20} strokeWidth={1.5} />
@@ -156,10 +156,10 @@ const Projects = () => {
             <button
               onClick={() => setLayout("list")}
               aria-label="List view"
-              className={`border border-gray-900 w-12 h-12 rounded-xl flex items-center justify-center mx-1 transition-colors ${
+              className={`border border-gray-900 dark:border-white/40 w-12 h-12 rounded-xl flex items-center justify-center mx-1 transition-colors ${
                 layout === "list"
-                  ? "bg-gray-900 text-white"
-                  : "hover:bg-gray-900 hover:text-white cursor-pointer"
+                  ? "bg-gray-900 dark:bg-white/10 text-white"
+                  : "hover:bg-gray-900 dark:hover:bg-white/10 hover:text-white cursor-pointer text-gray-900 dark:text-white"
               }`}
             >
               <List size={20} strokeWidth={1.5} />
@@ -183,8 +183,8 @@ const Projects = () => {
                 onClick={() => setActiveModule(m)}
                 className={`text-sm px-4 py-2 rounded-full border transition-shadow whitespace-nowrap ${
                   isActive
-                    ? "bg-gray-100 border-gray-300 shadow"
-                    : "bg-white border-gray-200 hover:shadow-sm"
+                    ? "bg-gray-100 dark:bg-white/10 border-gray-300 dark:border-white/20 shadow dark:text-white"
+                    : "bg-white dark:bg-transparent border-gray-200 dark:border-white/10 hover:shadow-sm dark:text-white/70"
                 }`}
                 aria-pressed={isActive}
                 variants={itemVariants}
@@ -273,7 +273,7 @@ const Projects = () => {
                       <div className="flex flex-col gap-3 xl:flex-row xl:justify-between xl:items-center">
                         <div>
                           <div className="flex items-baseline flex-wrap">
-                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
                               {p.title}
                             </h3>
                             <span className="text-gray-400 font-medium sm:ml-2">
@@ -285,7 +285,7 @@ const Projects = () => {
                           {p.modules.map((module, moduleIdx) => (
                             <span
                               key={moduleIdx}
-                              className="text-xs sm:text-sm px-3 py-1.5 rounded-lg border border-gray-200 bg-white shadow-sm whitespace-nowrap"
+                              className="text-xs sm:text-sm px-3 py-1.5 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 shadow-sm whitespace-nowrap dark:text-white/70"
                             >
                               {module}
                             </span>
@@ -295,7 +295,7 @@ const Projects = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="relative w-full py-4 px-0 group-hover:px-6 border-b border-gray-200 last:border-b-0 overflow-hidden transition-all duration-400">
+                  <div className="relative w-full py-4 px-0 group-hover:px-6 border-b border-gray-200 dark:border-white/10 last:border-b-0 overflow-hidden transition-all duration-400">
                     <motion.div
                       className="absolute inset-0 bg-gray-200 hidden lg:block"
                       initial={{ y: "100%" }}
@@ -309,11 +309,11 @@ const Projects = () => {
                     />
                     <div className="relative z-10">
                       <div className="hidden md:grid grid-cols-[auto_1fr_1.5fr_auto] items-center gap-x-8">
-                        <span className="text-base text-gray-400">
+                        <span className="text-base text-gray-400 dark:text-white/40">
                           {String(filtered.length - idx).padStart(2, "0")}
                         </span>
                         <div className="flex items-baseline gap-x-3">
-                          <h3 className="text-2xl font-bold text-gray-900 whitespace-nowrap">
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white whitespace-nowrap">>
                             {p.title}
                           </h3>
                           <span className="text-2xl text-gray-300">
@@ -324,13 +324,13 @@ const Projects = () => {
                           {p.modules.map((module, moduleIdx) => (
                             <span
                               key={moduleIdx}
-                              className="text-xs px-3 py-1.5 rounded-md border border-gray-200 bg-white shadow-sm"
+                              className="text-xs px-3 py-1.5 rounded-md border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 shadow-sm dark:text-white/70"
                             >
                               {module}
                             </span>
                           ))}
                         </div>
-                        <span className="text-base text-gray-500 justify-self-end text-right">
+                        <span className="text-base text-gray-500 dark:text-white/50 justify-self-end text-right">
                           {p.type}
                         </span>
                       </div>

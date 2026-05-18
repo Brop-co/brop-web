@@ -3,6 +3,7 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
 import { motion, useSpring, useTransform, useScroll } from "framer-motion";
 import { ChevronDown, ArrowUpRight, ArrowRight } from "lucide-react";
+import CountUp from "@/components/CountUp";
 
 const Need: React.FC = () => {
   const [selectedServices, setSelectedServices] = useState(["Website Design"]);
@@ -29,17 +30,17 @@ const Need: React.FC = () => {
   const cards = [
     {
       image: "/images/man.gif",
-      title: "127m+",
+      numericValue: 127, suffix: "m+",
       subtitle: "Funding raised by our startup clients",
     },
     {
       image: "/images/boy.gif",
-      title: "3.2x",
+      numericValue: 3.2, suffix: "x",
       subtitle: "Higher valuation achieved with our strategic branding",
     },
     {
       image: "/images/map.gif",
-      title: "89%",
+      numericValue: 89, suffix: "%",
       subtitle:
         "Of investors say design quality influences their funding decisions",
     },
@@ -101,10 +102,10 @@ const Need: React.FC = () => {
   });
 
   return (
-    <section id="need" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200">
+    <section id="need" className="py-28 px-6 sm:px-8 lg:px-16 bg-gray-200 dark:bg-dark-base">
       <div className="max-w-[1460px] mx-auto">
         <div ref={targetRef} className="lg:h-[800vh]">
-          <div className="lg:sticky top-0 h-[130vh] lg:h-[65vh] bg-gray-200">
+          <div className="lg:sticky top-0 h-[130vh] lg:h-[65vh] bg-gray-200 dark:bg-dark-base">
             {/* Title and Tagline */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -114,13 +115,13 @@ const Need: React.FC = () => {
               className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20 pt-20"
             >
               <div className="flex items-center space-x-4">
-                <div className="w-3 h-3 bg-black rounded-full"></div>
-                <h2 className="text-2xl sm:text-3xl font-medium text-gray-900">
+                <div className="w-3 h-3 bg-black dark:bg-[#FDC448] rounded-full"></div>
+                <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 dark:text-white">
                   Why Startups need Brop
                 </h2>
               </div>
               <div>
-                <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 leading-snug sm:leading-tight px-0 md:px-8">
+                <h3 className="text-2xl sm:text-4xl lg:text-5xl font-[600] text-gray-900 dark:text-white leading-snug sm:leading-tight px-0 md:px-8">
                   The Impact of our Design and Branding on Startup Success
                 </h3>
               </div>
@@ -138,7 +139,7 @@ const Need: React.FC = () => {
                   <motion.div
                     key={index}
                     ref={index === 0 ? cardRef : null}
-                    className="absolute bg-white rounded-2xl p-8 shadow-sm flex flex-col w-[32%] h-[480px]"
+                    className="absolute bg-white dark:bg-dark-surface rounded-2xl p-8 shadow-sm flex flex-col w-[32%] h-[480px]"
                     style={{
                       left: `${50 + index * 34}%`,
                     }}
@@ -158,8 +159,10 @@ const Need: React.FC = () => {
                       />
                     </div>
                     <div className="mt-auto">
-                      <h4 className="text-5xl font-bold mb-3">{card.title}</h4>
-                      <p className="text-xl text-gray-600 leading-tight pr-[30%]">
+                      <h4 className="text-5xl font-bold mb-3 dark:text-white">
+                        <CountUp to={card.numericValue} duration={2.5} />{card.suffix}
+                      </h4>
+                      <p className="text-xl text-gray-600 dark:text-white/60 leading-tight pr-[30%]">
                         {card.subtitle}
                       </p>
                     </div>
@@ -172,7 +175,7 @@ const Need: React.FC = () => {
                 {cards.map((card, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-2xl p-6 shadow-md flex flex-col items-start text-left"
+                    className="bg-white dark:bg-dark-surface rounded-2xl p-6 shadow-md flex flex-col items-start text-left"
                   >
                     <div className="w-[70%] sm:w-[40%] h-40 overflow-hidden rounded-xl mb-4 self-start">
                       <img
@@ -182,10 +185,10 @@ const Need: React.FC = () => {
                       />
                     </div>
 
-                    <h4 className="text-3xl sm:text-4xl font-bold mb-2 text-gray-900">
-                      {card.title}
-                    </h4>
-                    <p className="text-lg sm:text-xl text-gray-600 leading-relaxed pr-[30%">
+                    <h4 className="text-3xl sm:text-4xl font-bold mb-2 text-gray-900 dark:text-white">
+                        <CountUp to={card.numericValue} duration={2.5} />{card.suffix}
+                      </h4>
+                    <p className="text-lg sm:text-xl text-gray-600 dark:text-white/60 leading-relaxed pr-[30%">
                       {card.subtitle}
                     </p>
                   </div>
