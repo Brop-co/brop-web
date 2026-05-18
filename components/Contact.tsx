@@ -246,7 +246,7 @@ const Contact = () => {
                           selectedServices.includes(service)
                             ? "text-white dark:text-dark-base"
                             : "text-gray-900 dark:text-white"
-                        }`}}
+                        }`}
                       >
                         {service}
                       </span>
@@ -300,7 +300,7 @@ const Contact = () => {
                             budget === budgetOption
                               ? "text-white dark:text-dark-base"
                               : "text-gray-900 dark:text-white"
-                          }`}}
+                          }`}
                         >
                           {budgetOption}
                         </span>

@@ -313,7 +313,7 @@ const Projects = () => {
                           {String(filtered.length - idx).padStart(2, "0")}
                         </span>
                         <div className="flex items-baseline gap-x-3">
-                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white whitespace-nowrap">>
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white whitespace-nowrap">
                             {p.title}
                           </h3>
                           <span className="text-2xl text-gray-300">

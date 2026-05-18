@@ -307,12 +307,8 @@ const PrismaticBurst = ({
     };
 
     let ro: ResizeObserver | null = null;
-    if ('ResizeObserver' in window) {
-      ro = new ResizeObserver(resize);
-      ro.observe(container);
-    } else {
-      window.addEventListener('resize', resize);
-    }
+    ro = new ResizeObserver(resize);
+    ro.observe(container);
     resize();
 
     const onPointer = (e: PointerEvent) => {
@@ -362,7 +358,6 @@ const PrismaticBurst = ({
       cancelAnimationFrame(raf);
       container.removeEventListener('pointermove', onPointer);
       ro?.disconnect();
-      if (!ro) window.removeEventListener('resize', resize);
       io?.disconnect();
       try { container.removeChild(gl.canvas); } catch (e) { void e; }
       meshRef.current = null;
