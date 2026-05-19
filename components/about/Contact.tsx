@@ -14,6 +14,8 @@ const Contact = () => {
     phone: "",
     project: "",
   });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const freeChipRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
@@ -87,7 +89,32 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", { ...formData, selectedServices, budget });
+    setStatus("loading");
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          services: selectedServices,
+          budget,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setErrorMsg(data.error ?? "Something went wrong.");
+        setStatus("error");
+      } else {
+        setStatus("success");
+        setFormData({ name: "", company: "", email: "", phone: "", project: "" });
+        setSelectedServices([]);
+        setBudget("");
+      }
+    } catch {
+      setErrorMsg("Network error. Please try again.");
+      setStatus("error");
+    }
   };
 
   return (
@@ -319,21 +346,24 @@ const Contact = () => {
               </div>
 
               <div className="text-left">
-                <motion.button
-                  type="submit"
-                  whileTap={{ scale: 0.9 }}
-                  className="relative overflow-hidden group font-medium py-4 px-16 rounded-full text-lg sm:text-xl cursor-pointer bg-[#3827C7] dark:bg-[#FDC448] flex items-center space-x-3 transition-colors duration-500"
-                >
-                  <span className="absolute inset-0 bg-white translate-y-[105%] group-hover:translate-y-0 transition-transform duration-500"></span>
-                  <span className="relative z-10 flex items-center gap-3 text-white dark:text-dark-base group-hover:text-[#3827C7] dark:group-hover:text-dark-base transition-colors duration-500">
-                    <span>Submit</span>
-                    <ArrowRight
-                      size={20}
-                      className="inline-block group-hover:translate-x-1 transition-transform duration-500"
-                    />
-                  </span>
-                </motion.button>
-              </div>
+                  <motion.button
+                    type="submit"
+                    disabled={status === "loading"}
+                    whileTap={{ scale: 0.9 }}
+                    className="relative overflow-hidden group font-medium py-4 px-16 rounded-full text-lg sm:text-xl cursor-pointer bg-[#3827C7] dark:bg-[#FDC448] flex items-center space-x-3 transition-colors duration-500 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    <span className="pointer-events-none absolute inset-0 bg-white dark:bg-dark-base translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                    <span className="relative z-10 flex items-center gap-3 text-white dark:text-dark-base group-hover:text-[#3827C7] dark:group-hover:text-[#FDC448] transition-colors duration-500">
+                      <span>{status === "loading" ? "Sending..." : "Submit"}</span>
+                      {status !== "loading" && (
+                        <ArrowRight
+                          size={20}
+                          className="inline-block group-hover:translate-x-1 transition-transform duration-500"
+                        />
+                      )}
+                    </span>
+                  </motion.button>
+                </div>
             </motion.form>
           </div>
         </motion.div>
