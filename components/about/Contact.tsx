@@ -14,6 +14,8 @@ const Contact = () => {
     phone: "",
     project: "",
   });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const freeChipRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
@@ -87,7 +89,32 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", { ...formData, selectedServices, budget });
+    setStatus("loading");
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          services: selectedServices,
+          budget,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setErrorMsg(data.error ?? "Something went wrong.");
+        setStatus("error");
+      } else {
+        setStatus("success");
+        setFormData({ name: "", company: "", email: "", phone: "", project: "" });
+        setSelectedServices([]);
+        setBudget("");
+      }
+    } catch {
+      setErrorMsg("Network error. Please try again.");
+      setStatus("error");
+    }
   };
 
   return (
