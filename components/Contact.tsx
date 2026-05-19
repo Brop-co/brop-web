@@ -150,7 +150,7 @@ const Contact = () => {
               </motion.h2>
             </div>
 
-            <motion.form
+            <form
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -356,7 +356,7 @@ const Contact = () => {
                   </motion.button>
                 </div>
               )}
-            </motion.form>
+            </form>
           </div>
         </motion.div>
       </div>
