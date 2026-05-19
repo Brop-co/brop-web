@@ -88,6 +88,7 @@ const Contact = () => {
   };
 
   const handleSubmit = async () => {
+    console.log("submit called");
     setStatus("loading");
     setErrorMsg("");
     try {
@@ -332,12 +333,13 @@ const Contact = () => {
               ) : (
                 <div className="text-left">
                   <motion.button
+                    type="button"
                     onClick={handleSubmit}
                     disabled={status === "loading"}
                     whileTap={{ scale: 0.9 }}
                     className="relative overflow-hidden group font-medium py-4 px-16 rounded-full text-lg sm:text-xl cursor-pointer bg-[#3827C7] dark:bg-[#FDC448] flex items-center space-x-3 transition-colors duration-500 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    <span className="absolute inset-0 bg-white dark:bg-dark-base translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                    <span className="pointer-events-none absolute inset-0 bg-white dark:bg-dark-base translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
                     <span className="relative z-10 flex items-center gap-3 text-white dark:text-dark-base group-hover:text-[#3827C7] dark:group-hover:text-[#FDC448] transition-colors duration-500">
                       <span>{status === "loading" ? "Sending..." : "Submit"}</span>
                       {status !== "loading" && (
