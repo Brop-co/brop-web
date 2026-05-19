@@ -87,8 +87,7 @@ const Contact = () => {
     setIsFreeChipMoved(false);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setStatus("loading");
     setErrorMsg("");
     try {
@@ -151,7 +150,6 @@ const Contact = () => {
             </div>
 
             <form
-              onSubmit={handleSubmit}
               className="space-y-10"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -334,7 +332,7 @@ const Contact = () => {
               ) : (
                 <div className="text-left">
                   <motion.button
-                    type="submit"
+                    onClick={handleSubmit}
                     disabled={status === "loading"}
                     whileTap={{ scale: 0.9 }}
                     className="relative overflow-hidden group font-medium py-4 px-16 rounded-full text-lg sm:text-xl cursor-pointer bg-[#3827C7] dark:bg-[#FDC448] flex items-center space-x-3 transition-colors duration-500 disabled:opacity-70 disabled:cursor-not-allowed"
